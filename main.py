@@ -1,8 +1,13 @@
-# Greeting
+# ================================
+# 1. Greeting (Вітання)
+# ================================
 print("Hello World!")
 print("Hello Git")
 
-# Name check
+
+# ================================
+# 2. Name check (Перевірка імені)
+# ================================
 name = input("Enter your name: ").strip()
 
 banned_names = ["володимир", "путін", "росія", "росіянин", "тварина"]
@@ -12,7 +17,10 @@ if name.lower() in banned_names:
 else:
     print(f"Hello, {name}!")
 
-# Age check
+
+# ================================
+# 3. Age check (Перевірка віку)
+# ================================
 age = int(input("\nHow old are you? "))
 
 if age < 18:
@@ -20,12 +28,20 @@ if age < 18:
 else:
     print("Access granted")
 
-# Square perimeter calculation
+
+# ================================
+# 4. Square perimeter calculation
+# (Обчислення периметра квадрата)
+# ================================
 side = float(input("\nEnter side length: "))
 perimeter = 4 * side
 print(f"Perimeter of the square is {perimeter}")
 
-# Shopping calculation
+
+# ================================
+# 5. Shopping calculation
+# (Розрахунок вартості покупок)
+# ================================
 price_per_croissant = 1.04
 price_per_glass = 0.34
 price_per_coffee_pack = 4.42
@@ -44,3 +60,12 @@ total_dollars = int(total_cost)
 total_cents = int(total_cost * 100) % 100
 
 print(f"Total price: {total_dollars} dollars and {total_cents} cents")
+
+
+# ================================
+# 6. List example + count()
+# (Робота зі списком)
+# ================================
+my_list = [1, 2, 3, 4, 2, 2, 5, 2]
+count_2 = my_list.count(2)
+print(count_2)  # Виведе 4, оскільки число 2 зустрічається 4 рази
