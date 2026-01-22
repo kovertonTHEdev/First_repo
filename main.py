@@ -282,10 +282,11 @@ width = "1.75"
 area =  float(length) * float(width)
 show = (f"With width {width} and length {length} of the room, its area is equal to {area}")
 
+if RUN_INPUT:
 
-length = float(input("Enter length size"))
-width = float(input("Enter width size"))
-area = length * width
+    length = float(input("Enter length size"))
+    width = float(input("Enter width size"))
+    area = length * width
 
 
 my_list = [2024, 3.12]
@@ -293,3 +294,13 @@ some_data = ['Python']
 my_list.extend(some_data)
 my_list.insert(1, "Python")
 my_list.reverse()
+
+
+#### TASK
+age_input = int(input(" \nPlease, Enter your age: " ))
+
+if age_input < 18:
+    print("Acess Denied")
+else:
+    print("Access Granted")
+
