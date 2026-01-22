@@ -167,3 +167,97 @@ a = {1, 2, 3}
 b = {3, 4, 5}
 print(a.difference(b))  # {1, 2}
 print(a - b)  # {1, 2}
+
+a = {1, 2, 3}
+b = {3, 4, 5}
+print(a.symmetric_difference(b))  # {1, 2, 4, 5}
+print(a ^ b)  # {1, 2, 4, 5}
+
+
+a = {1, 2, 3}
+b = {3, 4, 5}
+print(a.union(b))  # {1, 2, 3, 4, 5}
+print(a | b)  # {1, 2, 3, 4, 5}
+
+my_frozenset = frozenset([1, 2, 3, 4, 5])
+
+
+a = frozenset([1, 2, 3])
+b = frozenset([3, 4, 5])
+
+union = a | b  # Об'єднання множин
+intersection = a & b  # Перетин множин
+difference = a - b  # Різниця множин
+symmetric_difference = a ^ b  # Симетрична різниця
+
+print(union)  # frozenset({1, 2, 3, 4, 5})
+print(intersection)  # frozenset({3})
+print(difference)  # frozenset({1, 2})
+print(symmetric_difference)  # frozenset({1, 2, 4, 5})
+
+
+# ================================
+# 11. String methods (Робота з рядками)
+# ================================
+
+s = "Hello world!"
+print(s[0])# H
+print(s[-1])# !
+
+
+s = "Hello" 
+print(s.upper()) # Виведе 'HELLO'
+
+s = "Some Text"
+print(s.lower())  # Виведе 'some text'
+
+s = "Bill Jons"
+print(s.startswith("Bi"))  # Виведе True
+
+s = "hello.jpg"
+print(s.endswith("jpg"))  # Виведе True
+
+s = "hello world".capitalize()  # Результат: "Hello world"
+print(s.capitalize())
+
+s = "hello world".title()  # Результат: "Hello World"
+print(s.title())
+
+
+# ================================
+# 12. String formatting (Форматування рядків)
+# ================================
+
+# Просте форматування рядка
+name = 'John'
+print('Hello, {}!'.format(name))
+
+# Форматування з декількома аргументами
+age = 25
+print('Hello, {}. You are {} years old.'.format(name, age))
+
+# Використання іменованих аргументів
+print('Hello, {name}. You are {age} years old.'.format(name='Jane', age=30))
+
+# Використання індексів для вказівки порядку аргументів
+print('Hello, {1}. You are {0} years old.'.format(age, name))
+
+
+# ================================
+# 13. Slices (Зрізи у Python)
+# ================================
+
+s = "Hello, World!"
+first_five = s[:5]
+print(first_five)  # Виведе 'Hello'
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+reverse_numbers = numbers[::-1]
+print(reverse_numbers)
+
+
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+copy_numbers = numbers[:]
+print(copy_numbers)
+
+
