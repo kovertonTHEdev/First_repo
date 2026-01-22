@@ -88,3 +88,82 @@ print(len(my_list))
 nums = [3, 1, 4, 1, 5, 9, 2]
 nums.sort()
 print(nums)  # Виведе [1, 1, 2, 3, 4, 5, 9]
+
+
+nums.sort(reverse=True)
+print(nums)  # Виведе [9, 5, 4, 3, 2, 1, 1]
+
+
+words = ["banana", "apple", "cherry"]
+words.sort(key=len)
+print(words)  # Виведе ['apple', 'banana', 'cherry']
+
+
+# ================================
+# 7. sorted() vs sort()
+# (Сортування без зміни оригіналу)
+# ================================
+
+nums = [3, 1, 4, 1, 5, 9, 2]
+sorted_nums = sorted(nums)
+print(sorted_nums)  # Виведе [1, 1, 2, 3, 4, 5, 9]
+
+sorted_nums_desc = sorted(nums, reverse=True)
+print(sorted_nums_desc)  # Виведе [9, 5, 4, 3, 2, 1, 1]
+
+words = ["banana", "apple", "cherry"]
+sorted_words = sorted(words, key=len)
+print(sorted_words)  # Виведе ['apple', 'banana', 'cherry']
+
+
+# ================================
+# 8. Dictionary basics
+# (Робота зі словником)
+# ================================
+
+my_dict = {"name": "Alice", "age": 25, "city": "New York"}
+print(my_dict["city"])  # Виведе 'New York'
+
+my_dict["age"] = 26  # Змінює вік на 26
+my_dict["email"] = "alice@example.com"  # Додає нову пару ключ-значення
+print(my_dict)
+
+del my_dict["age"]
+print(my_dict)
+
+print("name" in my_dict)
+print("age" in my_dict)
+
+
+# ================================
+# 9. Set basics
+# (Основи множин)
+# ================================
+
+numbers = {1, 2, 3}
+numbers.add(4)
+print(numbers)  # {1, 2, 3, 4}
+
+numbers = {1, 2, 3}
+numbers.remove(3)
+print(numbers)  # {1, 2}
+
+numbers = {1, 2, 3}
+numbers.discard(2)
+print(numbers)  # {1, 3}
+
+
+# ================================
+# 10. Set operations
+# (Операції над множинами)
+# ================================
+
+a = {1, 2, 3}
+b = {3, 4, 5}
+print(a.intersection(b))  # {3}
+print(a & b)  # {3}
+
+a = {1, 2, 3}
+b = {3, 4, 5}
+print(a.difference(b))  # {1, 2}
+print(a - b)  # {1, 2}
