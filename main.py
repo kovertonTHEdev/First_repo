@@ -259,3 +259,32 @@ print(reverse_numbers)
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
 copy_numbers = numbers[:]
 print(copy_numbers)
+
+# ================================
+# 14. Conditional statements, loops (Умовні оператори, цикли)
+# ================================
+
+num = 7  # приклад значення для num
+
+if num > 10:
+    print("num більше за 10")
+else:
+    print("num не більше за 10")
+
+money = 0
+if money:
+    print(f"You have {money} on your bank account")
+else:
+    print("You have no money and no debts")
+
+# ================================
+# 15. Оператор Is
+# ================================
+
+a = [1, 2, 3]
+b = a
+c = [1, 2, 3]
+
+print(a is b)  # True
+print(a is c)  # False
+
