@@ -1,3 +1,5 @@
+RUN_INPUT = False
+
 ###  Home tasks
 first_name = "Andrii"
 last_name = "Nedoshivkin"
@@ -33,7 +35,6 @@ my_list.reverse()
 
 
 #### TASK  (Первірка віку)
-
 if RUN_INPUT:
     age_input = int(input(" \nPlease, Enter your age: " ))
 
@@ -44,7 +45,7 @@ if RUN_INPUT:
 
 
 ### TASK (Сортування)
-if RUN_INPUT:
+if RUN_INPUT: 
     nums = input(" Please, enter numbers: ")
     nums = nums.split()
 
@@ -163,3 +164,96 @@ numbers_copy.sort(reverse=True)
 
 print(nums)
 print(numbers_copy)
+
+### TASK
+if RUN_INPUT:
+    allowed_events = ["deploy", "build", "test", "backup"]
+    event_type = input("Text please type of event: ")
+    event_time = int(input("Text please duration time: "))
+    if event_type: allowed_events 
+    else: 
+        print("Unknown event")
+    if event_time < 0:
+        print("Invalid duration")
+
+    h = event_time // 3600
+    m = (event_time % 3600) // 60
+    s = event_time % 60
+
+    print(f"Event {event_type}: {h}h {m}m {s}s")
+
+### TASK
+if RUN_INPUT:
+    events = ["start", "stop", "restart"]
+    event_type = input("Text here please type of event: ")
+    event_time1 = int(input("Text please duration time: "))
+    if event_type not in events:
+        print("Invalid type")
+    elif event_time1 < 0:
+        print("Invalid duration")
+
+    else:
+        h = event_time1 // 3600
+        m = (event_time1 % 3600) // 60
+        s = event_time1 % 60
+
+    print(f"Event {event_type}: {h}h {m}m {s}s")
+
+### TASK
+raw_users = ["  Andrii ", "", "BORIS", "anna", "  ", "Boris", "ANNA"]
+
+clean_users = []
+
+for r in raw_users:
+    name = r.strip().lower()
+    if name:
+        clean_users.append(name)
+
+clean_users = list(set(clean_users))
+clean_users.sort()
+
+print(clean_users)
+
+### TASK
+raw_actions = ["  Login", "logout ", "LOGIN", "", "  ", "Logout", "login", "Delete"]
+
+clean_actions = []  # сюда будем складывать очищенные действия
+
+# 1. Очистка данных
+for r in raw_actions:
+    action = r.strip().lower()      # убираем пробелы и приводим к нижнему регистру
+    if action:                      # проверяем, что строка не пустая
+        clean_actions.append(action)  # добавляем в список
+
+# 2. Удаление дубликатов
+clean_actions = list(set(clean_actions))
+# set() убирает повторы, list() возвращает обратно список
+
+# 3. Сортировка по алфавиту
+clean_actions.sort()
+
+# 4. Вывод результата
+for action in clean_actions:
+    print(action)
+
+### TASK 
+actions = [" Login", "logout ", "LOGIN", "update", "Logout", "", "login"]
+
+clean_actions = []      # список для очищенных действий (без пробелов, в нижнем регистре)
+result = {}             # словарь-счётчик: действие -> сколько раз встретилось
+
+# 1. Очистка исходного списка
+for action in actions:
+    action = action.strip().lower()   # убираем пробелы и приводим к нижнему регистру
+    if action:                        # проверяем, что строка не пустая
+        clean_actions.append(action)  # добавляем очищенное действие в список
+
+# 2. Подсчёт количества действий
+for action in clean_actions:
+    if action in result:              # если действие уже есть в словаре
+        result[action] += 1           # увеличиваем счётчик на 1
+    else:                             # если действия ещё нет
+        result[action] = 1            # создаём ключ и ставим начальное значение 1
+
+# 3. Вывод результата
+print(result)
