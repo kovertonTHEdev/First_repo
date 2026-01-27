@@ -533,6 +533,7 @@ def greet(name: str) -> str:
     """Возвращает строку-приветствие по имени."""
     return f"Привіт, {name}!"
 
+### Розділення задачі 
 
 greeting = greet("Олексій")
 print(greeting)
@@ -565,6 +566,8 @@ def modify_list_inplace(lst: list) -> None:
     lst.append(4)
 
 
+### Розділення задачі 
+
 my_list = [1, 2, 3]
 modify_list_inplace(my_list)
 print(my_list)
@@ -595,3 +598,151 @@ def string_to_codes(string: str) -> dict:
 
 result = string_to_codes("Hello world!")
 print(result)
+
+
+# ================================
+# 30. Область видимості: Local
+# ================================
+
+x = 50
+
+def func() -> None:
+    x = 2
+    print('Зміна локального x на', x)  # Зміна локального x на 2
+
+func()
+print('Глобальний x як і раніше', x)  # x як і раніше 50
+
+# ================================
+# 30. Область видимості: Global
+# ================================
+
+x = 50
+
+def func():
+    global x
+    print('x дорівнює', x)  # x дорівнює 50
+    x = 2
+    print('Змінюємо глобальне значення x на', x)  # Змінюємо глобальне значення x на 2
+
+func()
+print('Значення x складає', x)# Значення x складає 2
+
+# ================================
+# 31. Ключові аргументи функції
+# ================================
+
+def greet(name, message="Привіт"):
+    print(f"{message}, {name}!")
+
+    greet("Олексій")
+    greet("Марія", message="Добрий день")  
+
+
+### Розділення задачі 
+
+def func(a, b=5, c=10):
+    print('a дорівнює', a,', b дорівнює', b,', а c дорівнює', c)
+
+# a дорівнює 3, b дорівнює 7, а c дорівнює 10
+func(3, 7)
+
+# a дорівнює 25, b дорівнює 5, а c дорівнює 24
+func(25, c=24)
+
+# a дорівнює 100, b дорівнює 5, а c дорівнює 50
+func(c=50, a=100)
+
+
+
+def say(message, times=1):
+    print(message * times)
+
+say('Привіт') 
+say('Світ', 5)
+
+# ================================
+# 32. Приклад використання параметру *args
+# ================================
+
+def print_all_args(*args):
+    for arg in args:
+        print(arg)
+
+print_all_args(1, 'hello', True)
+
+#Виведення: 
+# 1
+# hello
+# True
+
+
+### Розділення задачі 
+
+def concatenate(*args) -> str:
+    result = ""
+    for arg in args:
+        result += arg
+    return result
+
+print(concatenate("Hello", " ", "world", "!"))
+
+
+# ================================
+# 33. Приклад використання параметру *args та **kwargs
+# ================================
+def greet(**kwargs):
+    for key, value in kwargs.items():
+        print(f"{key}: {value}")
+
+greet(name="Alice", age=25)
+
+
+### Розділення задачі 
+
+def example_function(*args, **kwargs):
+    print("Позиційні аргументи:", args)
+    print("Ключові аргументи:", kwargs)
+
+example_function(1, 2, 3, name="Alice", age=25)
+
+# ================================
+# 34. Рекурсія
+# ================================
+
+def factorial(n):
+    if n == 0: # базовий випадок
+        return 1
+    else:
+        return n * factorial(n-1) # рекурсивний випадок
+
+print(factorial(5)) # виведе 120
+
+### Розділення задачі про Фібоначчі 
+
+def fibonacci(n):
+    if n <= 1: # базовий випадок
+        return n
+    else:
+        return fibonacci(n-1) + fibonacci(n-2) # рекурсивний випадок
+
+print(fibonacci(10)) # виведе 55
+
+# ================================
+# 35. Стек викликів рекурсії
+# ================================
+
+def factorial(n):
+    print("Виклик функції factorial з n = ", n)
+    if n == 1:
+        print("Базовий випадок, n = 1, повернення 1")
+        return 1
+    else:
+        result = n * factorial(n-1)
+        print("Повернення результату для n = ", n, ": ", result)
+        return result
+
+print(factorial(5))
+
+
+
