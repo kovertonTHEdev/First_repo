@@ -3,7 +3,7 @@ sum = 0
 b = 0
 
 while b < 20:
-    b = b + 1
+    sum = b + 1
 print(sum)
 
 
