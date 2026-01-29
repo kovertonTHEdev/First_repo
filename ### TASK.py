@@ -477,3 +477,73 @@ elif num < 0:
     result = "Negative number"
 else:
     result = "It is zero"
+
+### TASK
+num = int(input("Enter the integer (0 to 100): "))
+sum = 0
+b = 0
+while b < num:
+    if num  <= 100:
+        b = b + 1
+        sum = sum + b
+        print(sum)
+
+    if num > 100:
+        print("Incorrect number")
+        break
+
+
+### TASK
+message = "Never argue with stupid people, they will drag you down to their level and then beat you with experience."
+search = "r"
+result = 0
+symbol_r = search
+for symbol_r in message:
+    if symbol_r == search:
+        result = result + 1 
+print(result)
+
+
+### TASK
+pool = 1000
+try:
+    quantity = int(input("Enter the number of mailings: "))
+    chunk = pool // quantity
+    print(chunk)
+except ZeroDivisionError:
+    print('Divide by zero completed!')
+
+
+### TASK
+### for test
+def greeting():
+    print("Hello world!")
+
+greeting()
+
+
+### normal way
+def greet(name: str) -> str: 
+    return f"Hello {name}!" 
+greeting = () 
+greeting = greet("world") 
+print(greeting)
+
+
+### TASK 
+
+def invite_to_event(username: str) -> str: 
+    return f"Dear {username}, we have the honour to invite you to our event" 
+invite = () 
+invite = invite_to_event("Vasya") 
+print(invite)
+
+
+### TASK
+def discount_price(price: float, discount: float) -> float:
+    def apply_discount():
+        nonlocal price
+        price = price * (1 - discount)
+
+    apply_discount()
+    return price

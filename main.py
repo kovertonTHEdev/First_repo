@@ -535,8 +535,11 @@ def greet(name: str) -> str:
 
 ### Розділення задачі 
 
+def greet(name: str) -> str:
+    return f"Привіт, {name}!"
+
 greeting = greet("Олексій")
-print(greeting)
+print(greeting)  # Виведе: Привіт, Олексій!
 
 def is_even(num: int) -> bool:
     """Возвращает True, если число чётное, иначе False."""
