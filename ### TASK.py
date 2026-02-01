@@ -554,3 +554,52 @@ def get_fullname(first_name, last_name, middle_name =""):
        return(f"{first_name} {middle_name} {last_name}")
     else:
        return(f"{first_name} {last_name}")   
+    
+### TASK
+def format_string(string, length):
+    spaces = (length - len(string)) // 2
+    another_string = " " * spaces
+    if len(string) >= length:
+        return string
+    if len(string) < length:
+        return another_string + string     
+
+
+### TASK
+def first(size, *args):
+    n = len(args)
+    result = size + n
+    return result
+print(first(5, "first", "second", "third"))
+print(first(1, "Alex", "Boris")) 
+
+def second(size, **kwargs):
+    n = len(kwargs)
+    result = size + n
+    return result
+print(second(3, comment_one="first", comment_two="second", comment_third="third"))
+print(second(10, comment_one="Alex", comment_two="Boris")) 
+
+### TASK
+n = 50
+k = 7
+def factorial(n):
+    if n < 2:
+        return 1
+    else:
+        return n * factorial(n - 1)
+
+
+def number_of_groups(n, k):
+    if k > n:
+        return 0
+    if k < 0:
+        return 0
+    if n < 0:   
+        return 0 
+    n_minus_k  = n - k 
+    a = factorial(n)
+    b = factorial(n_minus_k)
+    c = factorial(k)
+    result = a // (b * c)       
+    return result 
