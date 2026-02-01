@@ -1,605 +1,697 @@
-RUN_INPUT = False  # Если True — будут запрашиваться input() (ввод с клавиатуры). Если False — эти части пропускаются.
+RUN_INPUT = False  # флаг: если True — участки с input() выполняются, если False — пропускаются
 
 
 # ============================================================
-# HOME TASK: Склейка имени и фамилии
+# ЗАДАЧА 1: Склейка имени и фамилии
 # ============================================================
 
-first_name = "Andrii"                 # строка с именем
-last_name = "Nedoshivkin"             # строка с фамилией
-full_name = first_name + " " + last_name  # склеиваем: имя + пробел + фамилия
+first_name = "Andrii"  # создаём переменную-строку с именем
+last_name = "Nedoshivkin"  # создаём переменную-строку с фамилией
+full_name = first_name + " " + last_name  # склеиваем 3 строки: имя + пробел + фамилия
 
-print(full_name)                      # выводим полное имя
+print(full_name)  # печатаем результат склейки в консоль
 
 
 # ============================================================
-# HOME TASK: Площадь комнаты (числа как float)
+# ЗАДАЧА 2: Площадь комнаты (числа как float)
 # ============================================================
 
-length = 2.75                         # длина комнаты (число)
-width = 1.75                          # ширина комнаты (число)
-area = length * width                 # площадь = длина * ширина
+length = 2.75  # задаём длину как число float (с дробной частью)
+width = 1.75  # задаём ширину как число float
+area = length * width  # считаем площадь умножением (float * float)
 
 show = (f"With width {width} and length {length} of the room, its area is equal to {area}")
-# show — строка с результатом (f-string)
-# ВНИМАНИЕ: ты тут show не печатаешь. Чтобы увидеть, нужно print(show).
+# создаём строку (f-string), куда подставляются переменные width, length, area
 
 
 # ============================================================
-# HOME TASK: Площадь комнаты (числа как строки -> перевод в float)
+# ЗАДАЧА 3: Площадь комнаты (числа как строки -> перевод в float)
 # ============================================================
 
-length = "2.75"                       # длина как строка
-width = "1.75"                        # ширина как строка
-area = float(length) * float(width)   # переводим строки в float и считаем площадь
+length = "2.75"  # задаём длину как строку (не число)
+width = "1.75"  # задаём ширину как строку
+area = float(length) * float(width)  # переводим строки в float и умножаем
 
 show = (f"With width {width} and length {length} of the room, its area is equal to {area}")
-# show — строка с результатом (опять же, если надо увидеть: print(show))
+# снова создаём строку с подстановкой значений
 
 
 # ============================================================
-# HOME TASK: Площадь комнаты (ввод от пользователя)
+# ЗАДАЧА 4: Площадь комнаты (ввод от пользователя)
 # ============================================================
 
-if RUN_INPUT:
-    length = float(input("Enter length size"))  # просим длину, переводим в float
-    width = float(input("Enter width size"))    # просим ширину, переводим в float
-    area = length * width                       # считаем площадь
-    print(area)                                 # выводим площадь (чтобы видеть результат)
-
-
-# ============================================================
-# HOME TASK: Работа со списком
-# ============================================================
-
-my_list = [2024, 3.12]              # список с числами
-some_data = ["Python"]              # другой список (с одной строкой)
-
-my_list.extend(some_data)           # extend добавляет элементы списка some_data в конец my_list
-# было: [2024, 3.12]
-# стало: [2024, 3.12, "Python"]
-
-my_list.insert(1, "Python")         # insert вставляет элемент по индексу 1 (второе место)
-# станет: [2024, "Python", 3.12, "Python"]
-
-my_list.reverse()                   # reverse переворачивает список на месте (в обратном порядке)
+if RUN_INPUT:  # условие: выполняем блок только если RUN_INPUT == True
+    length = float(input("Enter length size"))  # берём ввод строкой -> переводим в float
+    width = float(input("Enter width size"))  # берём ввод строкой -> переводим в float
+    area = length * width  # считаем площадь
+    print(area)  # выводим площадь на экран
 
 
 # ============================================================
-# TASK: Проверка возраста
+# ЗАДАЧА 5: Работа со списком (extend, insert, reverse)
 # ============================================================
 
-if RUN_INPUT:
-    age_input = int(input("\nPlease, Enter your age: "))  # ввод возраста -> int
+my_list = [2024, 3.12]  # создаём список с двумя элементами: int и float
+some_data = ["Python"]  # создаём второй список с одной строкой
 
-    if age_input < 18:         # если меньше 18
-        print("Acess Denied")  # доступ запрещён
-    else:                      # иначе (18 и больше)
-        print("Access Granted")# доступ разрешён
+my_list.extend(some_data)  # добавляем элементы some_data в конец my_list (расширяем список)
 
+my_list.insert(1, "Python")  # вставляем строку "Python" в my_list на индекс 1
 
-# ============================================================
-# TASK: Сортировка чисел, введённых пользователем
-# ============================================================
-
-if RUN_INPUT:
-    nums = input("Please, enter numbers: ")  # ввод одной строкой, например: "5 2 9 1 3"
-    nums = nums.split()                      # split() делит строку по пробелам -> список строк
-
-    numbers = []                             # сюда соберём числа уже как int
-
-    for n in nums:                           # перебираем каждую строку-число
-        numbers.append(int(n))               # переводим в int и добавляем в список numbers
-
-    sorted_nums = sorted(numbers)            # sorted() возвращает новый отсортированный список
-    print(sorted_nums)                       # печать результата
+my_list.reverse()  # переворачиваем порядок элементов списка my_list “на месте”
 
 
 # ============================================================
-# TASK: Сортировка списка на месте (sort)
+# ЗАДАЧА 6: Проверка возраста (if/else)
 # ============================================================
 
-nums = [5, 2, 9, 1, 3]   # исходный список
-nums.sort()              # sort() сортирует сам список (на месте)
-print(nums)              # вывод отсортированного
+if RUN_INPUT:  # выполняем блок только если RUN_INPUT == True
+    age_input = int(input("\nPlease, Enter your age: "))  # ввод -> строка, int() -> число
 
-
-# ============================================================
-# TASK: Копия списка + сортировка копии
-# ============================================================
-
-nums = [5, 2, 9, 1, 3]       # исходный
-nums_copy = nums.copy()      # делаем копию (чтобы не менять оригинал)
-nums_copy.sort()             # сортируем копию
-
-print(nums)                  # оригинал остался как был
-print(nums_copy)             # копия отсортирована
+    if age_input < 18:  # проверка: возраст меньше 18?
+        print("Acess Denied")  # печатаем запрет
+    else:  # иначе (18 и больше)
+        print("Access Granted")  # печатаем разрешение
 
 
 # ============================================================
-# TASK: Сортировка по длине слова (key=len)
+# ЗАДАЧА 7: Сортировка чисел, введённых пользователем (split + append + sorted)
 # ============================================================
 
-words = ["banana", "Apple", "cherry"]
-words.sort(key=len)      # key=len: сортируем по длине слова
-print(words)
+if RUN_INPUT:  # включаем ввод только при RUN_INPUT == True
+    nums = input("Please, enter numbers: ")  # ввод одной строкой, например "5 2 9"
+    nums = nums.split()  # делим строку по пробелам -> получаем список строк
 
+    numbers = []  # создаём пустой список, куда будем класть числа int
 
-# ============================================================
-# TASK: Очистка слов (strip + lower) и сортировка
-# ============================================================
+    for n in nums:  # перебираем каждый элемент списка nums (это строки)
+        numbers.append(int(n))  # переводим строку в int и добавляем в numbers
 
-words = ["  Banana", "apple  ", "  Cherry ", "apple"]
-
-clean_words = []                 # сюда складываем очищенные слова
-
-for w in words:                  # перебираем исходные строки
-    clean_words.append(w.strip().lower())
-    # strip() убирает пробелы по краям
-    # lower() делает все буквы маленькими
-
-clean_words.sort()               # сортируем по алфавиту
-print(clean_words)
+    sorted_nums = sorted(numbers)  # создаём новый отсортированный список (оригинал numbers не меняется)
+    print(sorted_nums)  # печатаем отсортированный список
 
 
 # ============================================================
-# TASK: Подсчёт, сколько раз встречается слово "apple"
+# ЗАДАЧА 8: Сортировка списка на месте (sort)
 # ============================================================
 
-words = ["Apple", "banana", "apple", "Cherry", "banana"]
-good_words = []
-
-for w in words:
-    good_words.append(w.strip().lower())  # очистили и привели к нижнему регистру
-
-good_words.sort()                         # отсортировали
-
-count_apple = good_words.count("apple")   # count считает, сколько раз "apple" в списке
-
-print(good_words)
-print(count_apple)
+nums = [5, 2, 9, 1, 3]  # создаём список чисел
+nums.sort()  # сортируем сам список nums “на месте”
+print(nums)  # печатаем список после сортировки
 
 
 # ============================================================
-# TASK: Удаление дублей через set (слова)
+# ЗАДАЧА 9: Копия списка + сортировка копии
 # ============================================================
 
-words = ["apple", "banana", "apple", "cherry", "banana"]
+nums = [5, 2, 9, 1, 3]  # исходный список
+nums_copy = nums.copy()  # создаём отдельную копию списка
+nums_copy.sort()  # сортируем копию
 
-d_words = set(words)       # set убирает повторы (но порядок не гарантируется)
-words = list(d_words)      # возвращаем обратно в список
-
-print(words)               # порядок может быть не алфавитный
-
-
-# ============================================================
-# TASK: Подсчёт слов через словарь (dict)
-# ============================================================
-
-words = ["apple", "banana", "apple", "cherry", "banana", "apple"]
-result = {}  # словарь: слово -> сколько раз встретилось
-
-for w in words:
-    current = result.get(w, 0)   # get(w, 0): если ключа нет — вернёт 0
-    result[w] = current + 1      # увеличиваем счётчик на 1
-
-print(result)
+print(nums)  # печатаем оригинал (он не изменился)
+print(nums_copy)  # печатаем копию (она отсортирована)
 
 
 # ============================================================
-# TASK: Удаление дублей в числах и сортировка
+# ЗАДАЧА 10: Сортировка по длине слова (key=len)
 # ============================================================
 
-nums = [3, 1, 4, 1, 5, 9, 2, 3]
-
-nums = list(set(nums))    # set убрал повторы -> list вернули в список
-nums.sort()               # сортируем по возрастанию
-
-print(nums)
+words = ["banana", "Apple", "cherry"]  # список строк
+words.sort(key=len)  # сортируем список по длине каждой строки (len)
+print(words)  # печатаем результат
 
 
 # ============================================================
-# TASK: Срез (reverse списка)
+# ЗАДАЧА 11: Очистка слов (strip + lower) и сортировка
 # ============================================================
 
-numbers = [1,2,3,4,5,6,7,8,9,10]
-reverse_numbers = numbers[::-1]   # срез с шагом -1 -> разворот
-print(reverse_numbers)
+words = ["  Banana", "apple  ", "  Cherry ", "apple"]  # список слов с пробелами/регистром
 
+clean_words = []  # пустой список под очищенные слова
 
-# ============================================================
-# TASK: Срез чётных чисел (по твоей логике берёшь индексы 1,3,5...)
-# ============================================================
+for w in words:  # перебираем каждое слово из исходного списка
+    clean_words.append(w.strip().lower())  # strip убирает пробелы по краям, lower -> нижний регистр
 
-numbers = [1,2,3,4,5,6,7,8,9,10]
-even_numbers = numbers[1:10:2]
-# 1:10:2 означает:
-# старт индекс 1 (это число 2)
-# до индекса 10 (не включая 10)
-# шаг 2 -> берём каждый второй элемент
-print(even_numbers)
+clean_words.sort()  # сортируем список clean_words по алфавиту
+print(clean_words)  # печатаем итог
 
 
 # ============================================================
-# TASK: Копия через срез + сортировка по убыванию
+# ЗАДАЧА 12: Подсчёт, сколько раз встречается слово "apple" (count)
 # ============================================================
 
-nums = [3, 1, 4, 1, 5, 9, 2]
-nums_copy = nums[:]              # копия списка через срез
-nums_copy.sort(reverse=True)     # reverse=True -> сортировка по убыванию
+words = ["Apple", "banana", "apple", "Cherry", "banana"]  # исходный список слов
+good_words = []  # сюда положим очищенные и приведённые к lower слова
 
-print(nums)
-print(nums_copy)
+for w in words:  # перебираем исходные слова
+    good_words.append(w.strip().lower())  # приводим к нормальному виду и добавляем
 
+good_words.sort()  # сортируем список
+count_apple = good_words.count("apple")  # считаем количество вхождений строки "apple" в списке
 
-# ============================================================
-# TASK: Берём элементы с чётными индексами и сортируем по убыванию
-# ============================================================
-
-numbers = [5, 12, 7, 3, 9, 2, 10, 6]
-
-numbers_copy = numbers[0:10:2]   # берём 0,2,4,6... (чётные индексы)
-numbers_copy.sort(reverse=True)  # сортировка по убыванию
-
-print(numbers)                   # оригинал
-print(numbers_copy)              # обработанный
+print(good_words)  # печатаем очищенный список
+print(count_apple)  # печатаем число повторов
 
 
 # ============================================================
-# TASK: Таймер событий (исправлять не буду, просто комментирую, тут логика сломана)
+# ЗАДАЧА 13: Удаление дублей через set (слова)
 # ============================================================
 
-if RUN_INPUT:
-    allowed_events = ["deploy", "build", "test", "backup"]
-    event_type = input("Text please type of event: ")
-    event_time = int(input("Text please duration time: "))
+words = ["apple", "banana", "apple", "cherry", "banana"]  # список с повторами
 
-    # ВНИМАНИЕ: эта строка неправильная:
-    # if event_type: allowed_events
-    # Она ничего не проверяет. Ты хотел: if event_type in allowed_events:
-    if event_type:
-        allowed_events  # это просто выражение, оно ничего не делает
+d_words = set(words)  # превращаем список в set: повторы исчезают
+words = list(d_words)  # превращаем set обратно в list
+
+print(words)  # печатаем список без дублей (порядок может быть случайным)
+
+
+# ============================================================
+# ЗАДАЧА 14: Подсчёт слов через словарь (dict + get)
+# ============================================================
+
+words = ["apple", "banana", "apple", "cherry", "banana", "apple"]  # список слов
+result = {}  # создаём пустой словарь: ключ=слово, значение=сколько раз встречалось
+
+for w in words:  # перебираем каждое слово
+    current = result.get(w, 0)  # берём текущее значение по ключу w; если ключа нет -> 0
+    result[w] = current + 1  # записываем обратно увеличенный счётчик
+
+print(result)  # печатаем словарь (слово -> количество)
+
+
+# ============================================================
+# ЗАДАЧА 15: Удаление дублей в числах и сортировка
+# ============================================================
+
+nums = [3, 1, 4, 1, 5, 9, 2, 3]  # список с повторами
+
+nums = list(set(nums))  # убираем повторы через set и возвращаем обратно в list
+nums.sort()  # сортируем список по возрастанию
+print(nums)  # печать результата
+
+
+# ============================================================
+# ЗАДАЧА 16: Разворот списка через срез [::-1]
+# ============================================================
+
+numbers = [1,2,3,4,5,6,7,8,9,10]  # исходный список
+reverse_numbers = numbers[::-1]  # создаём новый список в обратном порядке
+print(reverse_numbers)  # печатаем перевёрнутый список
+
+
+# ============================================================
+# ЗАДАЧА 17: Срез "чётных" чисел по твоей логике (индексы 1,3,5...)
+# ============================================================
+
+numbers = [1,2,3,4,5,6,7,8,9,10]  # исходный список
+even_numbers = numbers[1:10:2]  # берём элементы начиная с индекса 1, до 10, шаг 2
+print(even_numbers)  # печать результата
+
+
+# ============================================================
+# ЗАДАЧА 18: Копия через срез + сортировка по убыванию
+# ============================================================
+
+nums = [3, 1, 4, 1, 5, 9, 2]  # исходный список
+nums_copy = nums[:]  # делаем копию списка через срез
+nums_copy.sort(reverse=True)  # сортируем копию по убыванию (reverse=True)
+
+print(nums)  # печатаем исходный
+print(nums_copy)  # печатаем обработанный
+
+
+# ============================================================
+# ЗАДАЧА 19: Берём элементы с чётными индексами и сортируем по убыванию
+# ============================================================
+
+numbers = [5, 12, 7, 3, 9, 2, 10, 6]  # исходный список
+
+numbers_copy = numbers[0:10:2]  # берём элементы по индексам 0,2,4,6...
+numbers_copy.sort(reverse=True)  # сортируем этот новый список по убыванию
+
+print(numbers)  # печать оригинала
+print(numbers_copy)  # печать результата
+
+
+# ============================================================
+# ЗАДАЧА 20: Таймер событий (вариант с логической ошибкой)
+# ============================================================
+
+if RUN_INPUT:  # блок выполняется только при RUN_INPUT == True
+    allowed_events = ["deploy", "build", "test", "backup"]  # список разрешённых событий
+    event_type = input("Text please type of event: ")  # ввод типа события
+    event_time = int(input("Text please duration time: "))  # ввод времени, перевод в int
+
+    if event_type:  # проверка “не пустая ли строка” (НЕ проверяет allowed_events)
+        allowed_events  # просто выражение, ничего не делает
     else:
-        print("Unknown event")
+        print("Unknown event")  # если строка пустая — печать “Unknown event”
 
-    if event_time < 0:
-        print("Invalid duration")
+    if event_time < 0:  # проверка, что время не отрицательное
+        print("Invalid duration")  # сообщение об ошибке
 
-    h = event_time // 3600
-    m = (event_time % 3600) // 60
-    s = event_time % 60
+    h = event_time // 3600  # целые часы (деление без остатка)
+    m = (event_time % 3600) // 60  # минуты: остаток после часов делим на 60
+    s = event_time % 60  # секунды: остаток после деления на 60
 
-    print(f"Event {event_type}: {h}h {m}m {s}s")
+    print(f"Event {event_type}: {h}h {m}m {s}s")  # печать результата в формате
 
 
 # ============================================================
-# TASK: Таймер событий (правильнее сделано)
+# ЗАДАЧА 21: Таймер событий (вариант с проверками not in / elif)
 # ============================================================
 
-if RUN_INPUT:
-    events = ["start", "stop", "restart"]
-    event_type = input("Text here please type of event: ")
-    event_time1 = int(input("Text please duration time: "))
+if RUN_INPUT:  # выполняем блок только при RUN_INPUT == True
+    events = ["start", "stop", "restart"]  # список разрешённых типов
+    event_type = input("Text here please type of event: ")  # ввод типа
+    event_time1 = int(input("Text please duration time: "))  # ввод длительности, int
 
-    if event_type not in events:      # проверяем, что тип события разрешён
-        print("Invalid type")
-    elif event_time1 < 0:             # проверяем, что время не отрицательное
-        print("Invalid duration")
+    if event_type not in events:  # проверяем, что введённый тип есть в списке events
+        print("Invalid type")  # если нет — печать ошибки
+    elif event_time1 < 0:  # иначе проверяем, что время не отрицательное
+        print("Invalid duration")  # если отрицательное — печать ошибки
     else:
-        # если всё валидно — считаем часы, минуты, секунды
-        h = event_time1 // 3600
-        m = (event_time1 % 3600) // 60
-        s = event_time1 % 60
+        h = event_time1 // 3600  # считаем часы
+        m = (event_time1 % 3600) // 60  # считаем минуты
+        s = event_time1 % 60  # считаем секунды
 
-        print(f"Event {event_type}: {h}h {m}m {s}s")
-
-
-# ============================================================
-# TASK: Очистка пользователей + удаление дублей + сортировка
-# ============================================================
-
-raw_users = ["  Andrii ", "", "BORIS", "anna", "  ", "Boris", "ANNA"]
-
-clean_users = []
-
-for r in raw_users:
-    name = r.strip().lower()     # чистим пробелы и приводим к нижнему регистру
-    if name:                     # если не пустая строка
-        clean_users.append(name) # добавляем в список
-
-clean_users = list(set(clean_users))  # убираем повторы
-clean_users.sort()                    # сортируем
-print(clean_users)
+        print(f"Event {event_type}: {h}h {m}m {s}s")  # печать “тип + время”
 
 
 # ============================================================
-# TASK: Очистка действий + удаление дублей + сортировка + печать
+# ЗАДАЧА 22: Очистка пользователей + удаление дублей + сортировка
 # ============================================================
 
-raw_actions = ["  Login", "logout ", "LOGIN", "", "  ", "Logout", "login", "Delete"]
+raw_users = ["  Andrii ", "", "BORIS", "anna", "  ", "Boris", "ANNA"]  # “грязный” список пользователей
+clean_users = []  # список для чистых имён
 
-clean_actions = []
+for r in raw_users:  # перебираем каждый элемент
+    name = r.strip().lower()  # убираем пробелы по краям и приводим к нижнему регистру
+    if name:  # если строка не пустая (не "")
+        clean_users.append(name)  # добавляем её в clean_users
 
-for r in raw_actions:
-    action = r.strip().lower()
-    if action:
-        clean_actions.append(action)
-
-clean_actions = list(set(clean_actions))  # удалили дубли
-clean_actions.sort()                      # сортировка
-
-for action in clean_actions:
-    print(action)
+clean_users = list(set(clean_users))  # убираем дубли через set и возвращаем обратно в list
+clean_users.sort()  # сортируем по алфавиту
+print(clean_users)  # печатаем список
 
 
 # ============================================================
-# TASK: Счётчик действий (dict)
+# ЗАДАЧА 23: Очистка действий + удаление дублей + сортировка + печать
 # ============================================================
 
-actions = [" Login", "logout ", "LOGIN", "update", "Logout", "", "login"]
+raw_actions = ["  Login", "logout ", "LOGIN", "", "  ", "Logout", "login", "Delete"]  # “грязные” действия
+clean_actions = []  # список для чистых действий
 
-clean_actions = []
-result = {}
+for r in raw_actions:  # перебираем каждое действие
+    action = r.strip().lower()  # strip убирает пробелы, lower -> нижний регистр
+    if action:  # если действие не пустое
+        clean_actions.append(action)  # добавляем в clean_actions
 
-for action in actions:
-    action = action.strip().lower()
-    if action:
-        clean_actions.append(action)
+clean_actions = list(set(clean_actions))  # убираем повторяющиеся действия
+clean_actions.sort()  # сортируем список
 
-for action in clean_actions:
-    if action in result:
-        result[action] += 1
+for action in clean_actions:  # перебираем уже чистые действия
+    print(action)  # печатаем каждое действие отдельной строкой
+
+
+# ============================================================
+# ЗАДАЧА 24: Счётчик действий (dict)
+# ============================================================
+
+actions = [" Login", "logout ", "LOGIN", "update", "Logout", "", "login"]  # исходные действия
+clean_actions = []  # список под чистые действия
+result = {}  # словарь: действие -> сколько раз встречалось
+
+for action in actions:  # перебираем исходные элементы
+    action = action.strip().lower()  # очищаем и приводим к lower
+    if action:  # если не пусто
+        clean_actions.append(action)  # добавляем в список чистых
+
+for action in clean_actions:  # перебираем чистые действия
+    if action in result:  # если ключ уже есть в словаре
+        result[action] += 1  # увеличиваем счётчик на 1
     else:
-        result[action] = 1
+        result[action] = 1  # если ключа не было — создаём с значением 1
 
-print(result)
+print(result)  # печатаем словарь подсчёта
 
 
 # ============================================================
-# TASK: FizzBuzz от 1 до N (N вводится, проверка через try/except)
+# ЗАДАЧА 25: FizzBuzz от 1 до N (проверка через try/except)
 # ============================================================
 
-while True:
-    text = input("Введите число: ")
+while True:  # бесконечный цикл, пока не сделаем break
+    text = input("Введите число: ")  # вводим строку
 
     try:
-        text = int(text)                 # пытаемся перевести ввод в int
-        if text <= 0:
-            print("Нужно число больше 0")
-            continue                     # просим ввод снова
+        text = int(text)  # пытаемся превратить строку в int
+        if text <= 0:  # проверяем, что число > 0
+            print("Нужно число больше 0")  # сообщение об ошибке
+            continue  # просим ввод снова (переход к новой итерации)
 
-        # если число > 0 — печатаем FizzBuzz
-        for t in range(1, text + 1):
-            if t % 3 == 0 and t % 5 == 0:
-                print("FizzBuzz")
-            elif t % 3 == 0:
-                print("Fizz")
-            elif t % 5 == 0:
-                print("Buzz")
+        for t in range(1, text + 1):  # цикл от 1 до N включительно
+            if t % 3 == 0 and t % 5 == 0:  # кратно и 3, и 5
+                print("FizzBuzz")  # печать FizzBuzz
+            elif t % 3 == 0:  # кратно 3
+                print("Fizz")  # печать Fizz
+            elif t % 5 == 0:  # кратно 5
+                print("Buzz")  # печать Buzz
             else:
-                print(t)
+                print(t)  # иначе печатаем само число
 
-        break                             # выходим из while после успешного выполнения
+        break  # выходим из while после успешного выполнения
 
-    except ValueError:
-        print("Это не число")            # если int() не получилось
+    except ValueError:  # если int(text) не получилось
+        print("Это не число")  # печатаем сообщение и цикл продолжается
 
 
 # ============================================================
-# TASK: while + match (match стоит ПОСЛЕ цикла, работает только для последнего text)
+# ЗАДАЧА 26: while + match (match выполняется после цикла)
 # ============================================================
 
-while True:
-    text = input("Enter please: ")
+while True:  # цикл команд
+    text = input("Enter please: ")  # ввод строки
 
-    if not text:
-        print("Empty info")
-        continue
+    if not text:  # если строка пустая
+        print("Empty info")  # сообщение
+        continue  # просим ввод снова
 
-    if text == "exit":
-        print("Good luck next time")
-        break
+    if text == "exit":  # если команда exit
+        print("Good luck next time")  # прощание
+        break  # выходим из цикла
 
-# ВНИМАНИЕ: match тут выполнится 1 раз, после выхода из while
-match text:
+match text:  # match запускается ОДИН раз после выхода из while, для последнего text
     case "Yes":
-        print("Accepted")
+        print("Accepted")  # если text == "Yes"
     case "No":
-        print("Denied")
+        print("Denied")  # если text == "No"
     case _:
-        print("Undefined command")
+        print("Undefined command")  # иначе
 
 
 # ============================================================
-# TASK: Команды: exit / count (ввод числа c и печать 1..c)
+# ЗАДАЧА 27: Команды: exit / count (ввод числа c и печать 1..c)
 # ============================================================
 
-while True:
-    command = input("Enter command: ")
+while True:  # бесконечный цикл команд
+    command = input("Enter command: ")  # ввод команды
 
-    if not command:
-        print("Empty info")
-        continue
+    if not command:  # если пусто
+        print("Empty info")  # сообщение
+        continue  # запрос снова
 
-    if command == "exit":
-        print("Good luck next time")
-        break
+    if command == "exit":  # если exit
+        print("Good luck next time")  # прощание
+        break  # выходим
 
-    if command == "count":
+    if command == "count":  # если count
         try:
-            c = int(input("Enter please c: "))   # ввод числа
-            if c <= 0:
-                print("Need number > 0")
-                continue                         # если не подходит — просим команду снова
+            c = int(input("Enter please c: "))  # ввод числа, перевод в int
+            if c <= 0:  # проверка что > 0
+                print("Need number > 0")  # сообщение
+                continue  # возвращаемся к вводу команды
 
-            for i in range(1, c + 1):
+            for i in range(1, c + 1):  # печатаем 1..c
                 print(i)
 
-        except ValueError:
-            print("Это не число")
+        except ValueError:  # если int() не смог
+            print("Это не число")  # сообщение
 
 
-### TASK
-is_next = None
-num = int(input("Enter the number of points: "))
-if num >= 83:
-    is_next = True
-    print("Successful candidate")
+# ============================================================
+# ЗАДАЧА 28: Проверка баллов кандидата (True/False)
+# ============================================================
+
+is_next = None  # переменная-плейсхолдер, потом станет True или False
+num = int(input("Enter the number of points: "))  # ввод баллов -> int
+
+if num >= 83:  # если баллов 83 или больше
+    is_next = True  # кандидат проходит дальше
+    print("Successful candidate")  # сообщение
 else:
-    is_next = False
-    print("Candidate is not valid")
+    is_next = False  # кандидат не проходит
+    print("Candidate is not valid")  # сообщение
 
 
+# ============================================================
+# ЗАДАЧА 29: Уровень разработчика по стажу (Junior/Middle/Senior)
+# ============================================================
 
-### TASK
-work_experience = int(input("Enter your full work experience in years: "))
-developer_type = "Junior"
-if work_experience > 1 and work_experience < 6:
-    developer_type = "Middle"
-    print(developer_type)
-elif work_experience == 0 or work_experience == 1:
-    developer_type = "Junior"
-    print(developer_type)
-else:
-    developer_type = "Senior"
-    print(developer_type)
+work_experience = int(input("Enter your full work experience in years: "))  # ввод стажа
+developer_type = "Junior"  # значение по умолчанию
 
-
-### TASK
-num = int(input("Enter a number: "))
-
-if num > 0:
-    if num % 2 == 1:
-        result = "Positive odd number"
-    if num % 2 == 0:
-        result = "Positive even number"
-elif num < 0:
-    result = "Negative number"
-else:
-    result = "It is zero"
-
-### TASK
-num = int(input("Enter the integer (0 to 100): "))
-sum = 0
-b = 0
-while b < num:
-    if num  <= 100:
-        b = b + 1
-        sum = sum + b
-        print(sum)
-
-    if num > 100:
-        print("Incorrect number")
-        break
+if work_experience > 1 and work_experience < 6:  # стаж от 2 до 5
+    developer_type = "Middle"  # присваиваем Middle
+    print(developer_type)  # печатаем результат
+elif work_experience == 0 or work_experience == 1:  # стаж 0 или 1
+    developer_type = "Junior"  # присваиваем Junior
+    print(developer_type)  # печатаем
+else:  # иначе (6+)
+    developer_type = "Senior"  # присваиваем Senior
+    print(developer_type)  # печатаем
 
 
-### TASK
+# ============================================================
+# ЗАДАЧА 30: Определить тип числа (positive odd/even, negative, zero)
+# ============================================================
+
+num = int(input("Enter a number: "))  # ввод числа -> int
+
+if num > 0:  # если положительное
+    if num % 2 == 1:  # если остаток 1 -> нечётное
+        result = "Positive odd number"  # строка-результат
+    if num % 2 == 0:  # если остаток 0 -> чётное
+        result = "Positive even number"  # строка-результат
+elif num < 0:  # если отрицательное
+    result = "Negative number"  # строка-результат
+else:  # иначе (0)
+    result = "It is zero"  # строка-результат
+
+
+# ============================================================
+# ЗАДАЧА 31: Сумма чисел от 1 до num (пока num <= 100)
+# ============================================================
+
+num = int(input("Enter the integer (0 to 100): "))  # ввод числа
+sum = 0  # переменная для накопления суммы
+b = 0  # счётчик
+
+while b < num:  # цикл пока b меньше num
+    if num <= 100:  # проверка, что num в пределах
+        b = b + 1  # увеличиваем b на 1
+        sum = sum + b  # добавляем b к сумме
+        print(sum)  # печатаем текущую сумму на каждом шаге
+
+    if num > 100:  # если num больше 100
+        print("Incorrect number")  # ошибка
+        break  # выходим из цикла
+
+
+# ============================================================
+# ЗАДАЧА 32: Подсчёт символа "r" в строке
+# ============================================================
+
 message = "Never argue with stupid people, they will drag you down to their level and then beat you with experience."
-search = "r"
-result = 0
-symbol_r = search
-for symbol_r in message:
-    if symbol_r == search:
-        result = result + 1 
-print(result)
+search = "r"  # какой символ ищем
+result = 0  # счётчик найденных символов
+symbol_r = search  # лишняя переменная (но ты её создал)
+
+for symbol_r in message:  # перебираем каждый символ строки message
+    if symbol_r == search:  # если текущий символ равен "r"
+        result = result + 1  # увеличиваем счётчик
+print(result)  # печатаем сколько раз встретился "r"
 
 
-### TASK
-pool = 1000
+# ============================================================
+# ЗАДАЧА 33: Деление 1000 писем на количество рассылок (ловим деление на ноль)
+# ============================================================
+
+pool = 1000  # общий пул
 try:
-    quantity = int(input("Enter the number of mailings: "))
-    chunk = pool // quantity
-    print(chunk)
-except ZeroDivisionError:
-    print('Divide by zero completed!')
+    quantity = int(input("Enter the number of mailings: "))  # ввод количества рассылок
+    chunk = pool // quantity  # целочисленное деление: сколько в каждой рассылке
+    print(chunk)  # печать результата
+except ZeroDivisionError:  # если quantity == 0
+    print('Divide by zero completed!')  # сообщение
 
 
-### TASK
-### for test
-def greeting():
-    print("Hello world!")
+# ============================================================
+# ЗАДАЧА 34: Функция greeting() без параметров
+# ============================================================
 
-greeting()
+def greeting():  # объявляем функцию без аргументов
+    print("Hello world!")  # функция печатает строку
 
-
-### normal way
-def greet(name: str) -> str: 
-    return f"Hello {name}!" 
-greeting = () 
-greeting = greet("world") 
-print(greeting)
+greeting()  # вызываем функцию
 
 
-### TASK 
+# ============================================================
+# ЗАДАЧА 35: Функция greet(name) -> строка "Hello name!"
+# ============================================================
 
-def invite_to_event(username: str) -> str: 
-    return f"Dear {username}, we have the honour to invite you to our event" 
-invite = () 
-invite = invite_to_event("Vasya") 
-print(invite)
+def greet(name: str) -> str:  # функция принимает name (строка) и возвращает строку
+    return f"Hello {name}!"  # возвращаем f-string
+
+greeting = ()  # создаёшь переменную greeting и кладёшь туда пустой tuple ()
+greeting = greet("world")  # перезаписываешь greeting строкой, которую вернул greet()
+print(greeting)  # печатаешь строку
 
 
-### TASK
-def discount_price(price: float, discount: float) -> float:
-    def apply_discount():
-        nonlocal price
-        price = price * (1 - discount)
+# ============================================================
+# ЗАДАЧА 36: Приглашение на событие (invite_to_event)
+# ============================================================
 
-    apply_discount()
-    return price
+def invite_to_event(username: str) -> str:  # функция принимает имя пользователя
+    return f"Dear {username}, we have the honour to invite you to our event"  # возвращает строку
 
-### TASK
-def get_fullname(first_name, last_name, middle_name =""):
-    if middle_name:
-       return(f"{first_name} {middle_name} {last_name}")
+invite = ()  # создаёшь переменную invite как пустой tuple ()
+invite = invite_to_event("Vasya")  # перезаписываешь invite строкой
+print(invite)  # печатаешь приглашение
+
+
+# ============================================================
+# ЗАДАЧА 37: Скидка (внутренняя функция + nonlocal)
+# ============================================================
+
+def discount_price(price: float, discount: float) -> float:  # функция получает цену и скидку
+    def apply_discount():  # внутренняя функция
+        nonlocal price  # говорим: будем менять переменную price из внешней функции
+        price = price * (1 - discount)  # изменяем price с учётом скидки
+
+    apply_discount()  # вызываем внутреннюю функцию (она меняет price)
+    return price  # возвращаем финальную цену
+
+
+# ============================================================
+# ЗАДАЧА 38: ФИО с опциональным middle_name
+# ============================================================
+
+def get_fullname(first_name, last_name, middle_name =""):  # middle_name по умолчанию пустая строка
+    if middle_name:  # если middle_name НЕ пустой
+       return(f"{first_name} {middle_name} {last_name}")  # возвращаем 3 части
     else:
-       return(f"{first_name} {last_name}")   
-    
-### TASK
-def format_string(string, length):
-    spaces = (length - len(string)) // 2
-    another_string = " " * spaces
-    if len(string) >= length:
-        return string
-    if len(string) < length:
-        return another_string + string     
+       return(f"{first_name} {last_name}")  # возвращаем только имя+фамилия
 
 
-### TASK
-def first(size, *args):
-    n = len(args)
-    result = size + n
-    return result
-print(first(5, "first", "second", "third"))
-print(first(1, "Alex", "Boris")) 
+# ============================================================
+# ЗАДАЧА 39: Центровка строки пробелами до length
+# ============================================================
 
-def second(size, **kwargs):
-    n = len(kwargs)
-    result = size + n
-    return result
-print(second(3, comment_one="first", comment_two="second", comment_third="third"))
-print(second(10, comment_one="Alex", comment_two="Boris")) 
+def format_string(string, length):  # функция принимает строку и желаемую длину
+    spaces = (length - len(string)) // 2  # сколько пробелов добавить слева (половина разницы)
+    another_string = " " * spaces  # создаём строку из пробелов нужной длины
+    if len(string) >= length:  # если строка уже длинная
+        return string  # возвращаем как есть
+    if len(string) < length:  # если строка короче
+        return another_string + string  # возвращаем строку с пробелами слева
 
-### TASK
-n = 50
-k = 7
-def factorial(n):
-    if n < 2:
+
+# ============================================================
+# ЗАДАЧА 40: *args и **kwargs (считаем количество аргументов)
+# ============================================================
+
+def first(size, *args):  # size — обычный аргумент, args — всё остальное в виде tuple
+    n = len(args)  # считаем, сколько элементов в args
+    result = size + n  # складываем size и количество args
+    return result  # возвращаем результат
+
+print(first(5, "first", "second", "third"))  # вызываем first с 3 доп. аргументами
+print(first(1, "Alex", "Boris"))  # вызываем first с 2 доп. аргументами
+
+
+def second(size, **kwargs):  # kwargs — все именованные аргументы в виде dict
+    n = len(kwargs)  # считаем, сколько ключей в kwargs
+    result = size + n  # складываем size и количество kwargs
+    return result  # возвращаем результат
+
+print(second(3, comment_one="first", comment_two="second", comment_third="third"))  # 3 kwargs
+print(second(10, comment_one="Alex", comment_two="Boris"))  # 2 kwargs
+
+
+# ============================================================
+# ЗАДАЧА 41: Факториал + число сочетаний (комбинаторика)
+# ============================================================
+
+n = 50  # число n (как пример)
+k = 7  # число k (как пример)
+
+def factorial(n):  # функция факториала
+    if n < 2:  # база рекурсии: 0! и 1! = 1
         return 1
     else:
-        return n * factorial(n - 1)
+        return n * factorial(n - 1)  # рекурсивный шаг: n! = n * (n-1)!
 
 
-def number_of_groups(n, k):
-    if k > n:
+def number_of_groups(n, k):  # считаем C(n, k)
+    if k > n:  # если k больше n — комбинаций нет
         return 0
-    if k < 0:
+    if k < 0:  # отрицательное k — некорректно
         return 0
-    if n < 0:   
-        return 0 
-    n_minus_k  = n - k 
-    a = factorial(n)
-    b = factorial(n_minus_k)
-    c = factorial(k)
-    result = a // (b * c)       
-    return result 
+    if n < 0:  # отрицательное n — некорректно
+        return 0
+
+    n_minus_k  = n - k  # считаем n-k
+    a = factorial(n)  # a = n!
+    b = factorial(n_minus_k)  # b = (n-k)!
+    c = factorial(k)  # c = k!
+    result = a // (b * c)  # C(n,k) = n! / ((n-k)! * k!) (целочисленно)
+    return result  # возвращаем результат
+
+
+# ============================================================
+# ЗАДАЧА 42: Учёт покупок (ввод: name price quantity)
+# словарь: name -> quantity
+# total_sum: общая сумма денег по всем введённым строкам
+# ============================================================
+
+my_dict = {}  # создаём пустой словарь для хранения количества по товарам
+total_sum = 0  # создаём переменную для накопления общей суммы денег
+
+while True:  # бесконечный цикл ввода строк
+    line = input("Please, enter information: ").strip()  # ввод строки + убираем пробелы по краям
+
+    if line == "help":  # если команда help
+        print("Please, enter first info as the name of product, second info as the float number and third number as the int number")
+        continue  # возвращаемся в начало цикла (просим ввод снова)
+
+    elif line == "done":  # если команда done
+        break  # выходим из цикла
+
+    parts = line.split()  # делим строку по пробелам -> список частей
+
+    if len(parts) != 3:  # если частей не ровно 3
+        print("Invalid value")  # сообщение об ошибке формата
+        continue  # просим ввод снова
+
+    name = parts[0]  # берём имя товара (строка)
+
+    try:
+        price = float(parts[1])  # пытаемся перевести цену в float
+    except ValueError:
+        print("Invalid Format")  # если не получилось — значит не число
+        continue  # просим ввод снова
+
+    if price <= 0:  # если цена ноль или отрицательная
+        continue  # пропускаем эту строку и просим ввод снова
+
+    try:
+        quantity = int(parts[2])  # пытаемся перевести количество в int
+    except ValueError:
+        print("Invalid Format")  # если не получилось — значит не число
+        continue  # просим ввод снова
+
+    if quantity <= 0:  # если количество ноль или отрицательное
+        continue  # пропускаем эту строку
+
+    if name in my_dict:  # если такой товар уже есть в словаре
+        my_dict[name] = my_dict[name] + quantity  # увеличиваем количество в словаре
+    else:
+        my_dict[name] = quantity  # если товара не было — создаём запись
+
+    string_price = price * quantity  # считаем стоимость этой строки (цена * количество)
+    total_sum = string_price + total_sum  # добавляем стоимость строки к общей сумме
+
+    result = len(my_dict)  # считаем количество уникальных товаров (ключей) в словаре
+
+    print(total_sum)  # печатаем текущую общую сумму
+    print(result)  # печатаем количество уникальных товаров

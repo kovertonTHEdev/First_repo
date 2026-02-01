@@ -2,41 +2,37 @@
 # 1. Greeting (Вітання)
 # ================================
 
-RUN_INPUT = False
+RUN_INPUT = False  # Перемикач: якщо False — блоки з input() не виконуються, якщо True — виконуються
 
-print("Hello World!")
-print("Hello Git")
+print("Hello World!")  # Виводимо рядок у консоль
+print("Hello Git")     # Виводимо ще один рядок у консоль
 
 
 # ================================
 # 2. Name check (Перевірка імені)
 # ================================
 
-if RUN_INPUT:
-    # Берём имя, убираем пробелы по краям
-    name = input("Enter your name: ").strip()
-    banned_names = ["володимир", "путін", "росія", "росіянин", "тварина"]
+if RUN_INPUT:  # Умова: цей блок виконається тільки якщо RUN_INPUT == True
+    name = input("Enter your name: ").strip()  # input() зчитує текст (str), strip() прибирає пробіли по краях
+    banned_names = ["володимир", "путін", "росія", "росіянин", "тварина"]  # Список (list) заборонених імен
 
-    # Приводим к нижнему регистру и проверяем, есть ли имя в списке запрещённых
-    if name.lower() in banned_names:
-        print("Good evening, we are from Ukraine")
-    else:
-        print(f"Hello, {name}!")
+    if name.lower() in banned_names:  # lower() робить нижній регістр; in перевіряє, чи є елемент у списку
+        print("Good evening, we are from Ukraine")  # Вивід повідомлення, якщо ім'я заборонене
+    else:  # Інакше (якщо ім'я не в списку)
+        print(f"Hello, {name}!")  # f-рядок: підставляє значення змінної name в текст
 
 
 # ================================
 # 3. Age check (Перевірка віку)
 # ================================
 
-if RUN_INPUT:
-    # Считываем возраст как число
-    age = int(input("\nHow old are you? "))
+if RUN_INPUT:  # Блок працює тільки якщо RUN_INPUT == True
+    age = int(input("\nHow old are you? "))  # input() повертає str; int(...) перетворює у ціле число
 
-    # Проверяем возраст по условию
-    if age < 18:
-        print("Access denied")
-    else:
-        print("Access granted")
+    if age < 18:  # Перевіряємо умову: якщо вік менший за 18
+        print("Access denied")  # Якщо менше 18 — доступ заборонено
+    else:  # В іншому випадку (18 і більше)
+        print("Access granted")  # Доступ дозволено
 
 
 # ================================
@@ -44,12 +40,10 @@ if RUN_INPUT:
 # (Обчислення периметра квадрата)
 # ================================
 
-if RUN_INPUT:
-    # Считываем сторону квадрата
-    side = float(input("\nEnter side length: "))
-    # Считаем периметр (4 * сторона)
-    perimeter = 4 * side
-    print(f"Perimeter of the square is {perimeter}")
+if RUN_INPUT:  # Виконується тільки при RUN_INPUT == True
+    side = float(input("\nEnter side length: "))  # float(...) перетворює введення у число з дробом
+    perimeter = 4 * side  # Математика: периметр квадрата = 4 * сторона
+    print(f"Perimeter of the square is {perimeter}")  # Виводимо результат через f-рядок
 
 
 # ================================
@@ -58,28 +52,24 @@ if RUN_INPUT:
 # ================================
 
 if RUN_INPUT:
-    # Цены за 1 единицу товара
-    price_per_croissant = 1.04
-    price_per_glass = 0.34
-    price_per_coffee_pack = 4.42
+    price_per_croissant = 1.04  # Ціна за 1 круасан (float)
+    price_per_glass = 0.34      # Ціна за 1 склянку (float)
+    price_per_coffee_pack = 4.42  # Ціна за 1 упаковку кави (float)
 
-    # Количество товаров
-    num_croissants = int(input("\nEnter quantity of croissants: "))
-    num_glasses = int(input("Enter quantity of drinking glasses: "))
-    num_coffee_packs = int(input("Enter quantity of coffee packs: "))
+    num_croissants = int(input("\nEnter quantity of croissants: "))  # Кількість круасанів (int)
+    num_glasses = int(input("Enter quantity of drinking glasses: "))  # Кількість склянок (int)
+    num_coffee_packs = int(input("Enter quantity of coffee packs: "))  # Кількість упаковок кави (int)
 
-    # Общая стоимость
-    total_cost = (
-        num_croissants * price_per_croissant +
-        num_glasses * price_per_glass +
-        num_coffee_packs * price_per_coffee_pack
+    total_cost = (  # Загальна вартість (float); дужки дають писати вираз у кілька рядків
+        num_croissants * price_per_croissant +  # Множимо кількість на ціну
+        num_glasses * price_per_glass +         # Множимо кількість на ціну
+        num_coffee_packs * price_per_coffee_pack  # Множимо кількість на ціну
     )
 
-    # Выделяем доллары и центы из общей суммы
-    total_dollars = int(total_cost)
-    total_cents = int(total_cost * 100) % 100
+    total_dollars = int(total_cost)  # Беремо цілу частину (долари) від загальної суми
+    total_cents = int(total_cost * 100) % 100  # Переводимо в "центи", беремо останні 2 цифри через %
 
-    print(f"Total price: {total_dollars} dollars and {total_cents} cents")
+    print(f"Total price: {total_dollars} dollars and {total_cents} cents")  # Виводимо суму
 
 
 # ================================
@@ -87,24 +77,23 @@ if RUN_INPUT:
 # (Робота зі списком)
 # ================================
 
-my_list = [1, 2, 3, 4, 2, 2, 5, 2]
-count_2 = my_list.count(2)  # Считаем, сколько раз число 2 встречается в списке
-print(count_2)  # Виведе 4, оскільки число 2 зустрічається 4 рази
+my_list = [1, 2, 3, 4, 2, 2, 5, 2]  # Створюємо список (list) з числами
+count_2 = my_list.count(2)  # Метод count(x) рахує, скільки разів x зустрічається у списку
+print(count_2)  # Виводимо кількість двійок (очікувано 4)
 
+my_list = [1, 2, 3, 4, 5]  # Новий список
+print(len(my_list))  # len(...) повертає довжину списку (кількість елементів)
 
-my_list = [1, 2, 3, 4, 5]
-print(len(my_list))  # Длина списка
+nums = [3, 1, 4, 1, 5, 9, 2]  # Список для сортування
+nums.sort()  # sort() сортує список "на місці" (змінює сам список)
+print(nums)  # Виводимо відсортований список
 
-nums = [3, 1, 4, 1, 5, 9, 2]
-nums.sort()          # Сортировка списка по возрастанию (меняет сам список)
-print(nums)  # [1, 1, 2, 3, 4, 5, 9]
+nums.sort(reverse=True)  # reverse=True сортує за спаданням
+print(nums)  # Виводимо список після сортування за спаданням
 
-nums.sort(reverse=True)  # Сортировка по убыванию (меняет сам список)
-print(nums)  # [9, 5, 4, 3, 2, 1, 1]
-
-words = ["banana", "apple", "cherry"]
-words.sort(key=len)  # Сортировка по длине слова
-print(words)  # ['apple', 'banana', 'cherry']
+words = ["banana", "apple", "cherry"]  # Список рядків
+words.sort(key=len)  # key=len означає: сортувати за довжиною кожного слова
+print(words)  # Виводимо відсортований список слів
 
 
 # ================================
@@ -112,16 +101,16 @@ print(words)  # ['apple', 'banana', 'cherry']
 # (Сортування без зміни оригіналу)
 # ================================
 
-nums = [3, 1, 4, 1, 5, 9, 2]
-sorted_nums = sorted(nums)  # sorted() возвращает новый список, не меняя оригинал
-print(sorted_nums)  # [1, 1, 2, 3, 4, 5, 9]
+nums = [3, 1, 4, 1, 5, 9, 2]  # Оригінальний список
+sorted_nums = sorted(nums)  # sorted(...) повертає новий відсортований список, НЕ змінює nums
+print(sorted_nums)  # Виводимо новий список
 
-sorted_nums_desc = sorted(nums, reverse=True)
-print(sorted_nums_desc)  # [9, 5, 4, 3, 2, 1, 1]
+sorted_nums_desc = sorted(nums, reverse=True)  # Сортування за спаданням у новий список
+print(sorted_nums_desc)  # Виводимо
 
-words = ["banana", "apple", "cherry"]
-sorted_words = sorted(words, key=len)
-print(sorted_words)  # ['apple', 'banana', 'cherry']
+words = ["banana", "apple", "cherry"]  # Список слів
+sorted_words = sorted(words, key=len)  # Новий список: сортування за довжиною слова
+print(sorted_words)  # Виводимо
 
 
 # ================================
@@ -129,18 +118,18 @@ print(sorted_words)  # ['apple', 'banana', 'cherry']
 # (Робота зі словником)
 # ================================
 
-my_dict = {"name": "Alice", "age": 25, "city": "New York"}
-print(my_dict["city"])  # Берём значение по ключу "city"
+my_dict = {"name": "Alice", "age": 25, "city": "New York"}  # Словник (dict): ключ -> значення
+print(my_dict["city"])  # Доступ до значення за ключем "city" (якщо ключа нема — буде помилка KeyError)
 
-my_dict["age"] = 26                    # Меняем значение по ключу
-my_dict["email"] = "alice@example.com" # Добавляем новую пару ключ-значение
-print(my_dict)
+my_dict["age"] = 26  # Заміна значення за існуючим ключем "age"
+my_dict["email"] = "alice@example.com"  # Додавання нового ключа і значення
+print(my_dict)  # Вивід словника
 
-del my_dict["age"]  # Удаляем пару по ключу
-print(my_dict)
+del my_dict["age"]  # del видаляє пару ключ-значення за ключем "age"
+print(my_dict)  # Вивід після видалення
 
-print("name" in my_dict)  # Проверяем наличие ключа
-print("age" in my_dict)
+print("name" in my_dict)  # in для словника перевіряє наявність КЛЮЧА
+print("age" in my_dict)   # Перевіряємо, чи є ключ "age"
 
 
 # ================================
@@ -148,17 +137,17 @@ print("age" in my_dict)
 # (Основи множин)
 # ================================
 
-numbers = {1, 2, 3}
-numbers.add(4)       # Добавляем элемент в множество
-print(numbers)  # {1, 2, 3, 4}
+numbers = {1, 2, 3}  # Множина (set): зберігає тільки унікальні елементи (без дублікатів)
+numbers.add(4)  # add(...) додає елемент у множину
+print(numbers)  # Виводимо множину (порядок може бути різний)
 
-numbers = {1, 2, 3}
-numbers.remove(3)    # Удаляем элемент (ошибка, если элемента нет)
-print(numbers)  # {1, 2}
+numbers = {1, 2, 3}  # Нова множина
+numbers.remove(3)  # remove(...) видаляє елемент; якщо елемента немає — буде помилка
+print(numbers)  # Вивід
 
-numbers = {1, 2, 3}
-numbers.discard(2)   # Удаляем элемент (без ошибки, если элемента нет)
-print(numbers)  # {1, 3}
+numbers = {1, 2, 3}  # Нова множина
+numbers.discard(2)  # discard(...) видаляє елемент; якщо елемента немає — помилки не буде
+print(numbers)  # Вивід
 
 
 # ================================
@@ -166,82 +155,82 @@ print(numbers)  # {1, 3}
 # (Операції над множинами)
 # ================================
 
-a = {1, 2, 3}
-b = {3, 4, 5}
-print(a.intersection(b))  # Пересечение: общие элементы
-print(a & b)              # То же самое
+a = {1, 2, 3}  # Перша множина
+b = {3, 4, 5}  # Друга множина
+print(a.intersection(b))  # intersection(...) повертає перетин: спільні елементи
+print(a & b)  # Оператор & робить те саме: перетин
 
 a = {1, 2, 3}
 b = {3, 4, 5}
-print(a.difference(b))    # Разница: что есть в a, но нет в b
-print(a - b)              # То же самое
+print(a.difference(b))  # difference(...) повертає різницю: елементи, що є в a, але нема в b
+print(a - b)  # Оператор - робить те саме
 
 a = {1, 2, 3}
 b = {3, 4, 5}
-print(a.symmetric_difference(b))  # Симметричная разница: всё кроме общего
-print(a ^ b)                       # То же самое
+print(a.symmetric_difference(b))  # симетрична різниця: все, крім спільного
+print(a ^ b)  # Оператор ^ робить те саме
 
 a = {1, 2, 3}
 b = {3, 4, 5}
-print(a.union(b))  # Объединение: все элементы из обоих множеств
-print(a | b)       # То же самое
+print(a.union(b))  # union(...) об'єднання: всі елементи з a і b
+print(a | b)  # Оператор | робить те саме
 
-my_frozenset = frozenset([1, 2, 3, 4, 5])  # Неизменяемое множество
+my_frozenset = frozenset([1, 2, 3, 4, 5])  # frozenset — незмінювана множина (immutable)
 
-a = frozenset([1, 2, 3])
+a = frozenset([1, 2, 3])  # frozenset можна створювати як set, але змінювати не можна
 b = frozenset([3, 4, 5])
 
-union = a | b                 # Объединение frozenset
-intersection = a & b          # Пересечение frozenset
-difference = a - b            # Разница frozenset
-symmetric_difference = a ^ b  # Симметричная разница frozenset
+union = a | b  # Об'єднання для frozenset (працює як для set)
+intersection = a & b  # Перетин
+difference = a - b  # Різниця
+symmetric_difference = a ^ b  # Симетрична різниця
 
-print(union)
-print(intersection)
-print(difference)
-print(symmetric_difference)
+print(union)  # Вивід об'єднання
+print(intersection)  # Вивід перетину
+print(difference)  # Вивід різниці
+print(symmetric_difference)  # Вивід симетричної різниці
 
 
 # ================================
 # 11. String methods (Робота з рядками)
 # ================================
 
-s = "Hello world!"
-print(s[0])   # Первый символ
-print(s[-1])  # Последний символ
+s = "Hello world!"  # Рядок (str)
+print(s[0])  # Індекс 0 — перший символ рядка
+print(s[-1])  # Індекс -1 — останній символ
 
 s = "Hello"
-print(s.upper())  # Делает все буквы заглавными
+print(s.upper())  # upper() робить всі літери великими
 
 s = "Some Text"
-print(s.lower())  # Делает все буквы маленькими
+print(s.lower())  # lower() робить всі літери маленькими
 
 s = "Bill Jons"
-print(s.startswith("Bi"))  # Проверка: начинается ли строка с "Bi"
+print(s.startswith("Bi"))  # startswith(...) перевіряє, чи починається рядок з "Bi"
 
 s = "hello.jpg"
-print(s.endswith("jpg"))   # Проверка: заканчивается ли строка на "jpg"
+print(s.endswith("jpg"))  # endswith(...) перевіряє, чи закінчується рядок на "jpg"
 
-s = "hello world".capitalize()  # Делает первую букву заглавной
-print(s.capitalize())
+s = "hello world".capitalize()  # capitalize() робить першу букву великою, решту — малими
+print(s.capitalize())  # (увага: тут ти викликаєш capitalize() вдруге — буде той самий результат)
 
-s = "hello world".title()       # Делает заглавной первую букву каждого слова
-print(s.title())
+s = "hello world".title()  # title() робить першу букву кожного слова великою
+print(s.title())  # (увага: тут теж виклик вдруге — результат той самий)
 
 
 # ================================
 # 12. String formatting (Форматування рядків)
 # ================================
 
-name = "John"
-print("Hello, {}!".format(name))  # Подставляем значение в {}
+name = "John"  # Змінна-рядок
+print("Hello, {}!".format(name))  # format(...) підставляє значення у {}
 
 age = 25
-print("Hello, {}. You are {} years old.".format(name, age))  # Несколько подстановок
+print("Hello, {}. You are {} years old.".format(name, age))  # Кілька підстановок по порядку
 
-print("Hello, {name}. You are {age} years old.".format(name="Jane", age=30))  # Именованные
+print("Hello, {name}. You are {age} years old.".format(name="Jane", age=30))  # Іменовані параметри
 
-print("Hello, {1}. You are {0} years old.".format(age, name))  # По индексам
+print("Hello, {1}. You are {0} years old.".format(age, name))  # Підстановка за індексами
 
 
 # ================================
@@ -249,46 +238,46 @@ print("Hello, {1}. You are {0} years old.".format(age, name))  # По индек
 # ================================
 
 s = "Hello, World!"
-first_five = s[:5]  # Срез первых 5 символов
-print(first_five)
+first_five = s[:5]  # Зріз: від початку (0) до 5 НЕ включно
+print(first_five)  # Виводимо "Hello"
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-reverse_numbers = numbers[::-1]  # Разворот списка
-print(reverse_numbers)
+reverse_numbers = numbers[::-1]  # Зріз зі кроком -1: розвертає список
+print(reverse_numbers)  # Вивід перевернутого списку
 
 numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
-copy_numbers = numbers[:]  # Копия списка
-print(copy_numbers)
+copy_numbers = numbers[:]  # Зріз без меж: робить копію списку
+print(copy_numbers)  # Вивід копії
 
 
 # ================================
 # 14. Conditional statements, loops (Умовні оператори, цикли)
 # ================================
 
-num = 7
+num = 7  # Змінна з числом
 
-if num > 10:
-    print("num більше за 10")
+if num > 10:  # Перевірка умови
+    print("num більше за 10")  # Виконується, якщо умова True
 else:
-    print("num не більше за 10")
+    print("num не більше за 10")  # Виконується, якщо умова False
 
-money = 0
-if money:
+money = 0  # 0 у Python вважається False у булевому контексті
+if money:  # Якщо money "істинне" (не 0, не порожнє тощо)
     print(f"You have {money} on your bank account")
 else:
-    print("You have no money and no debts")
+    print("You have no money and no debts")  # Для 0 спрацює else
 
 
 # ================================
 # 15. Оператор is
 # ================================
 
-a = [1, 2, 3]
-b = a
-c = [1, 2, 3]
+a = [1, 2, 3]  # Створюємо список
+b = a  # b посилається на той самий об'єкт, що і a (це одне посилання)
+c = [1, 2, 3]  # Новий окремий список з таким самим вмістом
 
-print(a is b)  # True: это одна и та же ссылка на объект
-print(a is c)  # False: разные объекты, хотя содержимое одинаковое
+print(a is b)  # is перевіряє "це той самий об'єкт?" -> True
+print(a is c)  # Тут різні об'єкти -> False
 
 
 # ================================
@@ -299,11 +288,10 @@ name = "Taras"
 age = 17
 has_driver_licence = True
 
-# Проверяем сразу несколько условий через and
-if name and age >= 18 and has_driver_licence:
+if name and age >= 18 and has_driver_licence:  # and: всі умови мають бути True
     print(f"User {name} can rent a car")
 else:
-    print(f"User {name} can not rent a car")
+    print(f"User {name} can not rent a car")  # Тут age < 18, тому буде else
 
 
 # ================================
@@ -313,17 +301,16 @@ else:
 x = 8
 y = 5
 
-# Определяем четверть координатной плоскости
-if x >= 0:
-    if y >= 0:
-        print("Перша чверть")
+if x >= 0:  # Якщо x не від’ємний
+    if y >= 0:  # Якщо y теж не від’ємний
+        print("Перша чверть")  # x>=0, y>=0
     else:
-        print("Четверта чверть")
+        print("Четверта чверть")  # x>=0, y<0
 else:
     if y >= 0:
-        print("Друга чверть")
+        print("Друга чверть")  # x<0, y>=0
     else:
-        print("Третя чверть")
+        print("Третя чверть")  # x<0, y<0
 
 
 # ================================
@@ -332,28 +319,26 @@ else:
 
 fruit = "apple"
 
-# Сравниваем значение с шаблонами (case)
-match fruit:
+match fruit:  # match порівнює значення fruit з варіантами case
     case "apple":
         print("This is an apple.")
     case "banana":
         print("This is a banana.")
     case "orange":
         print("This is an orange.")
-    case _:
+    case _:  # _ означає "будь-що інше" (за замовчуванням)
         print("Unknown fruit.")
 
-point = (1, 0)
+point = (1, 0)  # Кортеж (tuple) з двох значень
 
-# Матчим кортеж (x, y) на разные варианты
-match point:
+match point:  # match може розпаковувати кортежі у шаблонах
     case (0, 0):
         print("Точка в центрі координат")
-    case (0, y):
+    case (0, y):  # y тут — змінна, яка отримає значення другого елемента
         print(f"Точка лежить на осі Y: y={y}")
-    case (x, 0):
+    case (x, 0):  # x тут — змінна, яка отримає значення першого елемента
         print(f"Точка лежить на осі X: x={x}")
-    case (x, y):
+    case (x, y):  # Загальний випадок: будь-які координати
         print(f"Точка має координати:  x={x}, y={y}")
     case _:
         print("Це не точка")
@@ -364,30 +349,30 @@ match point:
 # ================================
 
 fruit = "apple"
-for char in fruit:
-    print(char)  # Печатаем каждый символ строки
+for char in fruit:  # for перебирає кожен символ рядка по черзі
+    print(char)  # Виводимо символ
 
 alphabet = "abcdefghijklmnopqrstuvwxyz"
 for char in alphabet:
-    print(char, end=" ")  # Печатаем в одну строку через пробел
+    print(char, end=" ")  # end=" " — щоб не було переносу рядка, а ставився пробіл
 
 some_iterable = ["a", "b", "c"]
-for i in some_iterable:
-    print(i)  # Проходим по списку и печатаем элементы
+for i in some_iterable:  # Перебір елементів списку
+    print(i)
 
 odd_numbers = [1, 3, 5, 7, 9]
 for i in odd_numbers:
-    print(i ** 2)  # Печатаем квадраты чисел
+    print(i ** 2)  # ** — піднесення до степеня (квадрат числа)
 
 
 # ================================
 # 19. Цикл while
 # ================================
 
-k = 0
-while k < 10:
-    k = k + 1  # Увеличиваем счётчик, пока условие True
-print(k)
+k = 0  # Лічильник
+while k < 10:  # while повторює блок, поки умова True
+    k = k + 1  # Збільшуємо k на 1
+print(k)  # Після циклу k буде 10
 
 
 # ================================
@@ -397,23 +382,23 @@ print(k)
 a = 0
 while a < 6:
     a = a + 1
-    if not a % 2:
-        continue  # Пропускаем чётные числа
-    print(a)
+    if not a % 2:  # a % 2 дає остачу; якщо 0 — число парне; not робить True
+        continue  # continue пропускає решту тіла циклу і переходить до наступної ітерації
+    print(a)  # Виведе тільки непарні: 1,3,5
 
 
 # ================================
 # 21. Функція range
 # ================================
 
-for i in range(5):
-    print(i)  # 0..4
+for i in range(5):  # range(5) дає числа 0..4
+    print(i)
 
-for i in range(2, 10):
-    print(i)  # 2..9
+for i in range(2, 10):  # range(2,10) дає 2..9
+    print(i)
 
-for i in range(0, 10, 2):
-    print(i)  # 0,2,4,6,8
+for i in range(0, 10, 2):  # range(start, stop, step): крок 2
+    print(i)
 
 
 # ================================
@@ -421,8 +406,8 @@ for i in range(0, 10, 2):
 # ================================
 
 some_list = ["apple", "banana", "cherry"]
-for index, value in enumerate(some_list):
-    print(index, value)  # Даёт индекс и значение
+for index, value in enumerate(some_list):  # enumerate дає пару (індекс, значення)
+    print(index, value)
 
 
 # ================================
@@ -431,36 +416,36 @@ for index, value in enumerate(some_list):
 
 list1 = ["зелене", "стигла", "червоний"]
 list2 = ["яблуко", "вишня", "томат"]
-for number, letter in zip(list1, list2):
-    print(number, letter)  # Склеиваем элементы попарно
+for number, letter in zip(list1, list2):  # zip з'єднує елементи попарно
+    print(number, letter)
 
 list1 = [1, 2, 3]
 list2 = ["a", "b", "c", "d", "e"]
-for number, letter in zip(list1, list2):
-    print(number, letter)  # zip остановится на длине короткого списка
+for number, letter in zip(list1, list2):  # zip зупиниться на довжині коротшого списку
+    print(number, letter)
 
 
 # ================================
 # 24. Цикли та словники
 # ================================
 
-numbers = {
+numbers = {  # Словник: ключ -> значення
     1: "one",
     2: "two",
     3: "three"
 }
 
-for key in numbers:
-    print(key)  # По умолчанию перебираются ключи
+for key in numbers:  # Перебір словника за замовчуванням проходить по ключах
+    print(key)
 
-for key in numbers.keys():
-    print(key)  # Явно ключи
+for key in numbers.keys():  # keys() явним чином повертає ключі
+    print(key)
 
-for val in numbers.values():
-    print(val)  # Значения
+for val in numbers.values():  # values() повертає значення
+    print(val)
 
-for key, value in numbers.items():
-    print(key, value)  # Пары ключ-значение
+for key, value in numbers.items():  # items() повертає пари (ключ, значення)
+    print(key, value)
 
 
 # ================================
@@ -468,17 +453,13 @@ for key, value in numbers.items():
 # ================================
 
 val = "a"
-try:
-    # Пробуем преобразовать строку в число
-    val = int(val)
-except ValueError:
-    # Срабатывает, если преобразование невозможно
-    print(f"val {val} is not a number")
-else:
-    # Срабатывает, если ошибок не было
-    print(val > 0)
-finally:
-    # Срабатывает всегда
+try:  # try: пробуємо виконати код, який може впасти з помилкою
+    val = int(val)  # int("a") викличе ValueError, бо "a" не число
+except ValueError:  # except ловить конкретну помилку ValueError
+    print(f"val {val} is not a number")  # Обробка: повідомляємо, що це не число
+else:  # else виконується, якщо помилки НЕ було
+    print(val > 0)  # Перевіряємо, чи число більше 0
+finally:  # finally виконується завжди (було виключення чи ні)
     print("This will be printed anyway")
 
 
@@ -486,20 +467,19 @@ finally:
 # 25. Створення та виклик функцій
 # ================================
 
-def say_hello():
-    """Печатает приветствие."""
-    print("Привіт, Світ!")
+def say_hello():  # def створює функцію без параметрів
+    """Печатает приветствие."""  # Докстрінг: опис функції
+    print("Привіт, Світ!")  # Тіло функції
 
-
-say_hello()
-say_hello()
+say_hello()  # Виклик функції
+say_hello()  # Повторний виклик
 
 
 # ================================
 # 26. Аргумент функції
 # ================================
 
-def print_max(a, b):
+def print_max(a, b):  # Функція з двома параметрами a і b
     """Печатает, какое число больше (или что они равны)."""
     if a > b:
         print(a, "максимально")
@@ -508,46 +488,41 @@ def print_max(a, b):
     else:
         print(b, "максимально")
 
-
-print_max(3, 4)
+print_max(3, 4)  # Передаємо аргументи 3 і 4
 
 x = 5
 y = 7
-print_max(x, y)
+print_max(x, y)  # Передаємо значення змінних
 
 
 # ================================
 # 27. Повернення результату
 # ================================
 
-def add_numbers(num1: int, num2: int) -> int:
+def add_numbers(num1: int, num2: int) -> int:  # Підказки типів: int -> int (не обов'язково для роботи)
     """Возвращает сумму двух чисел."""
-    total = num1 + num2
-    return total
+    total = num1 + num2  # Обчислюємо суму
+    return total  # return повертає значення з функції
 
-
-result = add_numbers(5, 10)
-print(result)
+result = add_numbers(5, 10)  # Зберігаємо результат виклику
+print(result)  # Вивід
 
 def greet(name: str) -> str:
     """Возвращает строку-приветствие по имени."""
+    return f"Привіт, {name}!"  # Повертаємо рядок
+
+def greet(name: str) -> str:  # (дублікат) функція з тим самим ім'ям перекриє попередню
     return f"Привіт, {name}!"
 
-### Розділення задачі 
-
-def greet(name: str) -> str:
-    return f"Привіт, {name}!"
-
-greeting = greet("Олексій")
-print(greeting)  # Виведе: Привіт, Олексій!
+greeting = greet("Олексій")  # Викликаємо функцію
+print(greeting)  # Вивід
 
 def is_even(num: int) -> bool:
     """Возвращает True, если число чётное, иначе False."""
-    return num % 2 == 0
+    return num % 2 == 0  # %2 дає остачу; якщо 0 — парне
 
-
-check_even = is_even(4)
-print(check_even)
+check_even = is_even(4)  # Перевірка
+print(check_even)  # Вивід True
 
 
 # ================================
@@ -555,35 +530,30 @@ print(check_even)
 # ================================
 
 def modify_string(original: str) -> str:
-    """Показывает, что строка (immutable) не меняется снаружи — возвращаем новую."""
-    original = "змінено"
-    return original
-
+    """Показує, що рядок незмінний (immutable): повертаємо новий рядок."""
+    original = "змінено"  # Всередині функції змінюємо локальну змінну original
+    return original  # Повертаємо нове значення
 
 str_var = "оригінал"
-print(modify_string(str_var))
-print(str_var)
+print(modify_string(str_var))  # Виведе "змінено" (те, що повернула функція)
+print(str_var)  # Виведе "оригінал" (оригінальна змінна не змінилась)
 
 def modify_list_inplace(lst: list) -> None:
-    """Меняет список напрямую (mutable): добавляет элемент 4."""
-    lst.append(4)
-
-
-### Розділення задачі 
+    """Список змінний (mutable): можемо змінити його напряму."""
+    lst.append(4)  # append змінює список "на місці"
 
 my_list = [1, 2, 3]
-modify_list_inplace(my_list)
-print(my_list)
+modify_list_inplace(my_list)  # Після виклику my_list зміниться
+print(my_list)  # [1, 2, 3, 4]
 
 def modify_list_copy(lst: list) -> None:
-    """Создаёт копию списка и меняет копию — оригинал снаружи не меняется."""
-    lst = lst.copy()
-    lst.append(4)
-
+    """Якщо зробити копію — зміниться копія, а не оригінал."""
+    lst = lst.copy()  # copy() створює новий список
+    lst.append(4)  # Змінюємо копію
 
 my_list = [1, 2, 3]
-modify_list_copy(my_list)
-print(my_list)
+modify_list_copy(my_list)  # Оригінал не зміниться
+print(my_list)  # [1, 2, 3]
 
 
 # ================================
@@ -591,102 +561,86 @@ print(my_list)
 # ================================
 
 def string_to_codes(string: str) -> dict:
-    """Возвращает словарь: символ -> его ASCII/Unicode код (ord), без повторов."""
-    codes = {}              # Словарь для результата
-    for ch in string:       # Перебираем каждый символ строки
-        if ch not in codes: # Если символ ещё не добавляли
-            codes[ch] = ord(ch)  # Добавляем символ и его код
-    return codes
+    """Повертає словник: символ -> його Unicode-код (ord), без повторів."""
+    codes = {}  # Порожній словник для результату
+    for ch in string:  # Перебираємо кожен символ рядка
+        if ch not in codes:  # Перевіряємо, чи символ ще не був ключем у словнику
+            codes[ch] = ord(ch)  # ord(...) повертає код символу; записуємо у словник
+    return codes  # Повертаємо готовий словник
 
-
-result = string_to_codes("Hello world!")
-print(result)
+result = string_to_codes("Hello world!")  # Викликаємо функцію
+print(result)  # Вивід
 
 
 # ================================
 # 30. Область видимості: Local
 # ================================
 
-x = 50
+x = 50  # Глобальна змінна
 
 def func() -> None:
-    x = 2
-    print('Зміна локального x на', x)  # Зміна локального x на 2
+    x = 2  # Локальна змінна x (не змінює глобальну)
+    print('Зміна локального x на', x)
 
-func()
-print('Глобальний x як і раніше', x)  # x як і раніше 50
+func()  # Виклик функції
+print('Глобальний x як і раніше', x)  # Глобальний x залишився 50
+
 
 # ================================
 # 30. Область видимості: Global
 # ================================
 
-x = 50
+x = 50  # Глобальна змінна
 
 def func():
-    global x
-    print('x дорівнює', x)  # x дорівнює 50
-    x = 2
-    print('Змінюємо глобальне значення x на', x)  # Змінюємо глобальне значення x на 2
+    global x  # global дозволяє змінювати глобальну змінну всередині функції
+    print('x дорівнює', x)
+    x = 2  # Тут ми змінюємо саме глобальний x
+    print('Змінюємо глобальне значення x на', x)
 
 func()
-print('Значення x складає', x)# Значення x складає 2
+print('Значення x складає', x)  # Тепер x = 2
+
 
 # ================================
 # 31. Ключові аргументи функції
 # ================================
 
-def greet(name, message="Привіт"):
-    print(f"{message}, {name}!")
+def greet(name, message="Привіт"):  # message має значення за замовчуванням
+    print(f"{message}, {name}!")  # Вивід привітання
 
-    greet("Олексій")
-    greet("Марія", message="Добрий день")  
-
-
-### Розділення задачі 
+greet("Олексій")  # Виклик: message буде "Привіт"
+greet("Марія", message="Добрий день")  # Виклик з іменованим аргументом
 
 def func(a, b=5, c=10):
     print('a дорівнює', a,', b дорівнює', b,', а c дорівнює', c)
 
-# a дорівнює 3, b дорівнює 7, а c дорівнює 10
-func(3, 7)
-
-# a дорівнює 25, b дорівнює 5, а c дорівнює 24
-func(25, c=24)
-
-# a дорівнює 100, b дорівнює 5, а c дорівнює 50
-func(c=50, a=100)
-
-
+func(3, 7)  # a=3, b=7, c=10
+func(25, c=24)  # a=25, b=5, c=24
+func(c=50, a=100)  # a=100, b=5, c=50
 
 def say(message, times=1):
-    print(message * times)
+    print(message * times)  # * для рядка повторює його times разів
 
-say('Привіт') 
+say('Привіт')
 say('Світ', 5)
+
 
 # ================================
 # 32. Приклад використання параметру *args
 # ================================
 
-def print_all_args(*args):
-    for arg in args:
-        print(arg)
+def print_all_args(*args):  # *args збирає всі позиційні аргументи у кортеж (tuple)
+    for arg in args:  # Перебираємо всі аргументи
+        print(arg)  # Виводимо кожен
 
-print_all_args(1, 'hello', True)
-
-#Виведення: 
-# 1
-# hello
-# True
-
-
-### Розділення задачі 
+print_all_args(1, 'hello', True)  # Передали 3 аргументи
 
 def concatenate(*args) -> str:
-    result = ""
-    for arg in args:
-        result += arg
-    return result
+    result = ""  # Початковий порожній рядок
+    for arg in args:  # Перебираємо всі передані рядки
+        result += arg  # Додаємо до результату
+    return result  # Повертаємо склеєний рядок
 
 print(concatenate("Hello", " ", "world", "!"))
 
@@ -694,58 +648,53 @@ print(concatenate("Hello", " ", "world", "!"))
 # ================================
 # 33. Приклад використання параметру *args та **kwargs
 # ================================
-def greet(**kwargs):
-    for key, value in kwargs.items():
-        print(f"{key}: {value}")
 
-greet(name="Alice", age=25)
+def greet(**kwargs):  # **kwargs збирає всі іменовані аргументи у словник (dict)
+    for key, value in kwargs.items():  # items() дає пари (ключ, значення)
+        print(f"{key}: {value}")  # Вивід кожної пари
 
-
-### Розділення задачі 
+greet(name="Alice", age=25)  # Передаємо іменовані аргументи
 
 def example_function(*args, **kwargs):
-    print("Позиційні аргументи:", args)
-    print("Ключові аргументи:", kwargs)
+    print("Позиційні аргументи:", args)  # args — кортеж позиційних аргументів
+    print("Ключові аргументи:", kwargs)  # kwargs — словник іменованих аргументів
 
 example_function(1, 2, 3, name="Alice", age=25)
+
 
 # ================================
 # 34. Рекурсія
 # ================================
 
 def factorial(n):
-    if n == 0: # базовий випадок
+    if n == 0:  # Базовий випадок: коли n == 0, зупиняємо рекурсію
         return 1
     else:
-        return n * factorial(n-1) # рекурсивний випадок
+        return n * factorial(n-1)  # Рекурсивний випадок: викликаємо factorial ще раз
 
-print(factorial(5)) # виведе 120
-
-### Розділення задачі про Фібоначчі 
+print(factorial(5))  # 5*4*3*2*1 = 120
 
 def fibonacci(n):
-    if n <= 1: # базовий випадок
+    if n <= 1:  # Базовий випадок: 0 або 1
         return n
     else:
-        return fibonacci(n-1) + fibonacci(n-2) # рекурсивний випадок
+        return fibonacci(n-1) + fibonacci(n-2)  # Рекурсія: сума двох попередніх
 
-print(fibonacci(10)) # виведе 55
+print(fibonacci(10))  # 55
+
 
 # ================================
 # 35. Стек викликів рекурсії
 # ================================
 
 def factorial(n):
-    print("Виклик функції factorial з n = ", n)
-    if n == 1:
+    print("Виклик функції factorial з n = ", n)  # Друкуємо поточний n, щоб бачити хід рекурсії
+    if n == 1:  # Базовий випадок
         print("Базовий випадок, n = 1, повернення 1")
         return 1
     else:
-        result = n * factorial(n-1)
-        print("Повернення результату для n = ", n, ": ", result)
+        result = n * factorial(n-1)  # Рахуємо результат через рекурсивний виклик
+        print("Повернення результату для n = ", n, ": ", result)  # Показуємо, що повертаємо
         return result
 
-print(factorial(5))
-
-
-
+print(factorial(5))  # Запуск з n=5
