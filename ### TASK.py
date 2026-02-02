@@ -339,152 +339,152 @@ print(result)  # печатаем словарь подсчёта
 # ============================================================
 # ЗАДАЧА 25: FizzBuzz от 1 до N (проверка через try/except)
 # ============================================================
+if RUN_INPUT:
+    while True:  # бесконечный цикл, пока не сделаем break
+        text = input("Введите число: ")  # вводим строку
 
-while True:  # бесконечный цикл, пока не сделаем break
-    text = input("Введите число: ")  # вводим строку
+        try:
+            text = int(text)  # пытаемся превратить строку в int
+            if text <= 0:  # проверяем, что число > 0
+                print("Нужно число больше 0")  # сообщение об ошибке
+                continue  # просим ввод снова (переход к новой итерации)
 
-    try:
-        text = int(text)  # пытаемся превратить строку в int
-        if text <= 0:  # проверяем, что число > 0
-            print("Нужно число больше 0")  # сообщение об ошибке
-            continue  # просим ввод снова (переход к новой итерации)
+            for t in range(1, text + 1):  # цикл от 1 до N включительно
+                if t % 3 == 0 and t % 5 == 0:  # кратно и 3, и 5
+                    print("FizzBuzz")  # печать FizzBuzz
+                elif t % 3 == 0:  # кратно 3
+                    print("Fizz")  # печать Fizz
+                elif t % 5 == 0:  # кратно 5
+                    print("Buzz")  # печать Buzz
+                else:
+                    print(t)  # иначе печатаем само число
 
-        for t in range(1, text + 1):  # цикл от 1 до N включительно
-            if t % 3 == 0 and t % 5 == 0:  # кратно и 3, и 5
-                print("FizzBuzz")  # печать FizzBuzz
-            elif t % 3 == 0:  # кратно 3
-                print("Fizz")  # печать Fizz
-            elif t % 5 == 0:  # кратно 5
-                print("Buzz")  # печать Buzz
-            else:
-                print(t)  # иначе печатаем само число
+            break  # выходим из while после успешного выполнения
 
-        break  # выходим из while после успешного выполнения
-
-    except ValueError:  # если int(text) не получилось
-        print("Это не число")  # печатаем сообщение и цикл продолжается
+        except ValueError:  # если int(text) не получилось
+            print("Это не число")  # печатаем сообщение и цикл продолжается
 
 
 # ============================================================
 # ЗАДАЧА 26: while + match (match выполняется после цикла)
 # ============================================================
+if RUN_INPUT: 
+    while True:  # цикл команд
+        text = input("Enter please: ")  # ввод строки
 
-while True:  # цикл команд
-    text = input("Enter please: ")  # ввод строки
+        if not text:  # если строка пустая
+            print("Empty info")  # сообщение
+            continue  # просим ввод снова
 
-    if not text:  # если строка пустая
-        print("Empty info")  # сообщение
-        continue  # просим ввод снова
+        if text == "exit":  # если команда exit
+            print("Good luck next time")  # прощание
+            break  # выходим из цикла
 
-    if text == "exit":  # если команда exit
-        print("Good luck next time")  # прощание
-        break  # выходим из цикла
-
-match text:  # match запускается ОДИН раз после выхода из while, для последнего text
-    case "Yes":
-        print("Accepted")  # если text == "Yes"
-    case "No":
-        print("Denied")  # если text == "No"
-    case _:
-        print("Undefined command")  # иначе
+    match text:  # match запускается ОДИН раз после выхода из while, для последнего text
+        case "Yes":
+            print("Accepted")  # если text == "Yes"
+        case "No":
+            print("Denied")  # если text == "No"
+        case _:
+            print("Undefined command")  # иначе
 
 
 # ============================================================
 # ЗАДАЧА 27: Команды: exit / count (ввод числа c и печать 1..c)
 # ============================================================
+if RUN_INPUT: 
+    while True:  # бесконечный цикл команд
+        command = input("Enter command: ")  # ввод команды
 
-while True:  # бесконечный цикл команд
-    command = input("Enter command: ")  # ввод команды
-
-    if not command:  # если пусто
-        print("Empty info")  # сообщение
+        if not command:  # если пусто
+            print("Empty info")  # сообщение
         continue  # запрос снова
 
-    if command == "exit":  # если exit
-        print("Good luck next time")  # прощание
+        if command == "exit":  # если exit
+            print("Good luck next time")  # прощание
         break  # выходим
 
-    if command == "count":  # если count
-        try:
-            c = int(input("Enter please c: "))  # ввод числа, перевод в int
-            if c <= 0:  # проверка что > 0
-                print("Need number > 0")  # сообщение
+        if command == "count":  # если count
+            try:
+                c = int(input("Enter please c: "))  # ввод числа, перевод в int
+                if c <= 0:  # проверка что > 0
+                    print("Need number > 0")  # сообщение
                 continue  # возвращаемся к вводу команды
 
-            for i in range(1, c + 1):  # печатаем 1..c
-                print(i)
+                for i in range(1, c + 1):  # печатаем 1..c
+                    print(i)
 
-        except ValueError:  # если int() не смог
-            print("Это не число")  # сообщение
+            except ValueError:  # если int() не смог
+                print("Это не число")  # сообщение
 
 
 # ============================================================
 # ЗАДАЧА 28: Проверка баллов кандидата (True/False)
 # ============================================================
+if RUN_INPUT: 
+    is_next = None  # переменная-плейсхолдер, потом станет True или False
+    num = int(input("Enter the number of points: "))  # ввод баллов -> int
 
-is_next = None  # переменная-плейсхолдер, потом станет True или False
-num = int(input("Enter the number of points: "))  # ввод баллов -> int
-
-if num >= 83:  # если баллов 83 или больше
-    is_next = True  # кандидат проходит дальше
-    print("Successful candidate")  # сообщение
-else:
-    is_next = False  # кандидат не проходит
-    print("Candidate is not valid")  # сообщение
+    if num >= 83:  # если баллов 83 или больше
+        is_next = True  # кандидат проходит дальше
+        print("Successful candidate")  # сообщение
+    else:
+        is_next = False  # кандидат не проходит
+        print("Candidate is not valid")  # сообщение
 
 
 # ============================================================
 # ЗАДАЧА 29: Уровень разработчика по стажу (Junior/Middle/Senior)
 # ============================================================
+if RUN_INPUT: 
+    work_experience = int(input("Enter your full work experience in years: "))  # ввод стажа
+    developer_type = "Junior"  # значение по умолчанию
 
-work_experience = int(input("Enter your full work experience in years: "))  # ввод стажа
-developer_type = "Junior"  # значение по умолчанию
-
-if work_experience > 1 and work_experience < 6:  # стаж от 2 до 5
-    developer_type = "Middle"  # присваиваем Middle
-    print(developer_type)  # печатаем результат
-elif work_experience == 0 or work_experience == 1:  # стаж 0 или 1
-    developer_type = "Junior"  # присваиваем Junior
-    print(developer_type)  # печатаем
-else:  # иначе (6+)
-    developer_type = "Senior"  # присваиваем Senior
-    print(developer_type)  # печатаем
+    if work_experience > 1 and work_experience < 6:  # стаж от 2 до 5
+        developer_type = "Middle"  # присваиваем Middle
+        print(developer_type)  # печатаем результат
+    elif work_experience == 0 or work_experience == 1:  # стаж 0 или 1
+        developer_type = "Junior"  # присваиваем Junior
+        print(developer_type)  # печатаем
+    else:  # иначе (6+)
+        developer_type = "Senior"  # присваиваем Senior
+        print(developer_type)  # печатаем
 
 
 # ============================================================
 # ЗАДАЧА 30: Определить тип числа (positive odd/even, negative, zero)
 # ============================================================
+if RUN_INPUT: 
+    num = int(input("Enter a number: "))  # ввод числа -> int
 
-num = int(input("Enter a number: "))  # ввод числа -> int
-
-if num > 0:  # если положительное
-    if num % 2 == 1:  # если остаток 1 -> нечётное
-        result = "Positive odd number"  # строка-результат
-    if num % 2 == 0:  # если остаток 0 -> чётное
-        result = "Positive even number"  # строка-результат
-elif num < 0:  # если отрицательное
-    result = "Negative number"  # строка-результат
-else:  # иначе (0)
-    result = "It is zero"  # строка-результат
+    if num > 0:  # если положительное
+        if num % 2 == 1:  # если остаток 1 -> нечётное
+            result = "Positive odd number"  # строка-результат
+        if num % 2 == 0:  # если остаток 0 -> чётное
+            result = "Positive even number"  # строка-результат
+    elif num < 0:  # если отрицательное
+        result = "Negative number"  # строка-результат
+    else:  # иначе (0)
+        result = "It is zero"  # строка-результат
 
 
 # ============================================================
 # ЗАДАЧА 31: Сумма чисел от 1 до num (пока num <= 100)
 # ============================================================
+if RUN_INPUT: 
+    num = int(input("Enter the integer (0 to 100): "))  # ввод числа
+    sum = 0  # переменная для накопления суммы
+    b = 0  # счётчик
 
-num = int(input("Enter the integer (0 to 100): "))  # ввод числа
-sum = 0  # переменная для накопления суммы
-b = 0  # счётчик
+    while b < num:  # цикл пока b меньше num
+        if num <= 100:  # проверка, что num в пределах
+            b = b + 1  # увеличиваем b на 1
+            sum = sum + b  # добавляем b к сумме
+            print(sum)  # печатаем текущую сумму на каждом шаге
 
-while b < num:  # цикл пока b меньше num
-    if num <= 100:  # проверка, что num в пределах
-        b = b + 1  # увеличиваем b на 1
-        sum = sum + b  # добавляем b к сумме
-        print(sum)  # печатаем текущую сумму на каждом шаге
-
-    if num > 100:  # если num больше 100
-        print("Incorrect number")  # ошибка
-        break  # выходим из цикла
+        if num > 100:  # если num больше 100
+            print("Incorrect number")  # ошибка
+            break  # выходим из цикла
 
 
 # ============================================================
@@ -505,14 +505,14 @@ print(result)  # печатаем сколько раз встретился "r"
 # ============================================================
 # ЗАДАЧА 33: Деление 1000 писем на количество рассылок (ловим деление на ноль)
 # ============================================================
-
-pool = 1000  # общий пул
-try:
-    quantity = int(input("Enter the number of mailings: "))  # ввод количества рассылок
-    chunk = pool // quantity  # целочисленное деление: сколько в каждой рассылке
-    print(chunk)  # печать результата
-except ZeroDivisionError:  # если quantity == 0
-    print('Divide by zero completed!')  # сообщение
+if RUN_INPUT: 
+    pool = 1000  # общий пул
+    try:
+        quantity = int(input("Enter the number of mailings: "))  # ввод количества рассылок
+        chunk = pool // quantity  # целочисленное деление: сколько в каждой рассылке
+        print(chunk)  # печать результата
+    except ZeroDivisionError:  # если quantity == 0
+        print('Divide by zero completed!')  # сообщение
 
 
 # ============================================================
@@ -643,55 +643,457 @@ def number_of_groups(n, k):  # считаем C(n, k)
 # словарь: name -> quantity
 # total_sum: общая сумма денег по всем введённым строкам
 # ============================================================
+if RUN_INPUT: 
+    my_dict = {}  # создаём пустой словарь для хранения количества по товарам
+    total_sum = 0  # создаём переменную для накопления общей суммы денег
 
-my_dict = {}  # создаём пустой словарь для хранения количества по товарам
-total_sum = 0  # создаём переменную для накопления общей суммы денег
+    while True:  # бесконечный цикл ввода строк
+        line = input("Please, enter information: ").strip()  # ввод строки + убираем пробелы по краям
 
-while True:  # бесконечный цикл ввода строк
-    line = input("Please, enter information: ").strip()  # ввод строки + убираем пробелы по краям
+        if line == "help":  # если команда help
+            print("Please, enter first info as the name of product, second info as the float number and third number as the int number")
+            continue  # возвращаемся в начало цикла (просим ввод снова)
 
-    if line == "help":  # если команда help
-        print("Please, enter first info as the name of product, second info as the float number and third number as the int number")
-        continue  # возвращаемся в начало цикла (просим ввод снова)
+        elif line == "done":  # если команда done
+            break  # выходим из цикла
 
-    elif line == "done":  # если команда done
-        break  # выходим из цикла
+        parts = line.split()  # делим строку по пробелам -> список частей
 
-    parts = line.split()  # делим строку по пробелам -> список частей
+        if len(parts) != 3:  # если частей не ровно 3
+            print("Invalid value")  # сообщение об ошибке формата
+            continue  # просим ввод снова
 
-    if len(parts) != 3:  # если частей не ровно 3
-        print("Invalid value")  # сообщение об ошибке формата
-        continue  # просим ввод снова
+        name = parts[0]  # берём имя товара (строка)
 
-    name = parts[0]  # берём имя товара (строка)
+        try:
+            price = float(parts[1])  # пытаемся перевести цену в float
+        except ValueError:
+            print("Invalid Format")  # если не получилось — значит не число
+            continue  # просим ввод снова
 
-    try:
-        price = float(parts[1])  # пытаемся перевести цену в float
-    except ValueError:
-        print("Invalid Format")  # если не получилось — значит не число
-        continue  # просим ввод снова
+        if price <= 0:  # если цена ноль или отрицательная
+            continue  # пропускаем эту строку и просим ввод снова
 
-    if price <= 0:  # если цена ноль или отрицательная
-        continue  # пропускаем эту строку и просим ввод снова
+        try:
+            quantity = int(parts[2])  # пытаемся перевести количество в int
+        except ValueError:
+            print("Invalid Format")  # если не получилось — значит не число
+            continue  # просим ввод снова
 
-    try:
-        quantity = int(parts[2])  # пытаемся перевести количество в int
-    except ValueError:
-        print("Invalid Format")  # если не получилось — значит не число
-        continue  # просим ввод снова
+        if quantity <= 0:  # если количество ноль или отрицательное
+            continue  # пропускаем эту строку
 
-    if quantity <= 0:  # если количество ноль или отрицательное
-        continue  # пропускаем эту строку
+        if name in my_dict:  # если такой товар уже есть в словаре
+            my_dict[name] = my_dict[name] + quantity  # увеличиваем количество в словаре
+        else:
+            my_dict[name] = quantity  # если товара не было — создаём запись
 
-    if name in my_dict:  # если такой товар уже есть в словаре
-        my_dict[name] = my_dict[name] + quantity  # увеличиваем количество в словаре
-    else:
-        my_dict[name] = quantity  # если товара не было — создаём запись
+        string_price = price * quantity  # считаем стоимость этой строки (цена * количество)
+        total_sum = string_price + total_sum  # добавляем стоимость строки к общей сумме
 
-    string_price = price * quantity  # считаем стоимость этой строки (цена * количество)
-    total_sum = string_price + total_sum  # добавляем стоимость строки к общей сумме
+        result = len(my_dict)  # считаем количество уникальных товаров (ключей) в словаре
 
-    result = len(my_dict)  # считаем количество уникальных товаров (ключей) в словаре
+        print(total_sum)  # печатаем текущую общую сумму
+        print(result)  # печатаем количество уникальных товаров
 
-    print(total_sum)  # печатаем текущую общую сумму
-    print(result)  # печатаем количество уникальных товаров
+
+# ============================================================
+# Примеры: Работа с датами 
+# ============================================================
+
+import datetime
+now = datetime.datetime.now()
+print(now)
+##########################################################
+
+
+from datetime import datetime
+
+current_datetime = datetime.now()
+
+print(current_datetime.year)
+print(current_datetime.month)
+print(current_datetime.day)
+print(current_datetime.hour)
+print(current_datetime.minute)
+print(current_datetime.second)
+print(current_datetime.microsecond)
+print(current_datetime.tzinfo)
+
+##########################################################
+from datetime import datetime
+
+current_datetime = datetime.now()
+print(current_datetime.date())
+print(current_datetime.time())
+
+##########################################################
+import datetime
+
+# Створення об'єктів date і time
+date_part = datetime.date(2023, 12, 14)
+time_part = datetime.time(12, 30, 15)
+
+# Комбінування дати і часу в один об'єкт datetime
+combined_datetime = datetime.datetime.combine(date_part, time_part)
+
+
+print(combined_datetime)  # Виведе "2023-12-14 12:30:15"
+
+##########################################################
+import datetime
+
+# Створення об'єкта datetime з конкретною датою
+specific_date = datetime.datetime(year=2020, month=1, day=7)
+
+print(specific_date)  # Виведе "2020-01-07 00:00:00"
+
+##########################################################
+specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)
+
+print(specific_datetime)  # Виведе "2020-01-07 14:30:15"
+
+##########################################################
+import datetime
+
+# Створення об'єкта datetime з конкретною датою і часом
+specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)
+
+print(specific_datetime)  # Виведе "2020-01-07 14:30:15"
+
+
+##########################################################
+
+from datetime import datetime
+
+# Створення об'єкта datetime
+now = datetime.now()
+
+# Отримання номера дня тижня
+day_of_week = now.weekday()
+
+# Поверне число від 0 (понеділок) до 6 (неділя)
+print(f"Сьогодні: {day_of_week}")  
+
+##########################################################
+
+from datetime import datetime
+
+# Створення двох об'єктів datetime
+datetime1 = datetime(2023, 3, 14, 12, 0)
+datetime2 = datetime(2023, 3, 15, 12, 0)
+
+# Порівняння дат
+print(datetime1 == datetime2)  # False, тому що дати не однакові
+print(datetime1 != datetime2)  # True, тому що дати різні
+print(datetime1 < datetime2)   # True, тому що datetime1 передує datetime2
+print(datetime1 > datetime2)   # False, тому що datetime1 не наступає за datetime2
+
+# ============================================================
+# Примеры: Работа с промежутками timedelta
+# ============================================================
+
+from datetime import timedelta
+delta = timedelta(
+    days=50,
+    seconds=27,
+    microseconds=10,
+    milliseconds=29000,
+    minutes=5,
+    hours=8,
+    weeks=2
+)
+print(delta)
+
+##########################################################
+
+from datetime import datetime
+
+seventh_day_2019 = datetime(year=2019, month=1, day=7, hour=14)
+seventh_day_2020 = datetime(year=2020, month=1, day=7, hour=14)
+
+difference = seventh_day_2020 - seventh_day_2019
+print(difference)  # 365 days, 0:00:00
+print(difference.total_seconds())  # 31536000.0
+
+##########################################################
+
+from datetime import datetime, timedelta
+
+now = datetime.now()
+future_date = now + timedelta(days=10)  # Додаємо 10 днів до поточної дати
+print(future_date)
+
+##########################################################
+
+from datetime import datetime, timedelta
+
+seventh_day_2020 = datetime(year=2020, month=1, day=7, hour=14)
+four_weeks_interval = timedelta(weeks=4)
+
+print(seventh_day_2020 + four_weeks_interval)  # 2020-02-04 14:00:00
+print(seventh_day_2020 - four_weeks_interval)  # 2019-12-10 14:00:00
+
+##########################################################
+
+from datetime import datetime
+
+# Створення об'єкта datetime
+date = datetime(year=2023, month=12, day=18)
+
+# Отримання порядкового номера
+ordinal_number = date.toordinal()
+print(f"Порядковий номер дати {date} становить {ordinal_number}")
+
+##########################################################
+
+from datetime import datetime
+
+# Встановлення дати спалення Москви Наполеоном (14 вересня 1812 року)
+napoleon_burns_moscow = datetime(year=1812, month=9, day=14)
+
+# Поточна дата
+current_date = datetime.now()
+
+# Розрахунок кількості днів
+days_since = current_date.toordinal() - napoleon_burns_moscow.toordinal()
+print(days_since)
+
+# ============================================================
+# Примеры: Работа с timestamp
+# ============================================================
+
+from datetime import datetime
+
+# Поточний час
+now = datetime.now()
+
+# Конвертація datetime в timestamp
+timestamp = datetime.timestamp(now)
+print(timestamp)  # Виведе timestamp поточного часу
+
+##########################################################
+
+from datetime import datetime
+
+# Припустимо, є timestamp
+timestamp = 1617183600
+
+# Конвертація timestamp назад у datetime
+dt_object = datetime.fromtimestamp(timestamp)
+print(dt_object)  # Виведе відповідний datetime
+
+
+# ============================================================
+# Примеры: Парсинг даты в строку
+# ============================================================
+
+from datetime import datetime
+
+now = datetime.now()
+
+# Форматування дати і часу
+formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
+print(formatted_date) 
+
+# Форматування лише дати
+formatted_date_only = now.strftime("%A, %d %B %Y")
+print(formatted_date_only)
+
+# Форматування лише часу
+formatted_time_only = now.strftime("%I:%M %p")
+print(formatted_time_only)  
+
+# Форматування лише дати
+formatted_date_only = now.strftime("%d.%m.%Y")
+print(formatted_date_only)
+
+##########################################################
+
+from datetime import datetime
+
+# Припустимо, у нас є дата у вигляді рядка
+date_string = "2023.03.14"
+
+# Перетворення рядка в об'єкт datetime
+datetime_object = datetime.strptime(date_string, "%Y.%m.%d")
+print(datetime_object)  # Виведе об'єкт datetime, що відповідає вказаній даті та часу
+
+
+# ============================================================
+# Примеры: Работа с ISO форматом дати
+# ============================================================
+
+from datetime import datetime
+
+# Поточна дата та час
+now = datetime.now()
+
+# Конвертація у формат ISO 8601
+iso_format = now.isoformat()
+print(iso_format)
+
+##########################################################
+
+from datetime import datetime
+
+iso_date_string = "2023-03-14T12:39:29.992996"
+
+# Конвертація з ISO формату
+date_from_iso = datetime.fromisoformat(iso_date_string)
+print(date_from_iso)
+
+##########################################################
+
+from datetime import datetime
+
+# Створення об'єкта datetime
+now = datetime.now()
+
+# Використання isoweekday() для отримання дня тижня
+day_of_week = now.isoweekday()
+
+print(f"Сьогодні: {day_of_week}")  # Поверне число від 1 до 7, що відповідає дню тижня
+
+##########################################################
+
+from datetime import datetime
+
+# Створення об'єкта datetime
+now = datetime.now()
+
+# Отримання ISO календаря
+iso_calendar = now.isocalendar()
+
+print(f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}")
+
+
+# ============================================================
+# Примеры: Работа с временными зонами
+# ============================================================
+
+from datetime import datetime, timezone
+
+local_now = datetime.now()
+utc_now = datetime.now(timezone.utc)
+
+print(local_now)
+print(utc_now)  # Виведе поточний час в UTC
+
+##########################################################
+
+from datetime import datetime, timezone, timedelta
+
+utc_time = datetime.now(timezone.utc)
+
+# Створення часової зони для Східного часового поясу (UTC-5)
+eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
+# Перетворює час UTC в час Східного часового поясу
+print(eastern_time)  
+
+##########################################################
+
+from datetime import datetime, timezone, timedelta
+
+# Припустимо, місцевий час належить до часової зони UTC+2
+local_timezone = timezone(timedelta(hours=2))
+local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone)
+
+# Конвертація локального часу в UTC
+utc_time = local_time.astimezone(timezone.utc)
+print(utc_time)  # Виведе час в UTC
+
+##########################################################
+
+from datetime import datetime, timezone, timedelta
+
+# Час у конкретній часовій зоні
+timezone_offset = timezone(timedelta(hours=2))  # Наприклад, UTC+2
+timezone_datetime = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=timezone_offset)
+
+# Конвертація у формат ISO 8601
+iso_format_with_timezone = timezone_datetime.isoformat()
+print(iso_format_with_timezone)
+
+
+# ============================================================
+# Примеры: Работа с временем
+# ============================================================
+
+import time
+
+current_time = time.time()
+print(f"Поточний час: {current_time}")
+
+##########################################################
+
+import time
+
+print("Початок паузи")
+time.sleep(1)
+print("Кінець паузи")
+
+##########################################################
+
+import time
+
+current_time = time.time()
+print(f"Поточний час: {current_time}")
+
+readable_time = time.ctime(current_time)
+print(f"Читабельний час: {readable_time}")
+
+##########################################################
+
+import time
+
+current_time = time.time()
+print(f"Поточний час: {current_time}")
+
+local_time = time.localtime(current_time)
+print(f"Місцевий час: {local_time}")
+
+##########################################################
+
+import time
+
+# Записуємо час на початку виконання
+start_time = time.perf_counter()
+
+# Виконуємо якусь операцію
+for _ in range(1_000_000):
+    pass  # Просто проходить цикл мільйон разів
+
+# Записуємо час після виконання операції
+end_time = time.perf_counter()
+
+# Розраховуємо та виводимо час виконання
+execution_time = end_time - start_time
+print(f"Час виконання: {execution_time} секунд")
+
+##########################################################
+
+# Один мільйон
+a = 1_000_000
+print(a)  # Виведе 1000000
+
+# Десять мільйонів
+b = 10_000_000
+print(b)  # Виведе 10000000
+
+# Один мільярд
+c = 1_000_000_000
+print(c)  # Виведе 1000000000
+
+
+
+
+
+
+
+
+
+
+
+
+
