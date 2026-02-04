@@ -701,15 +701,24 @@ print(factorial(5))  # Запуск з n=5
 
 
 # ============================================================
-# Примеры: Работа с датами 
+# Приклади: Робота з датами та часом (datetime)
 # ============================================================
 
+# ----------------------------
+# Приклад 1: Поточна дата і час (повний datetime)
+# ----------------------------
+# datetime.datetime.now() повертає поточну дату + час (локально для системи).
 import datetime
+
 now = datetime.datetime.now()
 print(now)
-##########################################################
 
 
+
+# ----------------------------
+# Приклад 2: Дістати окремі частини (рік, місяць, день, час...)
+# ----------------------------
+# datetime.now() -> об'єкт datetime, з нього можна брати поля: year, month, day, hour...
 from datetime import datetime
 
 current_datetime = datetime.now()
@@ -721,82 +730,94 @@ print(current_datetime.hour)
 print(current_datetime.minute)
 print(current_datetime.second)
 print(current_datetime.microsecond)
-print(current_datetime.tzinfo)
+print(current_datetime.tzinfo)  # якщо timezone не заданий — часто буде None
 
-##########################################################
+
+
+# ----------------------------
+# Приклад 3: Отримати тільки дату або тільки час
+# ----------------------------
+# .date() повертає date, .time() повертає time
 from datetime import datetime
 
 current_datetime = datetime.now()
 print(current_datetime.date())
 print(current_datetime.time())
 
-##########################################################
+
+
+# ----------------------------
+# Приклад 4: Зібрати datetime з окремих date і time
+# ----------------------------
+# date() -> лише дата, time() -> лише час
+# datetime.combine(date, time) -> з'єднує в один datetime
 import datetime
 
-# Створення об'єктів date і time
 date_part = datetime.date(2023, 12, 14)
 time_part = datetime.time(12, 30, 15)
 
-# Комбінування дати і часу в один об'єкт datetime
 combined_datetime = datetime.datetime.combine(date_part, time_part)
+print(combined_datetime)  # 2023-12-14 12:30:15
 
 
-print(combined_datetime)  # Виведе "2023-12-14 12:30:15"
 
-##########################################################
+# ----------------------------
+# Приклад 5: Створення datetime з конкретною датою (час буде 00:00:00)
+# ----------------------------
 import datetime
 
-# Створення об'єкта datetime з конкретною датою
 specific_date = datetime.datetime(year=2020, month=1, day=7)
+print(specific_date)  # 2020-01-07 00:00:00
 
-print(specific_date)  # Виведе "2020-01-07 00:00:00"
 
-##########################################################
-specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)
 
-print(specific_datetime)  # Виведе "2020-01-07 14:30:15"
-
-##########################################################
+# ----------------------------
+# Приклад 6: Створення datetime з конкретною датою і часом
+# ----------------------------
 import datetime
 
-# Створення об'єкта datetime з конкретною датою і часом
 specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)
+print(specific_datetime)  # 2020-01-07 14:30:15
 
-print(specific_datetime)  # Виведе "2020-01-07 14:30:15"
 
 
-##########################################################
-
+# ----------------------------
+# Приклад 7: День тижня через weekday()
+# ----------------------------
+# weekday() повертає число:
+# 0 = понеділок ... 6 = неділя
 from datetime import datetime
 
-# Створення об'єкта datetime
 now = datetime.now()
-
-# Отримання номера дня тижня
 day_of_week = now.weekday()
+print(f"Сьогодні (weekday): {day_of_week}")
 
-# Поверне число від 0 (понеділок) до 6 (неділя)
-print(f"Сьогодні: {day_of_week}")  
 
-##########################################################
 
+# ----------------------------
+# Приклад 8: Порівняння дат/часу (==, !=, <, >)
+# ----------------------------
+# datetime можна порівнювати напряму
 from datetime import datetime
 
-# Створення двох об'єктів datetime
 datetime1 = datetime(2023, 3, 14, 12, 0)
 datetime2 = datetime(2023, 3, 15, 12, 0)
 
-# Порівняння дат
-print(datetime1 == datetime2)  # False, тому що дати не однакові
-print(datetime1 != datetime2)  # True, тому що дати різні
-print(datetime1 < datetime2)   # True, тому що datetime1 передує datetime2
-print(datetime1 > datetime2)   # False, тому що datetime1 не наступає за datetime2
+print(datetime1 == datetime2)
+print(datetime1 != datetime2)
+print(datetime1 < datetime2)
+print(datetime1 > datetime2)
 
 # ============================================================
-# Примеры: Работа с промежутками timedelta
+# Приклади: Робота з проміжками часу (timedelta)
 # ============================================================
 
+# ----------------------------
+# Приклад 9: Створення timedelta з різних одиниць
+# ----------------------------
+# timedelta підсумує все в один проміжок часу
 from datetime import timedelta
+
 delta = timedelta(
     days=50,
     seconds=27,
@@ -808,236 +829,254 @@ delta = timedelta(
 )
 print(delta)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 10: Різниця між двома datetime (віднімання) + total_seconds()
+# ----------------------------
 from datetime import datetime
 
 seventh_day_2019 = datetime(year=2019, month=1, day=7, hour=14)
 seventh_day_2020 = datetime(year=2020, month=1, day=7, hour=14)
 
 difference = seventh_day_2020 - seventh_day_2019
-print(difference)  # 365 days, 0:00:00
-print(difference.total_seconds())  # 31536000.0
+print(difference)
+print(difference.total_seconds())
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 11: Додати 10 днів до поточної дати
+# ----------------------------
 from datetime import datetime, timedelta
 
 now = datetime.now()
-future_date = now + timedelta(days=10)  # Додаємо 10 днів до поточної дати
+future_date = now + timedelta(days=10)
 print(future_date)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 12: +/- 4 тижні від заданої дати
+# ----------------------------
 from datetime import datetime, timedelta
 
 seventh_day_2020 = datetime(year=2020, month=1, day=7, hour=14)
 four_weeks_interval = timedelta(weeks=4)
 
-print(seventh_day_2020 + four_weeks_interval)  # 2020-02-04 14:00:00
-print(seventh_day_2020 - four_weeks_interval)  # 2019-12-10 14:00:00
+print(seventh_day_2020 + four_weeks_interval)
+print(seventh_day_2020 - four_weeks_interval)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 13: Порядковий номер дати (toordinal)
+# ----------------------------
+# toordinal() дає число — скільки днів від “умовної нульової” дати в календарі
 from datetime import datetime
 
-# Створення об'єкта datetime
 date = datetime(year=2023, month=12, day=18)
-
-# Отримання порядкового номера
 ordinal_number = date.toordinal()
 print(f"Порядковий номер дати {date} становить {ordinal_number}")
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 14: Скільки днів від історичної дати до сьогодні (через toordinal)
+# ----------------------------
 from datetime import datetime
 
-# Встановлення дати спалення Москви Наполеоном (14 вересня 1812 року)
 napoleon_burns_moscow = datetime(year=1812, month=9, day=14)
-
-# Поточна дата
 current_date = datetime.now()
 
-# Розрахунок кількості днів
 days_since = current_date.toordinal() - napoleon_burns_moscow.toordinal()
 print(days_since)
 
 # ============================================================
-# Примеры: Работа с timestamp
+# Приклади: Робота з timestamp
 # ============================================================
 
+# ----------------------------
+# Приклад 15: Перетворення datetime -> timestamp (секунди)
+# ----------------------------
 from datetime import datetime
 
-# Поточний час
 now = datetime.now()
-
-# Конвертація datetime в timestamp
 timestamp = datetime.timestamp(now)
-print(timestamp)  # Виведе timestamp поточного часу
+print(timestamp)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 16: Перетворення timestamp -> datetime
+# ----------------------------
 from datetime import datetime
 
-# Припустимо, є timestamp
 timestamp = 1617183600
-
-# Конвертація timestamp назад у datetime
 dt_object = datetime.fromtimestamp(timestamp)
-print(dt_object)  # Виведе відповідний datetime
-
+print(dt_object)
 
 # ============================================================
-# Примеры: Парсинг даты в строку
+# Приклади: Форматування/парсинг дати (strftime / strptime)
 # ============================================================
 
+# ----------------------------
+# Приклад 17: datetime -> рядок через strftime
+# ----------------------------
 from datetime import datetime
 
 now = datetime.now()
 
-# Форматування дати і часу
 formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")
-print(formatted_date) 
+print(formatted_date)
 
-# Форматування лише дати
 formatted_date_only = now.strftime("%A, %d %B %Y")
 print(formatted_date_only)
 
-# Форматування лише часу
 formatted_time_only = now.strftime("%I:%M %p")
-print(formatted_time_only)  
+print(formatted_time_only)
 
-# Форматування лише дати
 formatted_date_only = now.strftime("%d.%m.%Y")
 print(formatted_date_only)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 18: рядок -> datetime через strptime (парсинг)
+# ----------------------------
 from datetime import datetime
 
-# Припустимо, у нас є дата у вигляді рядка
 date_string = "2023.03.14"
-
-# Перетворення рядка в об'єкт datetime
 datetime_object = datetime.strptime(date_string, "%Y.%m.%d")
-print(datetime_object)  # Виведе об'єкт datetime, що відповідає вказаній даті та часу
-
+print(datetime_object)
 
 # ============================================================
-# Примеры: Работа с ISO форматом дати
+# Приклади: ISO формат (isoformat / fromisoformat)
 # ============================================================
 
+# ----------------------------
+# Приклад 19: datetime -> ISO 8601 (рядок)
+# ----------------------------
 from datetime import datetime
 
-# Поточна дата та час
 now = datetime.now()
-
-# Конвертація у формат ISO 8601
 iso_format = now.isoformat()
 print(iso_format)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 20: ISO рядок -> datetime
+# ----------------------------
 from datetime import datetime
 
 iso_date_string = "2023-03-14T12:39:29.992996"
-
-# Конвертація з ISO формату
 date_from_iso = datetime.fromisoformat(iso_date_string)
 print(date_from_iso)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 21: День тижня через isoweekday()
+# ----------------------------
+# isoweekday(): 1 = понеділок ... 7 = неділя
 from datetime import datetime
 
-# Створення об'єкта datetime
 now = datetime.now()
-
-# Використання isoweekday() для отримання дня тижня
 day_of_week = now.isoweekday()
+print(f"Сьогодні (isoweekday): {day_of_week}")
 
-print(f"Сьогодні: {day_of_week}")  # Поверне число від 1 до 7, що відповідає дню тижня
 
-##########################################################
 
+# ----------------------------
+# Приклад 22: ISO календар (рік, тиждень, день тижня)
+# ----------------------------
 from datetime import datetime
 
-# Створення об'єкта datetime
 now = datetime.now()
-
-# Отримання ISO календаря
 iso_calendar = now.isocalendar()
-
 print(f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}")
 
-
 # ============================================================
-# Примеры: Работа с временными зонами
+# Приклади: Часові зони (timezone)
 # ============================================================
 
+# ----------------------------
+# Приклад 23: Локальний час vs UTC
+# ----------------------------
 from datetime import datetime, timezone
 
 local_now = datetime.now()
 utc_now = datetime.now(timezone.utc)
 
 print(local_now)
-print(utc_now)  # Виведе поточний час в UTC
+print(utc_now)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 24: Перевести UTC у часову зону (UTC-5 як приклад)
+# ----------------------------
 from datetime import datetime, timezone, timedelta
 
 utc_time = datetime.now(timezone.utc)
-
-# Створення часової зони для Східного часового поясу (UTC-5)
 eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
-# Перетворює час UTC в час Східного часового поясу
-print(eastern_time)  
+print(eastern_time)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 25: Задати локальний час (UTC+2) і конвертувати в UTC
+# ----------------------------
 from datetime import datetime, timezone, timedelta
 
-# Припустимо, місцевий час належить до часової зони UTC+2
 local_timezone = timezone(timedelta(hours=2))
 local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone)
 
-# Конвертація локального часу в UTC
 utc_time = local_time.astimezone(timezone.utc)
-print(utc_time)  # Виведе час в UTC
+print(utc_time)
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 26: ISO формат із timezone
+# ----------------------------
 from datetime import datetime, timezone, timedelta
 
-# Час у конкретній часовій зоні
-timezone_offset = timezone(timedelta(hours=2))  # Наприклад, UTC+2
+timezone_offset = timezone(timedelta(hours=2))
 timezone_datetime = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=timezone_offset)
 
-# Конвертація у формат ISO 8601
 iso_format_with_timezone = timezone_datetime.isoformat()
 print(iso_format_with_timezone)
 
-
 # ============================================================
-# Примеры: Работа с временем
+# Приклади: Робота з часом (time)
 # ============================================================
 
+# ----------------------------
+# Приклад 27: time.time() — поточний час у секундах (timestamp)
+# ----------------------------
 import time
 
 current_time = time.time()
 print(f"Поточний час: {current_time}")
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 28: Пауза sleep (затримка)
+# ----------------------------
 import time
 
 print("Початок паузи")
-time.sleep(1)
+time.sleep(0)
 print("Кінець паузи")
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 29: Зробити timestamp “читабельним” через ctime()
+# ----------------------------
 import time
 
 current_time = time.time()
@@ -1046,8 +1085,11 @@ print(f"Поточний час: {current_time}")
 readable_time = time.ctime(current_time)
 print(f"Читабельний час: {readable_time}")
 
-##########################################################
 
+
+# ----------------------------
+# Приклад 30: localtime() — структура з деталями дати/часу
+# ----------------------------
 import time
 
 current_time = time.time()
@@ -1056,178 +1098,580 @@ print(f"Поточний час: {current_time}")
 local_time = time.localtime(current_time)
 print(f"Місцевий час: {local_time}")
 
-##########################################################
 
+# ----------------------------
+# Приклад 31: Виміряти час виконання (perf_counter)
+# ----------------------------
 import time
 
-# Записуємо час на початку виконання
 start_time = time.perf_counter()
 
-# Виконуємо якусь операцію
 for _ in range(1_000_000):
-    pass  # Просто проходить цикл мільйон разів
+    pass
 
-# Записуємо час після виконання операції
 end_time = time.perf_counter()
-
-# Розраховуємо та виводимо час виконання
 execution_time = end_time - start_time
 print(f"Час виконання: {execution_time} секунд")
 
-##########################################################
 
-# Один мільйон
+
+# ----------------------------
+# Приклад 32: Числа з підкресленням для читабельності
+# ----------------------------
 a = 1_000_000
-print(a)  # Виведе 1000000
+print(a)
 
-# Десять мільйонів
 b = 10_000_000
-print(b)  # Виведе 10000000
+print(b)
 
-# Один мільярд
 c = 1_000_000_000
-print(c)  # Виведе 1000000000
+print(c)
 
-#########################################
+# ============================================================
+# Приклади: Випадкові величини (random)
+# ============================================================
 
-# ================================
-# 37. Робота з випадковими величинами
-# ================================
-
+# ----------------------------
+# Приклад 33: Кидок кубика randint(1, 6)
+# ----------------------------
 import random
 
 dice_roll = random.randint(1, 6)
 print(f"Ви кинули {dice_roll}")
 
-#########################################
 
+
+# ----------------------------
+# Приклад 34: random() — число від 0.0 до 1.0
+# ----------------------------
 import random
 
 num = random.random()
 print(num)
 
-#########################################
 
+
+# ----------------------------
+# Приклад 35: Відсоток заповнення (0..100)
+# ----------------------------
 import random
 
 fill_percentage = random.random() * 100
 print(f"Заповнення: {fill_percentage:.2f}%")
 
-#########################################
 
+
+# ----------------------------
+# Приклад 36: randrange(start, stop, step)
+# ----------------------------
 import random
 
-target = random.randrange(1, 11, 2)
+target = random.randrange(1, 11, 2)  # 1,3,5,7,9
 print(f"Ціль: {target}")
 
-#########################################
 
+# ----------------------------
+# Приклад 37: shuffle — перемішати список
+# ----------------------------
 import random
 
 cards = ["Туз", "Король", "Дама", "Валет", "10", "9", "8", "7", "6"]
-
 random.shuffle(cards)
-
 print(f"Перемішана колода: {cards}")
 
-#########################################
 
+
+# ----------------------------
+# Приклад 38: choice — випадковий 1 елемент
+# ----------------------------
 import random
 
 fruits = ['apple', 'banana', 'orange']
 print(random.choice(fruits))
 
-#########################################
 
+
+# ----------------------------
+# Приклад 39: choices — випадкові елементи з повтореннями
+# ----------------------------
 import random
 
 items = ['яблуко', 'банан', 'вишня', 'диня']
 chosen_item = random.choices(items, k=1)
-print(chosen_item)  
+print(chosen_item)
 
-#########################################
 
+
+# ----------------------------
+# Приклад 40: choices (k=3) — три елементи, можуть повторюватися
+# ----------------------------
 import random
 
 numbers = [1, 2, 3, 4, 5]
 chosen_numbers = random.choices(numbers, k=3)
 print(chosen_numbers)
 
-#########################################
 
+
+# ----------------------------
+# Приклад 41: choices з вагами (weights)
+# ----------------------------
 import random
 
 colors = ['червоний', 'зелений', 'синій']
 weights = [10, 1, 1]
 chosen_color = random.choices(colors, weights, k=1)
-print(chosen_color)  
+print(chosen_color)
 
-#########################################
 
+
+# ----------------------------
+# Приклад 42: sample — унікальні елементи (без повторів)
+# ----------------------------
 import random
 
 participants = ['Анна', 'Богдан', 'Віктор', 'Галина', 'Дмитро', 'Олена', 'Женя', 'Зорян', 'Ігор', 'Йосип']
 team = random.sample(participants, 4)
 print(f"Команда: {team}")
 
-#########################################
 
+
+# ----------------------------
+# Приклад 43: uniform — випадкове число з діапазону (float)
+# ----------------------------
 import random
 
 price = random.uniform(50, 100)
 print(f"Випадкова ціна: {price:.2f}")
 
-# ================================
-# 37. Робота з модулем math
-# ================================
+# ============================================================
+# Приклади: math (математика)
+# ============================================================
+
+# ----------------------------
+# Приклад 44: Округлення (ceil/floor/trunc)
+# ----------------------------
 import math
 
-# Вихідне число
 x = 3.7
-
-# Використання різних методів округлення
-ceil_result = math.ceil(x)  # Округлення вгору
-floor_result = math.floor(x)  # Округлення вниз
-trunc_result = math.trunc(x)  # Відсікання дробової частини
+ceil_result = math.ceil(x)
+floor_result = math.floor(x)
+trunc_result = math.trunc(x)
 
 print(ceil_result, floor_result, trunc_result)
 
-#########################################
 
+
+# ----------------------------
+# Приклад 45: Константи та базові операції (pi, sin, sqrt, log)
+# ----------------------------
 import math
 
-# Використання констант
-print(math.pi)  # Виведе приблизне значення π
+print(math.pi)
 
-# Тригонометрія
-angle = math.radians(60)  # Конвертація з градусів у радіани
-print(math.sin(angle))  # Синус кута
+angle = math.radians(60)
+print(math.sin(angle))
 
-# Корінь числа
-print(math.sqrt(9))  # Квадратний корінь з 9
+print(math.sqrt(9))
 
-# Логарифми
-print(math.log(10, 2))  # Логарифм 10 за основою 2
+# log(10, 2) = логарифм 10 за основою 2
+print(math.log(10, 2))
 
 
-#########################################
+
+# ----------------------------
+# Приклад 46: Проблема float (0.1 + 0.2 != 0.3)
+# ----------------------------
+print(0.1 + 0.2 == 0.3)
 
 
-print(0.1 + 0.2 == 0.3)  # Це повертає False
 
-#########################################
-
+# ----------------------------
+# Приклад 47: math.isclose — “майже рівно” для float
+# ----------------------------
 import math
 
 r = math.isclose(0.1 + 0.2, 0.3)
-print(r)  # Це поверне True
+print(r)
 
-#########################################
 
+
+# ----------------------------
+# Приклад 48: isclose на близьких числах
+# ----------------------------
 import math
 
 r = math.isclose(0.1, 0.10000000009)
-print(r)  # Це поверне True
+print(r)
+
+# ============================================================
+# Приклади: Escape-послідовності та робота з рядками
+# ============================================================
+
+# ----------------------------
+# Приклад 49: Перенос рядка \n
+# ----------------------------
+print("Hello\nWorld")
+
+
+
+# ----------------------------
+# Приклад 50: \r (повернення каретки) — може “перезаписати” початок рядка
+# ----------------------------
+print("Hello my little\rsister")   # sistermy little
+
+
+
+# ----------------------------
+# Приклад 51: \b (backspace) — “стерти” один символ назад
+# ----------------------------
+print("Hello\bWorld")  # HellWorld
+
+
+
+# ----------------------------
+# Приклад 52: Екранування слеша \\ щоб надрукувати один \
+# ----------------------------
+print("Hello\\World")  # Hello\World
+
+
+
+# ----------------------------
+# Приклад 53: Екранування лапок \' та \"
+# ----------------------------
+print('It\'s a beautiful day')
+print("He said, \"Hello\"")
+
+# ============================================================
+# Приклади: Пошук у рядку (find / rfind / index / rindex)
+# ============================================================
+
+# ----------------------------
+# Приклад 54: find — повертає позицію або -1
+# ----------------------------
+s = "Hi there!"
+start = 0
+end = 7
+
+print(s.find("er", start, end))
+print(s.find("q"))
+
+
+
+# ----------------------------
+# Приклад 55: find vs rfind (перший збіг vs останній збіг)
+# ----------------------------
+s = 'Some words'
+print(s.find("o"))
+print(s.rfind('o'))
+
+
+
+# ----------------------------
+# Приклад 56: index vs rindex (але кидає помилку, якщо не знайдено)
+# ----------------------------
+s = 'Some words'
+print(s.index("o"))
+print(s.rindex('o'))
+
+
+# Приклади: Поділ та об'єднання рядків (split / join):
+
+
+# ----------------------------
+# Приклад 57: split() — розбити рядок за пробілами
+# ----------------------------
+text = "hello world"
+result = text.split()
+print(result)
+
+
+
+# ----------------------------
+# Приклад 58: split(',') — розбити рядок за комою
+# ----------------------------
+text = "apple,banana,cherry"
+result = text.split(',')
+print(result)
+
+
+
+# ----------------------------
+# Приклад 59: join — з'єднати список рядків в один рядок
+# ----------------------------
+list_of_strings = ['Hello', 'world']
+result = ' '.join(list_of_strings)
+print(result)
+
+
+
+# ----------------------------
+# Приклад 60: join з комою
+# ----------------------------
+elements = ['earth', 'air', 'fire', 'water']
+result = ', '.join(elements)
+print(result)
+
+
+
+# ----------------------------
+# Приклад 61: strip — прибрати пробіли з країв
+# ----------------------------
+clean = '   spacious   '.strip()
+print(clean)
+
+
+
+# ----------------------------
+# Приклад 62: replace — замінити частину рядка
+# ----------------------------
+text = "Hello world"
+new_text = text.replace("world", "Python")
+print(new_text)
+
+
+
+# ----------------------------
+# Приклад 63: replace з лімітом (замінити тільки перші 2 входження)
+# ----------------------------
+text = "one fish, two fish, red fish, blue fish"
+new_text = text.replace("fish", "bird", 2)
+print(new_text)
+
+
+
+# ----------------------------
+# Приклад 64: replace — видалити підрядок (замінити на порожній рядок)
+# ----------------------------
+text = "Hello, world!"
+new_text = text.replace(" world", "")
+print(new_text)
+
+
+print('TestHook'.removeprefix('Test')) # Hook
+print('TestHook'.removeprefix('Hook')) # TestHook
+
+
+
+print('TestHook'.removesuffix('Test')) # TestHook
+print('TestHook'.removesuffix('Hook')) # Hook
+                                           
+
+# ----------------------------
+# Приклад 65: URL - запити та рядки
+# ----------------------------
+
+url_search = "<https://www.google.com/search?q=Cat+and+dog&ie=utf-8&oe=utf-8&aq=t>"
+_, query = url_search.split('?')
+print(query)
+
+
+
+url_search = "<https://www.google.com/search?q=Cat+and+dog&ie=utf-8&oe=utf-8&aq=t>"
+_, query = url_search.split('?')
+print(query)
+
+obj_query = {}
+for el in query.split('&'):
+    key, value = el.split('=')
+    obj_query.update({key: value.replace('+', ' ')})
+print(obj_query)
+
+
+# ----------------------------
+# Приклад 66: Метод .isdigit()
+# ----------------------------
+
+number = "12345"
+print(number.isdigit())  # Виведе: True
+
+text = "Number123"
+print(text.isdigit())  # Виведе: False
+
+if RUN_INPUT:
+    user_input = input("Введіть число: ")
+    if user_input.isdigit():
+        print("Це дійсно число!")
+    else:
+        print("Це не число!")
+
+
+
+for char in "Hello 123":
+    if char.isdigit():
+        print(f"'{char}' - це цифра")
+    else:
+        print(f"'{char}' - не цифра")
+
+
+
+# ----------------------------
+# Приклад 67: Метод translate()
+# ----------------------------
+
+intab = "aeiou"
+outtab = "12345"
+trantab = str.maketrans(intab, outtab)
+
+str = "This is string example"
+print(str.translate(trantab))
+
+
+
+
+symbols = "0123456789ABCDEF"
+code = [
+        '0000', '0001', '0010', '0011', '0100', '0101', '0110', '0111',
+        '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111'
+        ]
+
+MAP = {}
+
+for s, c in zip(symbols, code):
+    MAP[ord(s)] = c
+    MAP[ord(s.lower())] = c
+
+result = "34 DF 56 AC".translate(MAP)
+print(result)
+
+
+morze_dict = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
+              'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
+              'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
+              'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
+              'Y': '-.--', 'Z': '--..', '0': '-----', '1': '.----', '2': '..---',
+              '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...',
+              '8': '---..', '9': '----.'}
+
+# Перетворення ключів словника на Unicode коди
+table_morze_dict = {}
+for k, v in morze_dict.items():
+    table_morze_dict[ord(k)] = v
+
+string = "Hello world"
+
+result = ""
+
+for ch in string:
+    result = result + ch.upper().translate(table_morze_dict)
+
+print(result)
+
+
+# ----------------------------
+# Приклад 67: Форматування рядків
+# ----------------------------
+
+for i in range(8):
+    s = f"int: {i:d};  hex: {i:#x};  oct: {i:#o};  bin: {i:#b}"
+    print(s)
+
+
+
+# Форматування рядків - :.2f
+price = 19.99
+quantity = 3
+total = f"Total: {price * quantity:.2f}"
+print(total)
+
+
+width = 5
+for num in range(12):
+    print(f'{num:^10} {num**2:^10} {num**3:^10}') # :^ — это команда “как выравнивать
+
+
+
+name = "Alice"
+formatted = f"{name:>10}"
+print(formatted)  # Виведе: '     Alice' (вирівнювання праворуч)
+
+
+completion = 0.756
+formatted = f"{completion:.1%}"
+print(formatted)  # Виведе: '75.6%'
+
+
+progress = 0.5
+formatted = f"{progress:.0%}"
+print(formatted)
+
+
+# ----------------------------
+# Приклад 68: Метод search
+# ----------------------------
+
+import re
+
+text = "Вивчення Python може бути веселим."
+pattern = "Python"
+match = re.search(pattern, text)
+
+if match:
+    print("Знайдено:", match.group())
+else:
+    print("Не знайдено.")
+
+
+
+import re
+
+text = "Вивчення Python може бути веселим."
+pattern = r"в\w*м"
+match = re.search(pattern, text, re.IGNORECASE)
+
+if match:
+    print("Знайдено:", match.group())
+
+
+
+import re
+
+text = "Моя електронна адреса: example@example.com"
+pattern = r"\w+@\w+\.\w+"
+match = re.search(pattern, text)
+
+if match:
+    print("Електронна адреса:", match.group())
+
+
+
+import re
+
+email = "username@domain.com"
+pattern = r"(\w+)@(\w+\.\w+)"
+match = re.search(pattern, email)
+
+if match:
+    user_name = match.group(1)
+    domain_name = match.group(2)
+    print("Ім'я користувача:", user_name)
+    print("Домен:", domain_name)
+
+
+# ----------------------------
+# Приклад 69: Метод findall
+# ----------------------------
+
+import re
+
+text = "Рік 2023 був складнішим, ніж 2022"
+pattern = r"\d+"
+matches = re.findall(pattern, text)
+
+print(matches)
+
+
+import re
+
+text = "Python - це проста, але потужна мова програмування."
+pattern = r"\w+"
+matches = re.findall(pattern, text)
+
+print(matches)  # Виведе список всіх слів у рядку
+
+
+
+
 
 
 
