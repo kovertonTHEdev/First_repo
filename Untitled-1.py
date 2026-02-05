@@ -40,3 +40,4 @@ for action in clean_actions:
 # 3. Вывод результата
 print(result)
 
+

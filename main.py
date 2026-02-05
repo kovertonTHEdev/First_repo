@@ -1671,6 +1671,92 @@ print(matches)  # Виведе список всіх слів у рядку
 
 
 
+import re
+
+text = "Контакти: example1@example.com, example2@sample.org"
+pattern = r"\w+@\w+\.\w+"
+matches = re.findall(pattern, text)
+
+print(matches)  # Виведе всі знайдені електронні адреси
+
+
+
+# ----------------------------
+# Приклад 69: Метод sub
+# ----------------------------
+
+import re
+
+file_name = "Мій документ Python.txt"
+pattern = r"\s" # "\s" - это специальное обозначение в регулярных выражениях, которое значит: любой пробельный символ
+replacement = "_"
+formatted_name = re.sub(pattern, replacement, file_name)
+
+print(formatted_name)  
+
+
+import re
+
+text = "Python - потужна, універсальна; мова!"
+pattern = r"[;,\-:!\.]"   # Тут регулярний вираз [;,\-:!\.] - це набір (множина) символів, який включає різні пунктуаційні знаки. Ми проходимося по рядку та прибираємо їх, оскільки заміна відбувається на порожній рядок.
+replacement = ""
+modified_text = re.sub(pattern, replacement, text)
+
+print(modified_text)  
+
+
+import re
+
+phone = """
+        Михайло Куліш: 050-171-1634
+        Вікторія Кущ: 063-134-1729
+        Оксана Гавриленко: 068-234-5612
+        """
+pattern = r"(\d{3})-(\d{3})-(\d{4})"
+replacement = r"(\1) \2-\3"
+formatted_phone = re.sub(pattern, replacement, phone)
+
+print(formatted_phone)
+
+
+# ----------------------------
+# Приклад 69: Метод split
+# ----------------------------
+
+import re
+
+text = "Python - це проста, але потужна мова програмування."
+pattern = r"\s+"
+words = re.split(pattern, text)
+
+print(words)  # Виведе список слів у рядку
+
+
+
+import re
+
+text = "Python - потужна; проста, універсальна: мова!"
+pattern = r"[;,\-:!\s]+"
+elements = re.split(pattern, text)
+
+print(elements)  # Виведе список частин, розділених пунктуацією
+
+
+import re
+
+text = "apple#banana!mango@orange;kiwi"
+pattern = r"[#@;!]"
+fruits = re.split(pattern, text)
+
+print(fruits) # ['apple', 'banana', 'mango', 'orange', 'kiwi']
+
+
+
+
+
+
+
+
 
 
 
