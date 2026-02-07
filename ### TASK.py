@@ -1227,53 +1227,65 @@ def normalize_phone(phone_number):  # нормализуем номер к ви�
 # ============================================================
 
 import re
+# импортируем модуль re для поиска по шаблонам (регулярные выражения)
+
 from datetime import datetime, timedelta, timezone
+# datetime — работа с датой/временем
+# timedelta — добавление интервалов (минуты, часы и т.д.)
+# timezone — объект таймзоны (UTC+2 и т.д.)
 
-# --- Настройки времени пользователя ---
 USER_TZ_OFFSET_HOURS = 2  # Киев, UTC+2
+# задаём смещение таймзоны пользователя относительно UTC
 
-# Последнее время проверки (строка ISO без таймзоны)
 LAST_CHECK_ISO = "2026-02-07T10:15:00"
+# строка с последним временем проверки (ISO формат, без таймзоны)
 
-# Превращаем строку в datetime-объект
 DATETIME_LAST_CHECK_ISO = datetime.fromisoformat(LAST_CHECK_ISO)
+# превращаем ISO-строку в datetime-объект (naive datetime, без tzinfo)
 
-# Интервал проверки в минутах
 CHECK_EVERY_MINUTES = 45
+# интервал проверки (в минутах)
 
-# Считаем время следующей проверки
 NEXT_TIME_CHECK = DATETIME_LAST_CHECK_ISO + timedelta(minutes=CHECK_EVERY_MINUTES)
+# считаем время следующей проверки: последнее время + 45 минут
 
-# Берём только "время" (часы:минуты:секунды) из datetime
-ONLY_TIME = NEXT_TIME_CHECK.time()
-
-# Окно патча (строки времени)
 PATCH_WINDOW_START = "01:00"
+# начало окна патча как строка времени
+
 PATCH_WINDOW_END = "05:00"
+# конец окна патча как строка времени
 
-# Превращаем строки времени в time-объекты, чтобы их сравнивать
 DATE_TIME_PATCH_WINDOW_START = datetime.strptime(PATCH_WINDOW_START, "%H:%M").time()
+# превращаем "01:00" в time-объект, чтобы сравнивать со временем
+
 DATE_TIME_PATCH_WINDOW_END = datetime.strptime(PATCH_WINDOW_END, "%H:%M").time()
+# превращаем "05:00" в time-объект, чтобы сравнивать со временем
 
-# Проверяем, попадает ли время следующей проверки в окно патча
-if DATE_TIME_PATCH_WINDOW_START <= ONLY_TIME <= DATE_TIME_PATCH_WINDOW_END:
-    print("Patch has been released")
-
-# Форматируем NEXT_TIME_CHECK в читаемую строку
-FORMATTED_NEXT_TIME_CHECK = NEXT_TIME_CHECK.strftime("%Y-%m-%d %H:%M:%S")
-
-# Создаём таймзону пользователя UTC+2
 LOCAL_TIMEZONE = timezone(timedelta(hours=USER_TZ_OFFSET_HOURS))
+# создаём объект таймзоны пользователя UTC+2
 
-# "Приклеиваем" таймзону к NEXT_TIME_CHECK (делаем datetime aware)
 LOCAL_TIME = NEXT_TIME_CHECK.replace(tzinfo=LOCAL_TIMEZONE)
+# "приклеиваем" таймзону к NEXT_TIME_CHECK: получаем aware datetime
 
-# Переводим локальное время в UTC
-UTC_time = LOCAL_TIME.astimezone(timezone.utc)
+ONLY_TIME = LOCAL_TIME.time()
+# берём только время (HH:MM:SS) из локального datetime
 
-# Печатаем UTC-время и отформатированное локальное
-print(UTC_time)
+if DATE_TIME_PATCH_WINDOW_START <= ONLY_TIME <= DATE_TIME_PATCH_WINDOW_END:
+    # проверяем: попадает ли время следующей проверки в окно патча
+    print("Patch has been released")
+    # если попало — печатаем сообщение о выходе патча
+
+FORMATTED_NEXT_TIME_CHECK = NEXT_TIME_CHECK.strftime("%Y-%m-%d %H:%M:%S")
+# форматируем время следующей проверки в читаемую строку
+
+UTC_TIME = LOCAL_TIME.astimezone(timezone.utc)
+# переводим локальное время (aware) в UTC-время
+
+print(UTC_TIME)
+# печатаем UTC-время следующей проверки
+
 print(FORMATTED_NEXT_TIME_CHECK)
+# печатаем локальное время следующей проверки (в виде строки)
 
 # --- Лог (многострочный текст) ---
 LOG_TEXT = """
@@ -1281,92 +1293,126 @@ LOG_TEXT = """
 [2026.02.07 10:16:10] ping=55ms fps=101.2 user=andrewnedoshivkin
 [2026.02.07 10:17:00] ping=39ms fps=abc user=andrewnedoshivkin
 """
+# многострочная строка лога (3 записи, третья с неверным fps=abc)
 
-# --- Паттерны для регулярных выражений ---
-# Дата и время вида 2026.02.07 10:15:04
 pattern_date = r"(\d{4}\.\d{2}\.\d{2} \d{2}:\d{2}:\d{2})"
+# шаблон даты/времени вида 2026.02.07 10:15:04 (захватываем в группу)
 
-# ping вида ping=42ms (захватываем число отдельно)
 pattern_ping = r"ping=(\d+)ms"
+# шаблон ping вида ping=42ms (захватываем только число)
 
-# fps вида fps=118.6 или fps=101 (захватываем число отдельно)
 pattern_fps = r"fps=(\d+(?:\.\d+)?)"
+# шаблон fps вида fps=118.6 или fps=101 (число или число с дробной частью)
 
-# --- Аккумуляторы (списки) ---
 list_date = []
+# список для datetime дат из лога
+
 list_fps = []
+# список для fps (float)
+
 list_ping = []
+# список для ping (int)
 
-# Режем лог на строки
 LOG_TEXT_SPLITTED = LOG_TEXT.split("\n")
+# режем лог на строки по символу перевода строки
 
-# Проходим по каждой строке лога
 for element in LOG_TEXT_SPLITTED:
-    # Пропускаем пустые строки (из-за тройных кавычек)
+    # перебираем каждую строку лога
+
     if not element.strip():
+        # если строка пустая или только пробелы — пропускаем
         continue
+        # переходим к следующей строке
 
-    # Ищем дату
     match_date = re.search(pattern_date, element)
+    # ищем дату по шаблону в строке
+
     if not match_date:
+        # если даты нет — пропускаем строку
         continue
 
-    # Ищем fps
     match_fps = re.search(pattern_fps, element)
+    # ищем fps по шаблону в строке
+
     if not match_fps:
+        # если fps не найден (например fps=abc) — пропускаем строку
         continue
 
-    # Ищем ping
     match_ping = re.search(pattern_ping, element)
+    # ищем ping по шаблону в строке
+
     if not match_ping:
+        # если ping не найден — пропускаем строку
         continue
 
-    # Берём строку даты (группа 1)
     result_match_date = match_date.group(1)
+    # берём строку даты из первой группы regex
 
-    # Берём fps-число как строку (группа 1)
     result_match_fps = match_fps.group(1)
+    # берём строку fps из первой группы regex
 
-    # Берём ping-число как строку (группа 1)
     result_match_ping = match_ping.group(1)
+    # берём строку ping из первой группы regex
 
     try:
-        # Переводим fps в float
         normalized_fps = float(result_match_fps)
+        # переводим fps из строки в float
 
-        # Переводим ping в int
         normalized_ping = int(result_match_ping)
+        # переводим ping из строки в int
 
-        # Переводим строку даты в datetime
         date_obj = datetime.strptime(result_match_date, "%Y.%m.%d %H:%M:%S")
+        # переводим строку даты/времени в datetime-объект
     except ValueError:
-        # Если не получилось конвертировать (например fps=abc) — пропускаем строку
+        # если конвертация сломалась — пропускаем строку
         continue
 
-    # Добавляем в аккумуляторы
     list_date.append(date_obj)
-    list_fps.append(normalized_fps)
-    list_ping.append(normalized_ping)
+    # добавляем дату в список дат
 
-# --- Средние значения ---
-# Защита от пустых списков
+    list_fps.append(normalized_fps)
+    # добавляем fps в список fps
+
+    list_ping.append(normalized_ping)
+    # добавляем ping в список ping
+
 if list_fps:
+    # если список fps не пустой — считаем среднее
     sum_fps = 0
+    # заводим сумму fps
+
     for s in list_fps:
+        # перебираем все fps
         sum_fps += s
+        # накапливаем сумму
+
     average_fps = sum_fps / len(list_fps)
+    # средний fps = сумма / количество
 else:
     average_fps = None
+    # если fps нет — среднее не считаем
 
 if list_ping:
+    # если список ping не пустой — считаем среднее
     sum_ping = 0
+    # заводим сумму ping
+
     for p in list_ping:
+        # перебираем все ping
         sum_ping += p
+        # накапливаем сумму
+
     average_ping = sum_ping / len(list_ping)
+    # средний ping = сумма / количество
 else:
     average_ping = None
+    # если ping нет — среднее не считаем
 
-# Печать результатов (по желанию)
 print("records:", len(list_date))
+# печатаем количество валидных записей (сколько строк реально попало в списки)
+
 print("avg_fps:", average_fps)
+# печатаем средний fps
+
 print("avg_ping:", average_ping)
+# печатаем средний ping
