@@ -2402,4 +2402,37 @@ re.split(pattern, string) - розбиває рядок за заданим ша
 Коректне застосування регулярних виразів може значно спростити обробку тексту, автоматизацію задач та вирішення складних проблем обробки даних.
 
 
+Модуль 4 
+Робота з файлами та обробка винятків
+
+fh = open('test_file.txt')
+
+
+open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+
+
+fh = open('test.txt', 'w')
+fh.write('hello!')
+fh.close()
+
+fh = open('test.txt', 'r')
+while True:
+    symbol = fh.read(1)
+    if len(symbol) == 0:
+        break
+    print(symbol) 
+
+fh.close()
+
+Вивід: 
+h
+e
+l
+l
+o
+!
+
+
+
+
 

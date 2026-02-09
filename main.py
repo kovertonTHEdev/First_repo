@@ -1751,6 +1751,68 @@ fruits = re.split(pattern, text)
 print(fruits) # ['apple', 'banana', 'mango', 'orange', 'kiwi']
 
 
+# ----------------------------
+# Приклад 69: Робота з файлами
+# ----------------------------
+
+fh = open('test.txt')
+# операції над файлом
+fh.close()  ### Закривати файл обов'язково
+
+
+
+fh = open('test.txt', 'w')
+symbols_written = fh.write('hello!')
+print(symbols_written) # 6
+fh.close()
+
+
+
+fh = open('test.txt', 'w+')
+fh.write('hello!')
+fh.seek(0)  # Для того, щоб повернути вказівник на початок файлу ми викликали метод seek та передали йому позицію, куди потрібно переміститися — 0
+
+first_two_symbols = fh.read(2)
+print(first_two_symbols)  # 'he'
+
+fh.close()
+
+
+
+fh = open('test.txt', 'w')
+fh.write('hello!')
+fh.close()
+
+fh = open('test.txt', 'r')
+while True:
+    symbol = fh.read(1)
+    if len(symbol) == 0:
+        break
+    print(symbol) 
+
+fh.close()
+
+
+
+fh = open('test.txt', 'w')
+fh.write('first line\nsecond line\nthird line')
+fh.close()
+
+fh = open('test.txt', 'r')
+while True:
+    line = fh.readline()
+    if not line:
+        break
+    print(line)
+
+fh.close()
+
+
+
+
+
+
+
 
 
 
