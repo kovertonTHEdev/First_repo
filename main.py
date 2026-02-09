@@ -1,3 +1,13 @@
+import os
+from pathlib import Path
+
+FILE_PATH = os.path.join(
+    os.path.dirname(os.path.abspath(__file__)), # старий метод пошуку файла, зустрічається доволі часто
+    "test.txt"
+)
+
+FILE_PATH = Path(__file__).resolve().parent / "test.txt"   #сучасний метод пошуку файла, як os
+
 # ================================
 # 1. Greeting (Вітання)
 # ================================
@@ -1755,50 +1765,48 @@ print(fruits) # ['apple', 'banana', 'mango', 'orange', 'kiwi']
 # Приклад 69: Робота з файлами
 # ----------------------------
 
-fh = open('test.txt')
+fh = open(FILE_PATH)
 # операції над файлом
-fh.close()  ### Закривати файл обов'язково
+fh.close()  # Закривати файл обов'язково
 
+###########################
 
-
-fh = open('test.txt', 'w')
+fh = open(FILE_PATH, 'w')
 symbols_written = fh.write('hello!')
-print(symbols_written) # 6
+print(symbols_written)  # 6
 fh.close()
 
-
-
-fh = open('test.txt', 'w+')
+fh = open(FILE_PATH, 'w+')
 fh.write('hello!')
-fh.seek(0)  # Для того, щоб повернути вказівник на початок файлу ми викликали метод seek та передали йому позицію, куди потрібно переміститися — 0
+fh.seek(0)
 
 first_two_symbols = fh.read(2)
 print(first_two_symbols)  # 'he'
 
 fh.close()
 
+###########################
 
-
-fh = open('test.txt', 'w')
+fh = open(FILE_PATH, 'w')
 fh.write('hello!')
 fh.close()
 
-fh = open('test.txt', 'r')
+fh = open(FILE_PATH, 'r')
 while True:
     symbol = fh.read(1)
     if len(symbol) == 0:
         break
-    print(symbol) 
+    print(symbol)
 
 fh.close()
 
+###########################
 
-
-fh = open('test.txt', 'w')
+fh = open(FILE_PATH, 'w')
 fh.write('first line\nsecond line\nthird line')
 fh.close()
 
-fh = open('test.txt', 'r')
+fh = open(FILE_PATH, 'r')
 while True:
     line = fh.readline()
     if not line:
@@ -1806,6 +1814,299 @@ while True:
     print(line)
 
 fh.close()
+
+###########################
+
+fh = open(FILE_PATH, 'w')
+fh.write('first line\nsecond line\nthird line') # Зверніть увагу, що всі методи, які читають файли порядково, залишають (не видаляють) символ перенесення рядка \n.
+fh.close()
+
+fh = open(FILE_PATH, 'r')
+lines = fh.readlines()
+print(lines)
+
+fh.close()
+
+###########################
+
+fh = open(FILE_PATH, "w")
+fh.write("first line\nsecond line\nthird line")
+fh.close()
+
+fh = open(FILE_PATH, "r")
+lines = [el.strip() for el in fh.readlines()] # Тут ми для видалення символу переносу рядка \n використали метод strip()
+print(lines)
+
+fh.close()
+
+###########################
+
+fh = open(FILE_PATH, 'w+')
+fh.write('hello!')
+
+fh.seek(1) # ми перемістили курсор на другий символ у файлі
+second = fh.read(1)
+print(second)  # 'e'
+
+fh.close()
+
+###########################
+
+fh = open(FILE_PATH, "w+")
+fh.write("hello!")
+
+position = fh.tell()
+print(position)  # 6
+
+fh.seek(1)
+position = fh.tell()
+print(position)  # 1
+
+fh.read(2)
+position = fh.tell()
+print(position)  # 3
+
+fh.close()
+# ----------------------------
+# Приклад 70: Менеджер контексту
+# ----------------------------
+
+fh = open(FILE_PATH, 'w')
+try:
+    # Виконання операцій з файлом
+    fh.write('Some data')
+finally:
+    # Закриття файлу в блоці finally гарантує, що файл закриється навіть у разі помилки
+    fh.close()
+
+########################### 
+# альтеранатива try and finally, для роботи з файлами для простішого коду:
+
+with open(FILE_PATH, 'w') as fh:
+    # Виконання операцій з файлом
+    fh.write('Some data')
+# Файл автоматично закриється після виходу з блоку with
+
+###########################
+
+with open(FILE_PATH, "w") as fh:
+    fh.write("first line\nsecond line\nthird line")
+
+with open(FILE_PATH, "r") as fh:
+    lines = [el.strip() for el in fh.readlines()]
+
+print(lines)
+
+
+# ----------------------------
+# Приклад 71: Робота з нетекстовими файлами у Python
+# ----------------------------
+
+with open('raw_data.bin', 'wb') as fh:
+    fh.write(b'Hello world!')
+
+###########################
+
+s = b'Hello!'
+print(s[1])  # Виведе: 101 (це ASCII-код символу 'e')
+
+###########################
+
+byte_str = 'some text'.encode()
+print(byte_str)
+
+
+
+# ----------------------------
+# Приклад 72: Перетворення чисел у байт-рядки
+# ----------------------------
+
+# Перетворення списку чисел у байт-рядок
+numbers = [0, 128, 255]
+byte_numbers = bytes(numbers)
+print(byte_numbers)  # Виведе байтове представлення чисел
+
+###########################
+
+for num in [127, 255, 156]:
+  print(hex(num))
+
+
+# ----------------------------
+# Приклад 73: Кодування рядків (ASCII, UTF-8, CP1251)
+# ----------------------------
+
+s = "Привіт!"
+
+utf8 = s.encode()
+print(f"UTF-8: {utf8}") # b'\xd0\x9f\xd1\x80\xd0\xb8\xd0\xb2\xd1\x96\xd1\x82!'
+
+utf16 = s.encode("utf-16")
+print(f"UTF-16: {utf16}")
+
+cp1251 = s.encode("cp1251")
+print(f"CP-1251: {cp1251}") # b'\xcf\xf0\xe8\xe2\xb3\xf2!'
+
+s_from_utf16 = utf16.decode("utf-16") # b'\xff\xfe\x1f\x04@\x048\x042\x04V\x04B\x04!\x00'
+print(s_from_utf16 == s)
+
+###########################
+
+print(b'Hello world!'.decode('utf-16')) # Виведення якщо кодування UTF-8 ми намагаємось декодувати в UTF-16: 效汬⁯潷汲Ⅴ
+
+###########################
+
+# Відкриття текстового файлу з явними вказівками UTF-8 кодування
+with open(FILE_PATH, 'r', encoding='utf-8') as file:
+    content = file.read()
+    print(content)
+
+
+
+# ----------------------------
+# Приклад 74: Масив байтів
+# ----------------------------
+
+byte_array = bytearray(b'Kill Bill')
+byte_array[0] = ord('B')
+byte_array[5] = ord('K')
+print(byte_array) # bytearray(b'Bill Kill')
+
+###########################
+
+byte_array = bytearray(b"Hello")
+byte_array.append(ord("!"))  
+print(byte_array) # bytearray(b'Hello!')
+
+# Метод Decode: 
+
+byte_array = bytearray(b"Hello World")
+string = byte_array.decode("utf-8")
+print(string)  # Виведе: 'Hello World'
+
+# ----------------------------
+# Приклад 75: Порівняння рядків
+# ----------------------------
+string1 = "Hello World"
+string2 = "hello world"
+if string1.lower() == string2.lower():
+    print("Рядки однакові") # Рядки однакові
+else:
+    print("Рядки різні")
+
+# Метод casefold():
+
+german_word = 'straße'  # В нижньому регістрі
+search_word = 'STRASSE'  # В верхньому регістрі
+
+# Порівняння за допомогою lower()
+lower_comparison = german_word.lower() == search_word.lower()
+
+# Порівняння за допомогою casefold()
+casefold_comparison = german_word.casefold() == search_word.casefold()
+
+print(f"Порівняння з lower(): {lower_comparison}") #False
+print(f"Порівняння з casefold(): {casefold_comparison}") #True
+ 
+
+# ----------------------------
+# Приклад 76: Робота з архівами
+# ----------------------------
+
+
+# ----------------------------
+# Приклад 77: Основи модуля pathlib
+# ----------------------------
+from pathlib import PurePath
+
+p = PurePath("/usr/bin/simple.jpg")
+print("Name:", p.name)   # Name: simple.jpg
+print("Suffix:", p.suffix) # Suffix: .jpg
+print("Parent:", p.parent) # Parent: \usr\bin
+
+
+
+from pathlib import Path
+
+p = Path("example.txt") # створюється об'єкт Path, який вказує на файл example.txt
+p.write_text("Hello, world!") # За допомогою методу write_text(), у цей файл записується рядок "Hello, world!".
+print(p.read_text()) # read_text() вміст файлу читається і виводиться на екран.
+print("Exists:", p.exists()) # метод exists() використовується для перевірки існування файлу
+
+# ----------------------------
+# Приклад 77: Створення шляхів
+# ----------------------------
+from pathlib import Path
+
+# Для Unix/Linux
+path_unix = Path("/usr/bin/python3")
+
+# Для Windows
+path_windows = Path("C:/Users/Username/Documents/file.txt")
+
+
+
+
+from pathlib import Path
+
+# Початковий шлях
+base_path = Path("/usr/bin") # додаються додаткові частини - директорія "subdir" та файл "script.py"
+
+# Додавання додаткових частин до шляху
+full_path = base_path / "subdir" / "script.py"
+
+print(full_path)  # Виведе: /usr/bin/subdir/script.py
+
+# ----------------------------
+# Приклад 78: Відносні та абсолютні шляхи
+# ----------------------------
+
+from pathlib import Path
+
+# Перетворення відносного шляху в абсолютний
+relative_path = Path("documents/example.txt")
+absolute_path = relative_path.absolute()
+print(absolute_path)
+
+#методи .absolute() and .relative_to()
+
+from pathlib import Path
+
+# Перетворення відносного шляху в абсолютний
+relative_path = Path("documents/example.txt")
+absolute_path = relative_path.absolute()
+
+current_working_directory = Path("E:\WebDir\Works\Python\python-help-solution\example_for_new_core\l04")
+relative_path = absolute_path.relative_to(current_working_directory)
+print(relative_path)
+
+# ----------------------------
+# Приклад 79: Маніпуляція з компонентами шляху
+# ----------------------------
+from pathlib import Path
+
+# Початковий шлях до файлу
+original_path = Path("documents/example.txt")
+
+# Зміна імені файлу .with_name
+new_path = original_path.with_name("report.txt")
+print(new_path)
+
+
+from pathlib import Path
+
+# Початковий шлях до файлу
+original_path = Path("documents/example.txt")
+
+# Зміна типу файлу .with_suffix()
+new_path = original_path.with_suffix(".md")
+print(new_path)
+
+
+
+
+
+
 
 
 
