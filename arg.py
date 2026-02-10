@@ -5,4 +5,4 @@ def main():
         print(sys.argv[1])
 
 if __name__ == "__main__":
-    main()
+    main() # Під час виклику такого скрипту командою
