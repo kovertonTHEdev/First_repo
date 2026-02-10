@@ -1862,14 +1862,8 @@ print(salary_with_bonus)  # 1015
 
 from utility import nice_function, not_bad
 
-
-from utility.useful.functions import nice_function
-from utility.dummy.functions import not_bad
-
-__all__ = ["nice_function", "not_bad"]
-
-
-from utility import nice_function, not_bad
-
 nice_function()
-not_bad("Test string")
+print(not_bad("This is not bad"))
+
+
+
