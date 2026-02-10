@@ -1,52 +1,31 @@
-import os
-from pathlib import Path
+# ============================================================
+# 1. Твой RUN_INPUT блоки (оставил как есть)
+# ============================================================
 
-FILE_PATH = os.path.join(
-    os.path.dirname(os.path.abspath(__file__)), # старий метод пошуку файла, зустрічається доволі часто
-    "test.txt"
-)
+RUN_INPUT = False
 
-FILE_PATH = Path(__file__).resolve().parent / "test.txt"   #сучасний метод пошуку файла, як os
+print("\nHello World!")
+print("Hello Git")
 
-# ================================
-# 1. Greeting (Вітання)
-# ================================
+if RUN_INPUT:
+    name = input("Enter your name: ").strip()
+    banned_names = ["володимир", "путін", "росія", "росіянин", "тварина"]
 
-RUN_INPUT = False  # Перемикач: якщо False — блоки з input() не виконуються, якщо True — виконуються
+    if name.lower() in banned_names:
+        print("Good evening, we are from Ukraine")
+    else:
+        print(f"Hello, {name}!")
 
-print("Hello World!")  # Виводимо рядок у консоль
-print("Hello Git")     # Виводимо ще один рядок у консоль
-
-
-# ================================
-# 2. Name check (Перевірка імені)
-# ================================
-
-if RUN_INPUT:  # Умова: цей блок виконається тільки якщо RUN_INPUT == True
-    name = input("Enter your name: ").strip()  # input() зчитує текст (str), strip() прибирає пробіли по краях
-    banned_names = ["володимир", "путін", "росія", "росіянин", "тварина"]  # Список (list) заборонених імен
-
-    if name.lower() in banned_names:  # lower() робить нижній регістр; in перевіряє, чи є елемент у списку
-        print("Good evening, we are from Ukraine")  # Вивід повідомлення, якщо ім'я заборонене
-    else:  # Інакше (якщо ім'я не в списку)
-        print(f"Hello, {name}!")  # f-рядок: підставляє значення змінної name в текст
+if RUN_INPUT:
+    age = int(input("\nHow old are you? "))
+    if age < 18:
+        print("Access denied")
+    else:
+        print("Access granted")
 
 
 # ================================
-# 3. Age check (Перевірка віку)
-# ================================
-
-if RUN_INPUT:  # Блок працює тільки якщо RUN_INPUT == True
-    age = int(input("\nHow old are you? "))  # input() повертає str; int(...) перетворює у ціле число
-
-    if age < 18:  # Перевіряємо умову: якщо вік менший за 18
-        print("Access denied")  # Якщо менше 18 — доступ заборонено
-    else:  # В іншому випадку (18 і більше)
-        print("Access granted")  # Доступ дозволено
-
-
-# ================================
-# 4. Square perimeter calculation
+# 2. Square perimeter calculation
 # (Обчислення периметра квадрата)
 # ================================
 
@@ -57,7 +36,7 @@ if RUN_INPUT:  # Виконується тільки при RUN_INPUT == True
 
 
 # ================================
-# 5. Shopping calculation
+# 3. Shopping calculation
 # (Розрахунок вартості покупок)
 # ================================
 
@@ -1761,421 +1740,13 @@ fruits = re.split(pattern, text)
 print(fruits) # ['apple', 'banana', 'mango', 'orange', 'kiwi']
 
 
-# ----------------------------
-# Тема 69: Робота з файлами
-# ----------------------------
 
-fh = open(FILE_PATH)
-# операції над файлом
-fh.close()  # Закривати файл обов'язково
+# mymodule.py
+def say_hello(name):
+    return f"Hello, {name}!"
 
-###########################
+# main.py
 
-fh = open(FILE_PATH, 'w')
-symbols_written = fh.write('hello!')
-print(symbols_written)  # 6
-fh.close()
+import mymodule
 
-fh = open(FILE_PATH, 'w+')
-fh.write('hello!')
-fh.seek(0)
-
-first_two_symbols = fh.read(2)
-print(first_two_symbols)  # 'he'
-
-fh.close()
-
-###########################
-
-fh = open(FILE_PATH, 'w')
-fh.write('hello!')
-fh.close()
-
-fh = open(FILE_PATH, 'r')
-while True:
-    symbol = fh.read(1)
-    if len(symbol) == 0:
-        break
-    print(symbol)
-
-fh.close()
-
-###########################
-
-fh = open(FILE_PATH, 'w')
-fh.write('first line\nsecond line\nthird line')
-fh.close()
-
-fh = open(FILE_PATH, 'r')
-while True:
-    line = fh.readline()
-    if not line:
-        break
-    print(line)
-
-fh.close()
-
-###########################
-
-fh = open(FILE_PATH, 'w')
-fh.write('first line\nsecond line\nthird line') # Зверніть увагу, що всі методи, які читають файли порядково, залишають (не видаляють) символ перенесення рядка \n.
-fh.close()
-
-fh = open(FILE_PATH, 'r')
-lines = fh.readlines()
-print(lines)
-
-fh.close()
-
-###########################
-
-fh = open(FILE_PATH, "w")
-fh.write("first line\nsecond line\nthird line")
-fh.close()
-
-fh = open(FILE_PATH, "r")
-lines = [el.strip() for el in fh.readlines()] # Тут ми для видалення символу переносу рядка \n використали метод strip()
-print(lines)
-
-fh.close()
-
-###########################
-
-fh = open(FILE_PATH, 'w+')
-fh.write('hello!')
-
-fh.seek(1) # ми перемістили курсор на другий символ у файлі
-second = fh.read(1)
-print(second)  # 'e'
-
-fh.close()
-
-###########################
-
-fh = open(FILE_PATH, "w+")
-fh.write("hello!")
-
-position = fh.tell()
-print(position)  # 6
-
-fh.seek(1)
-position = fh.tell()
-print(position)  # 1
-
-fh.read(2)
-position = fh.tell()
-print(position)  # 3
-
-fh.close()
-# ----------------------------
-# Тема 70: Менеджер контексту
-# ----------------------------
-
-fh = open(FILE_PATH, 'w')
-try:
-    # Виконання операцій з файлом
-    fh.write('Some data')
-finally:
-    # Закриття файлу в блоці finally гарантує, що файл закриється навіть у разі помилки
-    fh.close()
-
-########################### 
-# альтеранатива try and finally, для роботи з файлами для простішого коду:
-
-with open(FILE_PATH, 'w') as fh:
-    # Виконання операцій з файлом
-    fh.write('Some data')
-# Файл автоматично закриється після виходу з блоку with
-
-###########################
-
-with open(FILE_PATH, "w") as fh:
-    fh.write("first line\nsecond line\nthird line")
-
-with open(FILE_PATH, "r") as fh:
-    lines = [el.strip() for el in fh.readlines()]
-
-print(lines)
-
-
-# ----------------------------
-# Тема 71: Робота з нетекстовими файлами у Python
-# ----------------------------
-
-with open('raw_data.bin', 'wb') as fh:
-    fh.write(b'Hello world!')
-
-###########################
-
-s = b'Hello!'
-print(s[1])  # Виведе: 101 (це ASCII-код символу 'e')
-
-###########################
-
-byte_str = 'some text'.encode()
-print(byte_str)
-
-
-
-# ----------------------------
-# Тема 72: Перетворення чисел у байт-рядки
-# ----------------------------
-
-# Перетворення списку чисел у байт-рядок
-numbers = [0, 128, 255]
-byte_numbers = bytes(numbers)
-print(byte_numbers)  # Виведе байтове представлення чисел
-
-###########################
-
-for num in [127, 255, 156]:
-  print(hex(num))
-
-
-# ----------------------------
-# Тема 73: Кодування рядків (ASCII, UTF-8, CP1251)
-# ----------------------------
-
-s = "Привіт!"
-
-utf8 = s.encode()
-print(f"UTF-8: {utf8}") # b'\xd0\x9f\xd1\x80\xd0\xb8\xd0\xb2\xd1\x96\xd1\x82!'
-
-utf16 = s.encode("utf-16")
-print(f"UTF-16: {utf16}")
-
-cp1251 = s.encode("cp1251")
-print(f"CP-1251: {cp1251}") # b'\xcf\xf0\xe8\xe2\xb3\xf2!'
-
-s_from_utf16 = utf16.decode("utf-16") # b'\xff\xfe\x1f\x04@\x048\x042\x04V\x04B\x04!\x00'
-print(s_from_utf16 == s)
-
-###########################
-
-print(b'Hello world!'.decode('utf-16')) # Виведення якщо кодування UTF-8 ми намагаємось декодувати в UTF-16: 效汬⁯潷汲Ⅴ
-
-###########################
-
-# Відкриття текстового файлу з явними вказівками UTF-8 кодування
-with open(FILE_PATH, 'r', encoding='utf-8') as file:
-    content = file.read()
-    print(content)
-
-
-
-# ----------------------------
-# Тема 74: Масив байтів
-# ----------------------------
-
-byte_array = bytearray(b'Kill Bill')
-byte_array[0] = ord('B')
-byte_array[5] = ord('K')
-print(byte_array) # bytearray(b'Bill Kill')
-
-###########################
-
-byte_array = bytearray(b"Hello")
-byte_array.append(ord("!"))  
-print(byte_array) # bytearray(b'Hello!')
-
-# Метод Decode: 
-
-byte_array = bytearray(b"Hello World")
-string = byte_array.decode("utf-8")
-print(string)  # Виведе: 'Hello World'
-
-# ----------------------------
-# Тема 75: Порівняння рядків
-# ----------------------------
-string1 = "Hello World"
-string2 = "hello world"
-if string1.lower() == string2.lower():
-    print("Рядки однакові") # Рядки однакові
-else:
-    print("Рядки різні")
-
-# Метод casefold():
-
-german_word = 'straße'  # В нижньому регістрі
-search_word = 'STRASSE'  # В верхньому регістрі
-
-# Порівняння за допомогою lower()
-lower_comparison = german_word.lower() == search_word.lower()
-
-# Порівняння за допомогою casefold()
-casefold_comparison = german_word.casefold() == search_word.casefold()
-
-print(f"Порівняння з lower(): {lower_comparison}") #False
-print(f"Порівняння з casefold(): {casefold_comparison}") #True
- 
-
-# ----------------------------
-# Тема 76: Робота з архівами
-# ----------------------------
-
-
-# ----------------------------
-# Тема 77: Основи модуля pathlib
-# ----------------------------
-from pathlib import PurePath
-
-p = PurePath("/usr/bin/simple.jpg")
-print("Name:", p.name)   # Name: simple.jpg
-print("Suffix:", p.suffix) # Suffix: .jpg
-print("Parent:", p.parent) # Parent: \usr\bin
-
-
-
-from pathlib import Path
-
-p = Path("example.txt") # створюється об'єкт Path, який вказує на файл example.txt
-p.write_text("Hello, world!") # За допомогою методу write_text(), у цей файл записується рядок "Hello, world!".
-print(p.read_text()) # read_text() вміст файлу читається і виводиться на екран.
-print("Exists:", p.exists()) # метод exists() використовується для перевірки існування файлу
-
-# ----------------------------
-# Тема 77: Створення шляхів
-# ----------------------------
-from pathlib import Path
-
-# Для Unix/Linux
-path_unix = Path("/usr/bin/python3")
-
-# Для Windows
-path_windows = Path("C:/Users/Username/Documents/file.txt")
-
-
-
-
-from pathlib import Path
-
-# Початковий шлях
-base_path = Path("/usr/bin") # додаються додаткові частини - директорія "subdir" та файл "script.py"
-
-# Додавання додаткових частин до шляху
-full_path = base_path / "subdir" / "script.py"
-
-print(full_path)  # Виведе: /usr/bin/subdir/script.py
-
-# ----------------------------
-# Тема 78: Відносні та абсолютні шляхи
-# ----------------------------
-
-from pathlib import Path
-
-# Перетворення відносного шляху в абсолютний
-relative_path = Path("documents/example.txt")
-absolute_path = relative_path.absolute()
-print(absolute_path)
-
-#методи .absolute() and .relative_to()
-
-from pathlib import Path
-
-# Перетворення відносного шляху в абсолютний
-relative_path = Path("documents/example.txt")
-absolute_path = relative_path.absolute()
-
-from pathlib import Path
-
-current_working_directory = Path("C:/Users/User/OneDrive/Desktop/Projects/vscode-basics/project/First_repo")
-relative_path = absolute_path.relative_to(current_working_directory)
-print(relative_path)
-
-# ----------------------------
-# Тема 79: Маніпуляція з компонентами шляху
-# ----------------------------
-from pathlib import Path
-
-# Початковий шлях до файлу
-original_path = Path("documents/example.txt")
-
-# Зміна імені файлу .with_name
-new_path = original_path.with_name("report.txt")
-print(new_path)
-
-
-from pathlib import Path
-
-# Початковий шлях до файлу
-original_path = Path("documents/example.txt")
-
-# Зміна типу файлу .with_suffix()
-new_path = original_path.with_suffix(".md") # У цьому прикладі, метод with_suffix(".md") додає розширення .md до шляху.
-print(new_path)
-
-
-
-from pathlib import Path
-
-original_path = Path("documents/example.txt")
-
-# Створює новий об'єкт Path з іншим ім'ям файлу
-new_path = original_path.with_name("report.txt")
-
-print(original_path)
-print(new_path) # У цьому прикладі, original_path залишається незмінним, а new_path є новим об'єктом Path, який відображає шлях з новим іменем файлу.
-
-
-
-from pathlib import Path
-
-original_path = Path("documents/example.txt")
-
-# Створює новий об'єкт Path з іншим ім'ям файлу
-new_path = original_path.with_name("report.txt")
-original_path.rename(new_path)
-
-
-
-# ----------------------------
-# Тема 79: Читання та запис файлів
-# ----------------------------
-
-from pathlib import Path
-
-# Створення об'єкту Path для файлу
-file_path = Path("example.txt")
-
-# Запис тексту у файл
-file_path.write_text("Привіт світ!", encoding="utf-8") # Тут рядок "Привіт світ!" записується в файл example.txt.
-
-
-
-from pathlib import Path
-
-# Створення об'єкту Path для файлу
-file_path = Path("example.txt")
-
-# Читання тексту з файлу
-text = file_path.read_text(encoding="utf-8") # У цьому прикладі текст з файлу example.txt читається за допомогою read_text() та виводиться на екран.
-print(text)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+print(mymodule.say_hello("World"))
