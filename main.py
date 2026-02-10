@@ -1,3 +1,14 @@
+from pathlib import Path
+import sys
+
+BASE = Path(__file__).resolve().parent
+if str(BASE) not in sys.path:
+    sys.path.insert(0, str(BASE))
+
+import mymodule
+
+print(mymodule.say_hello("World"))
+
 # ============================================================
 # 1. Твой RUN_INPUT блоки (оставил как есть)
 # ============================================================
