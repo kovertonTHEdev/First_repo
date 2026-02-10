@@ -1754,5 +1754,94 @@ import mymodule
 
 print(mymodule.say_hello("World"))
 
-import os
-print("CWD =", os.getcwd())
+
+
+# main.py
+from mymodule import say_hello
+
+print(say_hello("World"))
+
+
+
+# main.py
+from mymodule import say_hello as greeting  # змінити назву функції
+
+print(greeting("World"))
+
+# ----------------------------
+# Тема 83: Функція dir()
+# ----------------------------
+
+# main.py
+from mymodule import say_hello as greeting
+
+print(dir()) # вона повертає список назв усіх об'єктів (змінних, функцій, класів тощо), доступних у поточній області видимості.
+print(greeting("World"))
+
+# ----------------------------
+# Тема 84: Службова змінна __name__
+# ----------------------------
+def say_hello(name):
+    print(f'Hello, {name}')
+
+print("You imported hello.py")
+say_hello('user')
+
+
+
+# main.py
+from mymodule import say_hello as greeting # Під час імпорту from mymodule import say_hello, ми виконали автоматично сам скрипт mymodule.py
+
+print(greeting("World"))
+
+
+
+def say_hello(name):
+    print(f'Hello, {name}')
+
+if __name__ == '__main__':
+    print("You imported hello.py")
+    say_hello('user')
+
+
+
+def say_hello(name):
+    print(f'Hello {name}')
+
+def main():
+    print("You imported hello.py")
+    say_hello('user')
+
+if __name__ == '__main__':
+    main()
+
+
+# ----------------------------
+# Тема 85: Модуль sys
+# ----------------------------
+import sys
+import mymodule
+
+print(sys.modules["mymodule"]) # c:\\Users\\User\\OneDrive\\Desktop\\Projects\\vscode-basics;\\project\\First_repo\\mymodule.py'
+
+
+
+import sys
+import mymodule
+
+print(sys.modules.keys()) # dict_keys показує ключі та фунції, модулі
+
+
+
+import sys
+import mymodule
+
+print(sys.builtin_module_names) # Отримати список модулів
+
+
+
+
+
+
+
+
