@@ -1860,9 +1860,16 @@ salary_with_bonus = add_bonus(salary, bonus)
 print(salary_with_bonus)  # 1015
 
 
+from utility import nice_function, not_bad
 
 
-import utility
+from utility.useful.functions import nice_function
+from utility.dummy.functions import not_bad
 
-utility.useful.functions.nice_function()
-utility.dummy.functions.not_bad("Test string")
+__all__ = ["nice_function", "not_bad"]
+
+
+from utility import nice_function, not_bad
+
+nice_function()
+not_bad("Test string")
