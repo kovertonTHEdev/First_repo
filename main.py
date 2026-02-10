@@ -1862,3 +1862,7 @@ print(salary_with_bonus)  # 1015
 
 
 
+import utility
+
+utility.useful.functions.nice_function()
+utility.dummy.functions.not_bad("Test string")
