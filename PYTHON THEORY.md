@@ -2938,4 +2938,81 @@ pip install package_name
 Ці встановлені бібліотеки будуть ізольовані від глобального середовища Python.
 Щоб повернутися до системного Python, виконайте в консолі:
 
- deactivate
+ deactivate - Деактивація
+
+
+ Як бачимо код не виконується, бо ми вийшли з віртуального середовища. Повернемось назад в віртуальне середовище виконав .\.venv\Scripts\Activate.ps1 - Активація
+
+☝ До речі код може виконатися і без віртуального середовища, якщо пакет colorama був встановлений глобально на комп'ютері. Тоді звісно помилки не буде бо системний Python знає про цей пакет.
+
+
+Структура проєкту. Принцип KISS
+
+Якщо не враховувати принцип KISS то функція могла бути наступного вигляду:
+
+def is_even(number: int) -> bool:
+    if number % 2 == 0:
+        return True
+    else:
+        return False
+
+Цей код є коректним та працює, але він містить зайву логіку. Блок else та явне повернення True або False не є необхідними. Якщо ми застосуємо принцип KISS то функцію is_even ми запише так:
+
+def is_even(number: int) -> bool:
+    return number % 2 == 0
+
+Тут ми спростили функцію, видаливши непотрібну конструкцію if-else. У цій версії коду ми прямо повертаємо результат виразу number % 2 == 0, який є True або False. Функція стає коротшою, простішою та легшою для розуміння.
+
+
+def is_palindrome(s: str) -> bool:
+    new_s = ""
+		for char in s:
+		    if char.isalnum():
+		        new_s += char.lower()
+		
+		s = new_s
+    length = len(s)
+    for i in range(length // 2):
+        if s[i] != s[length - i - 1]:
+            return False
+    return True
+
+# Використання функції
+print(is_palindrome("Козак з казок"))  # Виведе: True
+
+
+
+# Його спрощена версія: 
+def is_palindrome(s: str) -> bool:
+    new_s = ""
+    for char in s:
+        if char.isalnum():
+            new_s += char.lower()
+
+    s = new_s
+    return s == s[::-1]
+
+# Використання функції
+print(is_palindrome("Козак з казок"))  # Виведе: True
+
+
+Принцип Dry. Він закликає розробників уникати повторення однакових частин коду у різних частинах програми
+
+Розглянемо наступний приклад.
+
+# Розрахунок площі 
+length1, width1 = 5, 10
+area1 = length1 * width1
+
+# Багато різного коду
+
+length2, width2 = 7, 12
+area2 = length2 * width2
+
+Щоб застосувати принцип DRY нам потрібно повторюваний код помістити в функцію.
+
+def calculate_area(length: float, width: float) -> float:
+    return length * width
+
+area1 = calculate_area(5, 10)
+area2 = calculate_area(7, 12)
