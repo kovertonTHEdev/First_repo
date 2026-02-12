@@ -1,5 +1,5 @@
 def total_salary (SALARIES_FILE): 
-        with open(SALARIES_FILE, 'r', encoding='utf-8') as file: #відкриття файлу
+        with open(SALARIES_FILE, "r", encoding="UTF-8") as file: #відкриття файлу
             total = 0 # акумулятор
             count = 0 # акумулятор
             for line in file:
