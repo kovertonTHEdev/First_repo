@@ -3016,3 +3016,15 @@ def calculate_area(length: float, width: float) -> float:
 
 area1 = calculate_area(5, 10)
 area2 = calculate_area(7, 12)
+
+
+Єдина точка входу проєкту
+
+from my_module import my_function
+
+def main():
+    my_function()
+
+if __name__ == "__main__": #Потім ми перевіряємо, чи запущено цей файл як основний скрипт __name__ == "__main__", і якщо так, ми запускаємо функцію main()
+    main()
+
