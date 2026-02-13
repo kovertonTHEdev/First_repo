@@ -1,0 +1,4 @@
+ENEMY: robot
+DAMAGE: 15
+ENEMY: drone
+DAMAGE: 7
