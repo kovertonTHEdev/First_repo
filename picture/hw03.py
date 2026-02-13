@@ -14,14 +14,13 @@ if not second_el_pathobj.exists():
 if not second_el_pathobj.is_dir():
     print("Цієї директорії не існує")
     sys.exit(1) 
-print(second_el_pathobj.resolve())
 
 def function(path: Path, depth: int = 0):
     indent = " " * 4 * depth
     try:
         elements = sorted(path.iterdir(), key=lambda p: p.name)
     except PermissionError:
-        print(f"У вас не має доступу до {path.name}")
+        print(f"{indent}У вас не має доступу до {path.name}")
         return
     for file in elements:
         if file.is_dir():
