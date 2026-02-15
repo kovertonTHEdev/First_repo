@@ -30,7 +30,9 @@ if RUN_INPUT:
 # ================================
 
 if RUN_INPUT:  # Виконується тільки при RUN_INPUT == True
-    side = float(input("\nEnter side length: "))  # float(...) перетворює введення у число з дробом
+    side = float(
+        input("\nEnter side length: ")
+    )  # float(...) перетворює введення у число з дробом
     perimeter = 4 * side  # Математика: периметр квадрата = 4 * сторона
     print(f"Perimeter of the square is {perimeter}")  # Виводимо результат через f-рядок
 
@@ -42,23 +44,33 @@ if RUN_INPUT:  # Виконується тільки при RUN_INPUT == True
 
 if RUN_INPUT:
     price_per_croissant = 1.04  # Ціна за 1 круасан (float)
-    price_per_glass = 0.34      # Ціна за 1 склянку (float)
+    price_per_glass = 0.34  # Ціна за 1 склянку (float)
     price_per_coffee_pack = 4.42  # Ціна за 1 упаковку кави (float)
 
-    num_croissants = int(input("\nEnter quantity of croissants: "))  # Кількість круасанів (int)
-    num_glasses = int(input("Enter quantity of drinking glasses: "))  # Кількість склянок (int)
-    num_coffee_packs = int(input("Enter quantity of coffee packs: "))  # Кількість упаковок кави (int)
+    num_croissants = int(
+        input("\nEnter quantity of croissants: ")
+    )  # Кількість круасанів (int)
+    num_glasses = int(
+        input("Enter quantity of drinking glasses: ")
+    )  # Кількість склянок (int)
+    num_coffee_packs = int(
+        input("Enter quantity of coffee packs: ")
+    )  # Кількість упаковок кави (int)
 
     total_cost = (  # Загальна вартість (float); дужки дають писати вираз у кілька рядків
-        num_croissants * price_per_croissant +  # Множимо кількість на ціну
-        num_glasses * price_per_glass +         # Множимо кількість на ціну
-        num_coffee_packs * price_per_coffee_pack  # Множимо кількість на ціну
+        num_croissants * price_per_croissant  # Множимо кількість на ціну
+        + num_glasses * price_per_glass  # Множимо кількість на ціну
+        + num_coffee_packs * price_per_coffee_pack  # Множимо кількість на ціну
     )
 
     total_dollars = int(total_cost)  # Беремо цілу частину (долари) від загальної суми
-    total_cents = int(total_cost * 100) % 100  # Переводимо в "центи", беремо останні 2 цифри через %
+    total_cents = (
+        int(total_cost * 100) % 100
+    )  # Переводимо в "центи", беремо останні 2 цифри через %
 
-    print(f"Total price: {total_dollars} dollars and {total_cents} cents")  # Виводимо суму
+    print(
+        f"Total price: {total_dollars} dollars and {total_cents} cents"
+    )  # Виводимо суму
 
 
 # ================================
@@ -67,7 +79,9 @@ if RUN_INPUT:
 # ================================
 
 my_list = [1, 2, 3, 4, 2, 2, 5, 2]  # Створюємо список (list) з числами
-count_2 = my_list.count(2)  # Метод count(x) рахує, скільки разів x зустрічається у списку
+count_2 = my_list.count(
+    2
+)  # Метод count(x) рахує, скільки разів x зустрічається у списку
 print(count_2)  # Виводимо кількість двійок (очікувано 4)
 
 my_list = [1, 2, 3, 4, 5]  # Новий список
@@ -91,7 +105,9 @@ print(words)  # Виводимо відсортований список слі�
 # ================================
 
 nums = [3, 1, 4, 1, 5, 9, 2]  # Оригінальний список
-sorted_nums = sorted(nums)  # sorted(...) повертає новий відсортований список, НЕ змінює nums
+sorted_nums = sorted(
+    nums
+)  # sorted(...) повертає новий відсортований список, НЕ змінює nums
 print(sorted_nums)  # Виводимо новий список
 
 sorted_nums_desc = sorted(nums, reverse=True)  # Сортування за спаданням у новий список
@@ -107,8 +123,14 @@ print(sorted_words)  # Виводимо
 # (Робота зі словником)
 # ================================
 
-my_dict = {"name": "Alice", "age": 25, "city": "New York"}  # Словник (dict): ключ -> значення
-print(my_dict["city"])  # Доступ до значення за ключем "city" (якщо ключа нема — буде помилка KeyError)
+my_dict = {
+    "name": "Alice",
+    "age": 25,
+    "city": "New York",
+}  # Словник (dict): ключ -> значення
+print(
+    my_dict["city"]
+)  # Доступ до значення за ключем "city" (якщо ключа нема — буде помилка KeyError)
 
 my_dict["age"] = 26  # Заміна значення за існуючим ключем "age"
 my_dict["email"] = "alice@example.com"  # Додавання нового ключа і значення
@@ -118,7 +140,7 @@ del my_dict["age"]  # del видаляє пару ключ-значення за
 print(my_dict)  # Вивід після видалення
 
 print("name" in my_dict)  # in для словника перевіряє наявність КЛЮЧА
-print("age" in my_dict)   # Перевіряємо, чи є ключ "age"
+print("age" in my_dict)  # Перевіряємо, чи є ключ "age"
 
 
 # ================================
@@ -126,7 +148,11 @@ print("age" in my_dict)   # Перевіряємо, чи є ключ "age"
 # (Основи множин)
 # ================================
 
-numbers = {1, 2, 3}  # Множина (set): зберігає тільки унікальні елементи (без дублікатів)
+numbers = {
+    1,
+    2,
+    3,
+}  # Множина (set): зберігає тільки унікальні елементи (без дублікатів)
 numbers.add(4)  # add(...) додає елемент у множину
 print(numbers)  # Виводимо множину (порядок може бути різний)
 
@@ -135,7 +161,9 @@ numbers.remove(3)  # remove(...) видаляє елемент; якщо еле�
 print(numbers)  # Вивід
 
 numbers = {1, 2, 3}  # Нова множина
-numbers.discard(2)  # discard(...) видаляє елемент; якщо елемента немає — помилки не буде
+numbers.discard(
+    2
+)  # discard(...) видаляє елемент; якщо елемента немає — помилки не буде
 print(numbers)  # Вивід
 
 
@@ -151,7 +179,9 @@ print(a & b)  # Оператор & робить те саме: перетин
 
 a = {1, 2, 3}
 b = {3, 4, 5}
-print(a.difference(b))  # difference(...) повертає різницю: елементи, що є в a, але нема в b
+print(
+    a.difference(b)
+)  # difference(...) повертає різницю: елементи, що є в a, але нема в b
 print(a - b)  # Оператор - робить те саме
 
 a = {1, 2, 3}
@@ -200,8 +230,12 @@ print(s.startswith("Bi"))  # startswith(...) перевіряє, чи почин
 s = "hello.jpg"
 print(s.endswith("jpg"))  # endswith(...) перевіряє, чи закінчується рядок на "jpg"
 
-s = "hello world".capitalize()  # capitalize() робить першу букву великою, решту — малими
-print(s.capitalize())  # (увага: тут ти викликаєш capitalize() вдруге — буде той самий результат)
+s = (
+    "hello world".capitalize()
+)  # capitalize() робить першу букву великою, решту — малими
+print(
+    s.capitalize()
+)  # (увага: тут ти викликаєш capitalize() вдруге — буде той самий результат)
 
 s = "hello world".title()  # title() робить першу букву кожного слова великою
 print(s.title())  # (увага: тут теж виклик вдруге — результат той самий)
@@ -215,11 +249,17 @@ name = "John"  # Змінна-рядок
 print("Hello, {}!".format(name))  # format(...) підставляє значення у {}
 
 age = 25
-print("Hello, {}. You are {} years old.".format(name, age))  # Кілька підстановок по порядку
+print(
+    "Hello, {}. You are {} years old.".format(name, age)
+)  # Кілька підстановок по порядку
 
-print("Hello, {name}. You are {age} years old.".format(name="Jane", age=30))  # Іменовані параметри
+print(
+    "Hello, {name}. You are {age} years old.".format(name="Jane", age=30)
+)  # Іменовані параметри
 
-print("Hello, {1}. You are {0} years old.".format(age, name))  # Підстановка за індексами
+print(
+    "Hello, {1}. You are {0} years old.".format(age, name)
+)  # Підстановка за індексами
 
 
 # ================================
@@ -351,7 +391,7 @@ for i in some_iterable:  # Перебір елементів списку
 
 odd_numbers = [1, 3, 5, 7, 9]
 for i in odd_numbers:
-    print(i ** 2)  # ** — піднесення до степеня (квадрат числа)
+    print(i**2)  # ** — піднесення до степеня (квадрат числа)
 
 
 # ================================
@@ -418,11 +458,7 @@ for number, letter in zip(list1, list2):  # zip зупиниться на дов
 # 24. Цикли та словники
 # ================================
 
-numbers = {  # Словник: ключ -> значення
-    1: "one",
-    2: "two",
-    3: "three"
-}
+numbers = {1: "one", 2: "two", 3: "three"}  # Словник: ключ -> значення
 
 for key in numbers:  # Перебір словника за замовчуванням проходить по ключах
     print(key)
@@ -456,9 +492,11 @@ finally:  # finally виконується завжди (було виключе
 # 25. Створення та виклик функцій
 # ================================
 
+
 def say_hello():  # def створює функцію без параметрів
     """Печатает приветствие."""  # Докстрінг: опис функції
     print("Привіт, Світ!")  # Тіло функції
+
 
 say_hello()  # Виклик функції
 say_hello()  # Повторний виклик
@@ -468,6 +506,7 @@ say_hello()  # Повторний виклик
 # 26. Аргумент функції
 # ================================
 
+
 def print_max(a, b):  # Функція з двома параметрами a і b
     """Печатает, какое число больше (или что они равны)."""
     if a > b:
@@ -476,6 +515,7 @@ def print_max(a, b):  # Функція з двома параметрами a і
         print(a, "дорівнює", b)
     else:
         print(b, "максимально")
+
 
 print_max(3, 4)  # Передаємо аргументи 3 і 4
 
@@ -488,27 +528,36 @@ print_max(x, y)  # Передаємо значення змінних
 # 27. Повернення результату
 # ================================
 
-def add_numbers(num1: int, num2: int) -> int:  # Підказки типів: int -> int (не обов'язково для роботи)
+
+def add_numbers(
+    num1: int, num2: int
+) -> int:  # Підказки типів: int -> int (не обов'язково для роботи)
     """Возвращает сумму двух чисел."""
     total = num1 + num2  # Обчислюємо суму
     return total  # return повертає значення з функції
 
+
 result = add_numbers(5, 10)  # Зберігаємо результат виклику
 print(result)  # Вивід
+
 
 def greet(name: str) -> str:
     """Возвращает строку-приветствие по имени."""
     return f"Привіт, {name}!"  # Повертаємо рядок
 
+
 def greet(name: str) -> str:  # (дублікат) функція з тим самим ім'ям перекриє попередню
     return f"Привіт, {name}!"
+
 
 greeting = greet("Олексій")  # Викликаємо функцію
 print(greeting)  # Вивід
 
+
 def is_even(num: int) -> bool:
     """Возвращает True, если число чётное, иначе False."""
     return num % 2 == 0  # %2 дає остачу; якщо 0 — парне
+
 
 check_even = is_even(4)  # Перевірка
 print(check_even)  # Вивід True
@@ -518,27 +567,33 @@ print(check_even)  # Вивід True
 # 28. Принципи змінності об'єктів у Python
 # ================================
 
+
 def modify_string(original: str) -> str:
     """Показує, що рядок незмінний (immutable): повертаємо новий рядок."""
     original = "змінено"  # Всередині функції змінюємо локальну змінну original
     return original  # Повертаємо нове значення
 
+
 str_var = "оригінал"
 print(modify_string(str_var))  # Виведе "змінено" (те, що повернула функція)
 print(str_var)  # Виведе "оригінал" (оригінальна змінна не змінилась)
+
 
 def modify_list_inplace(lst: list) -> None:
     """Список змінний (mutable): можемо змінити його напряму."""
     lst.append(4)  # append змінює список "на місці"
 
+
 my_list = [1, 2, 3]
 modify_list_inplace(my_list)  # Після виклику my_list зміниться
 print(my_list)  # [1, 2, 3, 4]
+
 
 def modify_list_copy(lst: list) -> None:
     """Якщо зробити копію — зміниться копія, а не оригінал."""
     lst = lst.copy()  # copy() створює новий список
     lst.append(4)  # Змінюємо копію
+
 
 my_list = [1, 2, 3]
 modify_list_copy(my_list)  # Оригінал не зміниться
@@ -549,6 +604,7 @@ print(my_list)  # [1, 2, 3]
 # 29. Задача на функцію
 # ================================
 
+
 def string_to_codes(string: str) -> dict:
     """Повертає словник: символ -> його Unicode-код (ord), без повторів."""
     codes = {}  # Порожній словник для результату
@@ -556,6 +612,7 @@ def string_to_codes(string: str) -> dict:
         if ch not in codes:  # Перевіряємо, чи символ ще не був ключем у словнику
             codes[ch] = ord(ch)  # ord(...) повертає код символу; записуємо у словник
     return codes  # Повертаємо готовий словник
+
 
 result = string_to_codes("Hello world!")  # Викликаємо функцію
 print(result)  # Вивід
@@ -567,12 +624,14 @@ print(result)  # Вивід
 
 x = 50  # Глобальна змінна
 
+
 def func() -> None:
     x = 2  # Локальна змінна x (не змінює глобальну)
-    print('Зміна локального x на', x)
+    print("Зміна локального x на", x)
+
 
 func()  # Виклик функції
-print('Глобальний x як і раніше', x)  # Глобальний x залишився 50
+print("Глобальний x як і раніше", x)  # Глобальний x залишився 50
 
 
 # ================================
@@ -581,55 +640,67 @@ print('Глобальний x як і раніше', x)  # Глобальний 
 
 x = 50  # Глобальна змінна
 
+
 def func():
     global x  # global дозволяє змінювати глобальну змінну всередині функції
-    print('x дорівнює', x)
+    print("x дорівнює", x)
     x = 2  # Тут ми змінюємо саме глобальний x
-    print('Змінюємо глобальне значення x на', x)
+    print("Змінюємо глобальне значення x на", x)
+
 
 func()
-print('Значення x складає', x)  # Тепер x = 2
+print("Значення x складає", x)  # Тепер x = 2
 
 
 # ================================
 # 31. Ключові аргументи функції
 # ================================
 
+
 def greet(name, message="Привіт"):  # message має значення за замовчуванням
     print(f"{message}, {name}!")  # Вивід привітання
+
 
 greet("Олексій")  # Виклик: message буде "Привіт"
 greet("Марія", message="Добрий день")  # Виклик з іменованим аргументом
 
+
 def func(a, b=5, c=10):
-    print('a дорівнює', a,', b дорівнює', b,', а c дорівнює', c)
+    print("a дорівнює", a, ", b дорівнює", b, ", а c дорівнює", c)
+
 
 func(3, 7)  # a=3, b=7, c=10
 func(25, c=24)  # a=25, b=5, c=24
 func(c=50, a=100)  # a=100, b=5, c=50
 
+
 def say(message, times=1):
     print(message * times)  # * для рядка повторює його times разів
 
-say('Привіт')
-say('Світ', 5)
+
+say("Привіт")
+say("Світ", 5)
 
 
 # ================================
 # 32. Тема використання параметру *args
 # ================================
 
+
 def print_all_args(*args):  # *args збирає всі позиційні аргументи у кортеж (tuple)
     for arg in args:  # Перебираємо всі аргументи
         print(arg)  # Виводимо кожен
 
-print_all_args(1, 'hello', True)  # Передали 3 аргументи
+
+print_all_args(1, "hello", True)  # Передали 3 аргументи
+
 
 def concatenate(*args) -> str:
     result = ""  # Початковий порожній рядок
     for arg in args:  # Перебираємо всі передані рядки
         result += arg  # Додаємо до результату
     return result  # Повертаємо склеєний рядок
+
 
 print(concatenate("Hello", " ", "world", "!"))
 
@@ -638,15 +709,19 @@ print(concatenate("Hello", " ", "world", "!"))
 # 33. Тема використання параметру *args та **kwargs
 # ================================
 
+
 def greet(**kwargs):  # **kwargs збирає всі іменовані аргументи у словник (dict)
     for key, value in kwargs.items():  # items() дає пари (ключ, значення)
         print(f"{key}: {value}")  # Вивід кожної пари
 
+
 greet(name="Alice", age=25)  # Передаємо іменовані аргументи
+
 
 def example_function(*args, **kwargs):
     print("Позиційні аргументи:", args)  # args — кортеж позиційних аргументів
     print("Ключові аргументи:", kwargs)  # kwargs — словник іменованих аргументів
+
 
 example_function(1, 2, 3, name="Alice", age=25)
 
@@ -655,19 +730,23 @@ example_function(1, 2, 3, name="Alice", age=25)
 # 34. Рекурсія
 # ================================
 
+
 def factorial(n):
     if n == 0:  # Базовий випадок: коли n == 0, зупиняємо рекурсію
         return 1
     else:
-        return n * factorial(n-1)  # Рекурсивний випадок: викликаємо factorial ще раз
+        return n * factorial(n - 1)  # Рекурсивний випадок: викликаємо factorial ще раз
+
 
 print(factorial(5))  # 5*4*3*2*1 = 120
+
 
 def fibonacci(n):
     if n <= 1:  # Базовий випадок: 0 або 1
         return n
     else:
-        return fibonacci(n-1) + fibonacci(n-2)  # Рекурсія: сума двох попередніх
+        return fibonacci(n - 1) + fibonacci(n - 2)  # Рекурсія: сума двох попередніх
+
 
 print(fibonacci(10))  # 55
 
@@ -676,15 +755,21 @@ print(fibonacci(10))  # 55
 # 35. Стек викликів рекурсії
 # ================================
 
+
 def factorial(n):
-    print("Виклик функції factorial з n = ", n)  # Друкуємо поточний n, щоб бачити хід рекурсії
+    print(
+        "Виклик функції factorial з n = ", n
+    )  # Друкуємо поточний n, щоб бачити хід рекурсії
     if n == 1:  # Базовий випадок
         print("Базовий випадок, n = 1, повернення 1")
         return 1
     else:
-        result = n * factorial(n-1)  # Рахуємо результат через рекурсивний виклик
-        print("Повернення результату для n = ", n, ": ", result)  # Показуємо, що повертаємо
+        result = n * factorial(n - 1)  # Рахуємо результат через рекурсивний виклик
+        print(
+            "Повернення результату для n = ", n, ": ", result
+        )  # Показуємо, що повертаємо
         return result
+
 
 print(factorial(5))  # Запуск з n=5
 
@@ -701,7 +786,6 @@ import datetime
 
 now = datetime.datetime.now()
 print(now)
-
 
 
 # ----------------------------
@@ -722,7 +806,6 @@ print(current_datetime.microsecond)
 print(current_datetime.tzinfo)  # якщо timezone не заданий — часто буде None
 
 
-
 # ----------------------------
 # Тема 3: Отримати тільки дату або тільки час
 # ----------------------------
@@ -732,7 +815,6 @@ from datetime import datetime
 current_datetime = datetime.now()
 print(current_datetime.date())
 print(current_datetime.time())
-
 
 
 # ----------------------------
@@ -749,7 +831,6 @@ combined_datetime = datetime.datetime.combine(date_part, time_part)
 print(combined_datetime)  # 2023-12-14 12:30:15
 
 
-
 # ----------------------------
 # Тема 5: Створення datetime з конкретною датою (час буде 00:00:00)
 # ----------------------------
@@ -759,15 +840,15 @@ specific_date = datetime.datetime(year=2020, month=1, day=7)
 print(specific_date)  # 2020-01-07 00:00:00
 
 
-
 # ----------------------------
 # Тема 6: Створення datetime з конкретною датою і часом
 # ----------------------------
 import datetime
 
-specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)
+specific_datetime = datetime.datetime(
+    year=2020, month=1, day=7, hour=14, minute=30, second=15
+)
 print(specific_datetime)  # 2020-01-07 14:30:15
-
 
 
 # ----------------------------
@@ -780,7 +861,6 @@ from datetime import datetime
 now = datetime.now()
 day_of_week = now.weekday()
 print(f"Сьогодні (weekday): {day_of_week}")
-
 
 
 # ----------------------------
@@ -814,10 +894,9 @@ delta = timedelta(
     milliseconds=29000,
     minutes=5,
     hours=8,
-    weeks=2
+    weeks=2,
 )
 print(delta)
-
 
 
 # ----------------------------
@@ -833,7 +912,6 @@ print(difference)
 print(difference.total_seconds())
 
 
-
 # ----------------------------
 # Тема 11: Додати 10 днів до поточної дати
 # ----------------------------
@@ -842,7 +920,6 @@ from datetime import datetime, timedelta
 now = datetime.now()
 future_date = now + timedelta(days=10)
 print(future_date)
-
 
 
 # ----------------------------
@@ -857,7 +934,6 @@ print(seventh_day_2020 + four_weeks_interval)
 print(seventh_day_2020 - four_weeks_interval)
 
 
-
 # ----------------------------
 # Тема 13: Порядковий номер дати (toordinal)
 # ----------------------------
@@ -867,7 +943,6 @@ from datetime import datetime
 date = datetime(year=2023, month=12, day=18)
 ordinal_number = date.toordinal()
 print(f"Порядковий номер дати {date} становить {ordinal_number}")
-
 
 
 # ----------------------------
@@ -893,7 +968,6 @@ from datetime import datetime
 now = datetime.now()
 timestamp = datetime.timestamp(now)
 print(timestamp)
-
 
 
 # ----------------------------
@@ -929,7 +1003,6 @@ formatted_date_only = now.strftime("%d.%m.%Y")
 print(formatted_date_only)
 
 
-
 # ----------------------------
 # Тема 18: рядок -> datetime через strptime (парсинг)
 # ----------------------------
@@ -953,7 +1026,6 @@ iso_format = now.isoformat()
 print(iso_format)
 
 
-
 # ----------------------------
 # Тема 20: ISO рядок -> datetime
 # ----------------------------
@@ -962,7 +1034,6 @@ from datetime import datetime
 iso_date_string = "2023-03-14T12:39:29.992996"
 date_from_iso = datetime.fromisoformat(iso_date_string)
 print(date_from_iso)
-
 
 
 # ----------------------------
@@ -976,7 +1047,6 @@ day_of_week = now.isoweekday()
 print(f"Сьогодні (isoweekday): {day_of_week}")
 
 
-
 # ----------------------------
 # Тема 22: ISO календар (рік, тиждень, день тижня)
 # ----------------------------
@@ -984,7 +1054,9 @@ from datetime import datetime
 
 now = datetime.now()
 iso_calendar = now.isocalendar()
-print(f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}")
+print(
+    f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}"
+)
 
 # ============================================================
 # Темаи: Часові зони (timezone)
@@ -1002,7 +1074,6 @@ print(local_now)
 print(utc_now)
 
 
-
 # ----------------------------
 # Тема 24: Перевести UTC у часову зону (UTC-5 як Тема)
 # ----------------------------
@@ -1013,18 +1084,18 @@ eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))
 print(eastern_time)
 
 
-
 # ----------------------------
 # Тема 25: Задати локальний час (UTC+2) і конвертувати в UTC
 # ----------------------------
 from datetime import datetime, timezone, timedelta
 
 local_timezone = timezone(timedelta(hours=2))
-local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone)
+local_time = datetime(
+    year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone
+)
 
 utc_time = local_time.astimezone(timezone.utc)
 print(utc_time)
-
 
 
 # ----------------------------
@@ -1033,7 +1104,9 @@ print(utc_time)
 from datetime import datetime, timezone, timedelta
 
 timezone_offset = timezone(timedelta(hours=2))
-timezone_datetime = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=timezone_offset)
+timezone_datetime = datetime(
+    year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=timezone_offset
+)
 
 iso_format_with_timezone = timezone_datetime.isoformat()
 print(iso_format_with_timezone)
@@ -1051,7 +1124,6 @@ current_time = time.time()
 print(f"Поточний час: {current_time}")
 
 
-
 # ----------------------------
 # Тема 28: Пауза sleep (затримка)
 # ----------------------------
@@ -1060,7 +1132,6 @@ import time
 print("Початок паузи")
 time.sleep(0)
 print("Кінець паузи")
-
 
 
 # ----------------------------
@@ -1073,7 +1144,6 @@ print(f"Поточний час: {current_time}")
 
 readable_time = time.ctime(current_time)
 print(f"Читабельний час: {readable_time}")
-
 
 
 # ----------------------------
@@ -1103,7 +1173,6 @@ execution_time = end_time - start_time
 print(f"Час виконання: {execution_time} секунд")
 
 
-
 # ----------------------------
 # Тема 32: Числа з підкресленням для читабельності
 # ----------------------------
@@ -1129,7 +1198,6 @@ dice_roll = random.randint(1, 6)
 print(f"Ви кинули {dice_roll}")
 
 
-
 # ----------------------------
 # Тема 34: random() — число від 0.0 до 1.0
 # ----------------------------
@@ -1139,7 +1207,6 @@ num = random.random()
 print(num)
 
 
-
 # ----------------------------
 # Тема 35: Відсоток заповнення (0..100)
 # ----------------------------
@@ -1147,7 +1214,6 @@ import random
 
 fill_percentage = random.random() * 100
 print(f"Заповнення: {fill_percentage:.2f}%")
-
 
 
 # ----------------------------
@@ -1169,15 +1235,13 @@ random.shuffle(cards)
 print(f"Перемішана колода: {cards}")
 
 
-
 # ----------------------------
 # Тема 38: choice — випадковий 1 елемент
 # ----------------------------
 import random
 
-fruits = ['apple', 'banana', 'orange']
+fruits = ["apple", "banana", "orange"]
 print(random.choice(fruits))
-
 
 
 # ----------------------------
@@ -1185,10 +1249,9 @@ print(random.choice(fruits))
 # ----------------------------
 import random
 
-items = ['яблуко', 'банан', 'вишня', 'диня']
+items = ["яблуко", "банан", "вишня", "диня"]
 chosen_item = random.choices(items, k=1)
 print(chosen_item)
-
 
 
 # ----------------------------
@@ -1201,17 +1264,15 @@ chosen_numbers = random.choices(numbers, k=3)
 print(chosen_numbers)
 
 
-
 # ----------------------------
 # Тема 41: choices з вагами (weights)
 # ----------------------------
 import random
 
-colors = ['червоний', 'зелений', 'синій']
+colors = ["червоний", "зелений", "синій"]
 weights = [10, 1, 1]
 chosen_color = random.choices(colors, weights, k=1)
 print(chosen_color)
-
 
 
 # ----------------------------
@@ -1219,10 +1280,20 @@ print(chosen_color)
 # ----------------------------
 import random
 
-participants = ['Анна', 'Богдан', 'Віктор', 'Галина', 'Дмитро', 'Олена', 'Женя', 'Зорян', 'Ігор', 'Йосип']
+participants = [
+    "Анна",
+    "Богдан",
+    "Віктор",
+    "Галина",
+    "Дмитро",
+    "Олена",
+    "Женя",
+    "Зорян",
+    "Ігор",
+    "Йосип",
+]
 team = random.sample(participants, 4)
 print(f"Команда: {team}")
-
 
 
 # ----------------------------
@@ -1250,7 +1321,6 @@ trunc_result = math.trunc(x)
 print(ceil_result, floor_result, trunc_result)
 
 
-
 # ----------------------------
 # Тема 45: Константи та базові операції (pi, sin, sqrt, log)
 # ----------------------------
@@ -1267,12 +1337,10 @@ print(math.sqrt(9))
 print(math.log(10, 2))
 
 
-
 # ----------------------------
 # Тема 46: Проблема float (0.1 + 0.2 != 0.3)
 # ----------------------------
 print(0.1 + 0.2 == 0.3)
-
 
 
 # ----------------------------
@@ -1282,7 +1350,6 @@ import math
 
 r = math.isclose(0.1 + 0.2, 0.3)
 print(r)
-
 
 
 # ----------------------------
@@ -1303,12 +1370,10 @@ print(r)
 print("Hello\nWorld")
 
 
-
 # ----------------------------
 # Тема 50: \r (повернення каретки) — може “перезаписати” початок рядка
 # ----------------------------
-print("Hello my little\rsister")   # sistermy little
-
+print("Hello my little\rsister")  # sistermy little
 
 
 # ----------------------------
@@ -1317,19 +1382,17 @@ print("Hello my little\rsister")   # sistermy little
 print("Hello\bWorld")  # HellWorld
 
 
-
 # ----------------------------
 # Тема 52: Екранування слеша \\ щоб надрукувати один \
 # ----------------------------
 print("Hello\\World")  # Hello\World
 
 
-
 # ----------------------------
 # Тема 53: Екранування лапок \' та \"
 # ----------------------------
-print('It\'s a beautiful day')
-print("He said, \"Hello\"")
+print("It's a beautiful day")
+print('He said, "Hello"')
 
 # ============================================================
 # Тема: Пошук у рядку (find / rfind / index / rindex)
@@ -1346,22 +1409,20 @@ print(s.find("er", start, end))
 print(s.find("q"))
 
 
-
 # ----------------------------
 # Тема 55: find vs rfind (перший збіг vs останній збіг)
 # ----------------------------
-s = 'Some words'
+s = "Some words"
 print(s.find("o"))
-print(s.rfind('o'))
-
+print(s.rfind("o"))
 
 
 # ----------------------------
 # Тема 56: index vs rindex (але кидає помилку, якщо не знайдено)
 # ----------------------------
-s = 'Some words'
+s = "Some words"
 print(s.index("o"))
-print(s.rindex('o'))
+print(s.rindex("o"))
 
 
 # Темаи: Поділ та об'єднання рядків (split / join):
@@ -1375,40 +1436,35 @@ result = text.split()
 print(result)
 
 
-
 # ----------------------------
 # Тема 58: split(',') — розбити рядок за комою
 # ----------------------------
 text = "apple,banana,cherry"
-result = text.split(',')
+result = text.split(",")
 print(result)
-
 
 
 # ----------------------------
 # Тема 59: join — з'єднати список рядків в один рядок
 # ----------------------------
-list_of_strings = ['Hello', 'world']
-result = ' '.join(list_of_strings)
+list_of_strings = ["Hello", "world"]
+result = " ".join(list_of_strings)
 print(result)
-
 
 
 # ----------------------------
 # Тема 60: join з комою
 # ----------------------------
-elements = ['earth', 'air', 'fire', 'water']
-result = ', '.join(elements)
+elements = ["earth", "air", "fire", "water"]
+result = ", ".join(elements)
 print(result)
-
 
 
 # ----------------------------
 # Тема 61: strip — прибрати пробіли з країв
 # ----------------------------
-clean = '   spacious   '.strip()
+clean = "   spacious   ".strip()
 print(clean)
-
 
 
 # ----------------------------
@@ -1419,14 +1475,12 @@ new_text = text.replace("world", "Python")
 print(new_text)
 
 
-
 # ----------------------------
 # Тема 63: replace з лімітом (замінити тільки перші 2 входження)
 # ----------------------------
 text = "one fish, two fish, red fish, blue fish"
 new_text = text.replace("fish", "bird", 2)
 print(new_text)
-
 
 
 # ----------------------------
@@ -1437,33 +1491,31 @@ new_text = text.replace(" world", "")
 print(new_text)
 
 
-print('TestHook'.removeprefix('Test')) # Hook
-print('TestHook'.removeprefix('Hook')) # TestHook
+print("TestHook".removeprefix("Test"))  # Hook
+print("TestHook".removeprefix("Hook"))  # TestHook
 
 
+print("TestHook".removesuffix("Test"))  # TestHook
+print("TestHook".removesuffix("Hook"))  # Hook
 
-print('TestHook'.removesuffix('Test')) # TestHook
-print('TestHook'.removesuffix('Hook')) # Hook
-                                           
 
 # ----------------------------
 # Тема 65: URL - запити та рядки
 # ----------------------------
 
 url_search = "<https://www.google.com/search?q=Cat+and+dog&ie=utf-8&oe=utf-8&aq=t>"
-_, query = url_search.split('?')
+_, query = url_search.split("?")
 print(query)
-
 
 
 url_search = "<https://www.google.com/search?q=Cat+and+dog&ie=utf-8&oe=utf-8&aq=t>"
-_, query = url_search.split('?')
+_, query = url_search.split("?")
 print(query)
 
 obj_query = {}
-for el in query.split('&'):
-    key, value = el.split('=')
-    obj_query.update({key: value.replace('+', ' ')})
+for el in query.split("&"):
+    key, value = el.split("=")
+    obj_query.update({key: value.replace("+", " ")})
 print(obj_query)
 
 
@@ -1485,13 +1537,11 @@ if RUN_INPUT:
         print("Це не число!")
 
 
-
 for char in "Hello 123":
     if char.isdigit():
         print(f"'{char}' - це цифра")
     else:
         print(f"'{char}' - не цифра")
-
 
 
 # ----------------------------
@@ -1506,13 +1556,25 @@ str = "This is string example"
 print(str.translate(trantab))
 
 
-
-
 symbols = "0123456789ABCDEF"
 code = [
-        '0000', '0001', '0010', '0011', '0100', '0101', '0110', '0111',
-        '1000', '1001', '1010', '1011', '1100', '1101', '1110', '1111'
-        ]
+    "0000",
+    "0001",
+    "0010",
+    "0011",
+    "0100",
+    "0101",
+    "0110",
+    "0111",
+    "1000",
+    "1001",
+    "1010",
+    "1011",
+    "1100",
+    "1101",
+    "1110",
+    "1111",
+]
 
 MAP = {}
 
@@ -1524,13 +1586,44 @@ result = "34 DF 56 AC".translate(MAP)
 print(result)
 
 
-morze_dict = {'A': '.-', 'B': '-...', 'C': '-.-.', 'D': '-..', 'E': '.', 'F': '..-.',
-              'G': '--.', 'H': '....', 'I': '..', 'J': '.---', 'K': '-.-', 'L': '.-..',
-              'M': '--', 'N': '-.', 'O': '---', 'P': '.--.', 'Q': '--.-', 'R': '.-.',
-              'S': '...', 'T': '-', 'U': '..-', 'V': '...-', 'W': '.--', 'X': '-..-',
-              'Y': '-.--', 'Z': '--..', '0': '-----', '1': '.----', '2': '..---',
-              '3': '...--', '4': '....-', '5': '.....', '6': '-....', '7': '--...',
-              '8': '---..', '9': '----.'}
+morze_dict = {
+    "A": ".-",
+    "B": "-...",
+    "C": "-.-.",
+    "D": "-..",
+    "E": ".",
+    "F": "..-.",
+    "G": "--.",
+    "H": "....",
+    "I": "..",
+    "J": ".---",
+    "K": "-.-",
+    "L": ".-..",
+    "M": "--",
+    "N": "-.",
+    "O": "---",
+    "P": ".--.",
+    "Q": "--.-",
+    "R": ".-.",
+    "S": "...",
+    "T": "-",
+    "U": "..-",
+    "V": "...-",
+    "W": ".--",
+    "X": "-..-",
+    "Y": "-.--",
+    "Z": "--..",
+    "0": "-----",
+    "1": ".----",
+    "2": "..---",
+    "3": "...--",
+    "4": "....-",
+    "5": ".....",
+    "6": "-....",
+    "7": "--...",
+    "8": "---..",
+    "9": "----.",
+}
 
 # Перетворення ключів словника на Unicode коди
 table_morze_dict = {}
@@ -1556,7 +1649,6 @@ for i in range(8):
     print(s)
 
 
-
 # Форматування рядків - :.2f
 price = 19.99
 quantity = 3
@@ -1566,8 +1658,7 @@ print(total)
 
 width = 5
 for num in range(12):
-    print(f'{num:^10} {num**2:^10} {num**3:^10}') # :^ — это команда “как выравнивать
-
+    print(f"{num:^10} {num**2:^10} {num**3:^10}")  # :^ — это команда “как выравнивать
 
 
 name = "Alice"
@@ -1601,7 +1692,6 @@ else:
     print("Не знайдено.")
 
 
-
 import re
 
 text = "Вивчення Python може бути веселим."
@@ -1612,7 +1702,6 @@ if match:
     print("Знайдено:", match.group())
 
 
-
 import re
 
 text = "Моя електронна адреса: example@example.com"
@@ -1621,7 +1710,6 @@ match = re.search(pattern, text)
 
 if match:
     print("Електронна адреса:", match.group())
-
 
 
 import re
@@ -1659,7 +1747,6 @@ matches = re.findall(pattern, text)
 print(matches)  # Виведе список всіх слів у рядку
 
 
-
 import re
 
 text = "Контакти: example1@example.com, example2@sample.org"
@@ -1669,7 +1756,6 @@ matches = re.findall(pattern, text)
 print(matches)  # Виведе всі знайдені електронні адреси
 
 
-
 # ----------------------------
 # Тема 69: Метод sub
 # ----------------------------
@@ -1677,21 +1763,21 @@ print(matches)  # Виведе всі знайдені електронні ад
 import re
 
 file_name = "Мій документ Python.txt"
-pattern = r"\s" # "\s" - это специальное обозначение в регулярных выражениях, которое значит: любой пробельный символ
+pattern = r"\s"  # "\s" - это специальное обозначение в регулярных выражениях, которое значит: любой пробельный символ
 replacement = "_"
 formatted_name = re.sub(pattern, replacement, file_name)
 
-print(formatted_name)  
+print(formatted_name)
 
 
 import re
 
 text = "Python - потужна, універсальна; мова!"
-pattern = r"[;,\-:!\.]"   # Тут регулярний вираз [;,\-:!\.] - це набір (множина) символів, який включає різні пунктуаційні знаки. Ми проходимося по рядку та прибираємо їх, оскільки заміна відбувається на порожній рядок.
+pattern = r"[;,\-:!\.]"  # Тут регулярний вираз [;,\-:!\.] - це набір (множина) символів, який включає різні пунктуаційні знаки. Ми проходимося по рядку та прибираємо їх, оскільки заміна відбувається на порожній рядок.
 replacement = ""
 modified_text = re.sub(pattern, replacement, text)
 
-print(modified_text)  
+print(modified_text)
 
 
 import re
@@ -1721,7 +1807,6 @@ words = re.split(pattern, text)
 print(words)  # Виведе список слів у рядку
 
 
-
 import re
 
 text = "Python - потужна; проста, універсальна: мова!"
@@ -1737,16 +1822,18 @@ text = "apple#banana!mango@orange;kiwi"
 pattern = r"[#@;!]"
 fruits = re.split(pattern, text)
 
-print(fruits) # ['apple', 'banana', 'mango', 'orange', 'kiwi']
+print(fruits)  # ['apple', 'banana', 'mango', 'orange', 'kiwi']
 
 
 # ----------------------------
 # Тема 82: Модулі
 # ----------------------------
 
+
 # mymodule.py
 def say_hello(name):
     return f"Hello, {name}!"
+
 
 # main.py
 
@@ -1755,12 +1842,10 @@ import mymodule
 print(mymodule.say_hello("World"))
 
 
-
 # main.py
 from mymodule import say_hello
 
 print(say_hello("World"))
-
 
 
 # main.py
@@ -1775,44 +1860,50 @@ print(greeting("World"))
 # main.py
 from mymodule import say_hello as greeting
 
-print(dir()) # вона повертає список назв усіх об'єктів (змінних, функцій, класів тощо), доступних у поточній області видимості.
+print(
+    dir()
+)  # вона повертає список назв усіх об'єктів (змінних, функцій, класів тощо), доступних у поточній області видимості.
 print(greeting("World"))
+
 
 # ----------------------------
 # Тема 84: Службова змінна __name__
 # ----------------------------
 def say_hello(name):
-    print(f'Hello, {name}')
+    print(f"Hello, {name}")
+
 
 print("You imported hello.py")
-say_hello('user')
-
+say_hello("user")
 
 
 # main.py
-from mymodule import say_hello as greeting # Під час імпорту from mymodule import say_hello, ми виконали автоматично сам скрипт mymodule.py
+from mymodule import (
+    say_hello as greeting,
+)  # Під час імпорту from mymodule import say_hello, ми виконали автоматично сам скрипт mymodule.py
 
 print(greeting("World"))
 
 
-
 def say_hello(name):
-    print(f'Hello, {name}')
+    print(f"Hello, {name}")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     print("You imported hello.py")
-    say_hello('user')
-
+    say_hello("user")
 
 
 def say_hello(name):
-    print(f'Hello {name}')
+    print(f"Hello {name}")
+
 
 def main():
     print("You imported hello.py")
-    say_hello('user')
+    say_hello("user")
 
-if __name__ == '__main__':
+
+if __name__ == "__main__":
     main()
 
 
@@ -1822,22 +1913,21 @@ if __name__ == '__main__':
 import sys
 import mymodule
 
-print(sys.modules["mymodule"]) # c:\\Users\\User\\OneDrive\\Desktop\\Projects\\vscode-basics;\\project\\First_repo\\mymodule.py'
-
-
-
-import sys
-import mymodule
-
-print(sys.modules.keys()) # dict_keys показує ключі та фунції, модулі
-
+print(
+    sys.modules["mymodule"]
+)  # c:\\Users\\User\\OneDrive\\Desktop\\Projects\\vscode-basics;\\project\\First_repo\\mymodule.py'
 
 
 import sys
 import mymodule
 
-print(sys.builtin_module_names) # Отримати список модулів
+print(sys.modules.keys())  # dict_keys показує ключі та фунції, модулі
 
+
+import sys
+import mymodule
+
+print(sys.builtin_module_names)  # Отримати список модулів
 
 
 # ----------------------------
@@ -1849,7 +1939,6 @@ salary = 1000
 bonus = 15
 salary_with_bonus = salary_calculations.add_bonus(salary, bonus)
 print(salary_with_bonus)  # 1015
-
 
 
 from calculations.salary_calculations import add_bonus
@@ -1866,7 +1955,6 @@ nice_function()
 print(not_bad("This is not bad"))
 
 
-
 from utility import nice_function, not_bad
 
 nice_function()
@@ -1877,13 +1965,12 @@ not_bad("Test string")
 # ---------------------------
 
 
-
 def is_palindrome(s: str) -> bool:
     new_s = ""
     for char in s:
-	    if char.isalnum():
-		        new_s += char.lower()
-		
+        if char.isalnum():
+            new_s += char.lower()
+
     s = new_s
     length = len(s)
     for i in range(length // 2):
@@ -1891,11 +1978,12 @@ def is_palindrome(s: str) -> bool:
             return False
         return True
 
+
 # Використання функції
 print(is_palindrome("Козак з казок"))  # Виведе: True
 
 
-# Його спрощена версія: 
+# Його спрощена версія:
 def is_palindrome(s: str) -> bool:
     new_s = ""
     for char in s:
@@ -1905,6 +1993,7 @@ def is_palindrome(s: str) -> bool:
     s = new_s
     return s == s[::-1]
 
+
 # Використання функції
 print(is_palindrome("Козак з казок"))  # Виведе: True
 
@@ -1913,7 +2002,3 @@ from math_operations import calculate_area
 
 area1 = calculate_area(10, 5)
 area2 = calculate_area(20, 15)
-
-
-
-

@@ -273,7 +273,7 @@ search_word = "STRASSE"
 lower_comparison = german_word.lower() == search_word.lower()
 casefold_comparison = german_word.casefold() == search_word.casefold()
 
-print(f"Порівняння з lower(): {lower_comparison}")   # False
+print(f"Порівняння з lower(): {lower_comparison}")  # False
 print(f"Порівняння з casefold(): {casefold_comparison}")  # True
 
 # ----------------------------
@@ -288,9 +288,9 @@ print(f"Порівняння з casefold(): {casefold_comparison}")  # True
 from pathlib import PurePath
 
 p = PurePath("/usr/bin/simple.jpg")
-print("Name:", p.name)     # Name: simple.jpg
-print("Suffix:", p.suffix) # Suffix: .jpg
-print("Parent:", p.parent) # Parent: \usr\bin
+print("Name:", p.name)  # Name: simple.jpg
+print("Suffix:", p.suffix)  # Suffix: .jpg
+print("Parent:", p.parent)  # Parent: \usr\bin
 
 ###########################
 
@@ -390,7 +390,7 @@ file_path = BASE / "example.bin"
 
 # Читання байтів з файлу
 binary_data = file_path.read_bytes()
-print(binary_data) # b'Python is great!'
+print(binary_data)  # b'Python is great!'
 
 
 # ----------------------------
@@ -412,28 +412,28 @@ for path in directory.iterdir():
     print(path.relative_to(BASE))
 
 
-
 from pathlib import Path
+
 BASE = Path(__file__).resolve().parent
-directory = BASE / 'new_folder'
-directory.mkdir(parents=True, exist_ok=True) #створення нової директорії
-
+directory = BASE / "new_folder"
+directory.mkdir(parents=True, exist_ok=True)  # створення нової директорії
 
 
 from pathlib import Path
+
 BASE = Path(__file__).resolve().parent
-directory = BASE / 'new_folder'
-directory.rmdir() #видалення нової директорії
-
+directory = BASE / "new_folder"
+directory.rmdir()  # видалення нової директорії
 
 
 from pathlib import Path
+
 BASE = Path(__file__).resolve().parent
 path = BASE / "picture"
 
 # Перевірка існування
 if path.exists():
-    print(f"{path} існує") # picture існує
+    print(f"{path} існує")  # picture існує
 
 
 # Перевірка, чи це директорія
@@ -449,6 +449,7 @@ if path.is_file():
 # ----------------------------
 import shutil
 from pathlib import Path
+
 # Вихідний і цільовий шляхи (приклад)
 BASE = Path(__file__).resolve().parent
 source = BASE / "file.txt"
@@ -469,8 +470,8 @@ from pathlib import Path
 BASE = Path(__file__).resolve().parent
 file_txt = BASE / "file.txt"
 
-file_txt.write_text("demo file\n", encoding="utf-8") # создає файл.тхт кожен раз
- 
+file_txt.write_text("demo file\n", encoding="utf-8")  # создає файл.тхт кожен раз
+
 
 BASE = Path(__file__).resolve().parent
 
@@ -481,9 +482,9 @@ size = file_path.stat().st_size
 print(f"Розмір файла: {size} байтів")
 
 
-
 from pathlib import Path
 import time
+
 BASE = Path(__file__).resolve().parent
 file_path = BASE / "picture" / "bot-icon.png"
 
@@ -495,8 +496,8 @@ print(f"Час створення: {time.ctime(creation_time)}")
 print(f"Час модифікації: {time.ctime(modification_time)}")
 
 
-
 from pathlib import Path
+
 BASE = Path(__file__).resolve().parent
 # Створення об'єкту Path для файлу
 file_path = BASE / "file.txt"
@@ -504,8 +505,6 @@ file_path = BASE / "file.txt"
 # Перевірка, чи файл існує, перш ніж видаляти
 if file_path.exists():
     file_path.unlink()
-    print(f'Файл {file_path} було видалено')
+    print(f"Файл {file_path} було видалено")
 else:
-    print(f'Файл {file_path} не існує')
-
-
+    print(f"Файл {file_path} не існує")

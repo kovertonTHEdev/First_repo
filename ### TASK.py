@@ -7,7 +7,9 @@ RUN_INPUT = False  # флаг: если True — участки с input() вы�
 
 first_name = "Andrii"  # строка с именем
 last_name = "Nedoshivkin"  # строка с фамилией
-full_name = first_name + " " + last_name  # склеиваем строки через +, добавляя пробел между ними
+full_name = (
+    first_name + " " + last_name
+)  # склеиваем строки через +, добавляя пробел между ними
 
 print(full_name)  # выводим итоговую строку
 
@@ -20,7 +22,7 @@ length = 2.75  # длина комнаты как число float
 width = 1.75  # ширина комнаты как число float
 area = length * width  # площадь = длина * ширина
 
-show = (f"With width {width} and length {length} of the room, its area is equal to {area}")  # формируем строку-отчёт через f-string
+show = f"With width {width} and length {length} of the room, its area is equal to {area}"  # формируем строку-отчёт через f-string
 # (почему так) f-string удобен: не надо вручную склеивать строки и числа
 
 
@@ -30,9 +32,11 @@ show = (f"With width {width} and length {length} of the room, its area is equal 
 
 length = "2.75"  # длина как строка (это не число)
 width = "1.75"  # ширина как строка
-area = float(length) * float(width)  # переводим строки в float, иначе умножение строк невозможно
+area = float(length) * float(
+    width
+)  # переводим строки в float, иначе умножение строк невозможно
 
-show = (f"With width {width} and length {length} of the room, its area is equal to {area}")  # снова делаем строку-отчёт
+show = f"With width {width} and length {length} of the room, its area is equal to {area}"  # снова делаем строку-отчёт
 
 
 # ============================================================
@@ -40,7 +44,9 @@ show = (f"With width {width} and length {length} of the room, its area is equal 
 # ============================================================
 
 if RUN_INPUT:  # выполняем блок только если включён ввод
-    length = float(input("Enter length size"))  # input() даёт строку, поэтому переводим в float
+    length = float(
+        input("Enter length size")
+    )  # input() даёт строку, поэтому переводим в float
     width = float(input("Enter width size"))  # аналогично
     area = length * width  # считаем площадь
     print(area)  # выводим площадь
@@ -53,9 +59,13 @@ if RUN_INPUT:  # выполняем блок только если включё�
 my_list = [2024, 3.12]  # список со значениями int и float
 some_data = ["Python"]  # второй список (одна строка)
 
-my_list.extend(some_data)  # добавляем элементы списка some_data в конец my_list (расширяем список)
+my_list.extend(
+    some_data
+)  # добавляем элементы списка some_data в конец my_list (расширяем список)
 
-my_list.insert(1, "Python")  # вставляем "Python" на позицию с индексом 1, сдвигая элементы вправо
+my_list.insert(
+    1, "Python"
+)  # вставляем "Python" на позицию с индексом 1, сдвигая элементы вправо
 
 my_list.reverse()  # переворачиваем список “на месте” (без создания нового)
 
@@ -65,7 +75,9 @@ my_list.reverse()  # переворачиваем список “на мест�
 # ============================================================
 
 if RUN_INPUT:  # выполняем блок только при RUN_INPUT == True
-    age_input = int(input("\nPlease, Enter your age: "))  # берём ввод и переводим в int, чтобы сравнивать числа
+    age_input = int(
+        input("\nPlease, Enter your age: ")
+    )  # берём ввод и переводим в int, чтобы сравнивать числа
 
     if age_input < 18:  # проверяем условие “меньше 18”
         print("Acess Denied")  # печатаем запрет
@@ -86,7 +98,9 @@ if RUN_INPUT:
     for n in nums:  # перебираем строки из списка nums
         numbers.append(int(n))  # каждую строку переводим в int и добавляем в numbers
 
-    sorted_nums = sorted(numbers)  # создаём новый отсортированный список (оригинал numbers не меняется)
+    sorted_nums = sorted(
+        numbers
+    )  # создаём новый отсортированный список (оригинал numbers не меняется)
     print(sorted_nums)  # печатаем отсортированный список
 
 
@@ -124,11 +138,18 @@ print(words)  # печать результата
 # ЗАДАЧА 11: Очистка слов (strip + lower) и сортировка
 # ============================================================
 
-words = ["  Banana", "apple  ", "  Cherry ", "apple"]  # строки с пробелами и разным регистром
+words = [
+    "  Banana",
+    "apple  ",
+    "  Cherry ",
+    "apple",
+]  # строки с пробелами и разным регистром
 clean_words = []  # список для очищенных слов
 
 for w in words:  # перебираем исходные слова
-    clean_words.append(w.strip().lower())  # strip убирает пробелы по краям, lower приводит к нижнему регистру
+    clean_words.append(
+        w.strip().lower()
+    )  # strip убирает пробелы по краям, lower приводит к нижнему регистру
 
 clean_words.sort()  # сортируем по алфавиту
 print(clean_words)  # печатаем очищенный список
@@ -145,7 +166,9 @@ for w in words:  # перебираем исходные слова
     good_words.append(w.strip().lower())  # чистим пробелы и приводим к lower
 
 good_words.sort()  # сортируем, порядок тут не обязателен для count, но ты сделал
-count_apple = good_words.count("apple")  # count считает количество точных совпадений строки "apple"
+count_apple = good_words.count(
+    "apple"
+)  # count считает количество точных совпадений строки "apple"
 
 print(good_words)  # печатаем очищенный список
 print(count_apple)  # печатаем, сколько раз встретилось "apple"
@@ -171,7 +194,9 @@ words = ["apple", "banana", "apple", "cherry", "banana", "apple"]  # списо�
 result = {}  # словарь: слово -> количество
 
 for w in words:  # перебираем каждое слово
-    current = result.get(w, 0)  # get берёт текущее значение по ключу; если ключа нет — вернёт 0
+    current = result.get(
+        w, 0
+    )  # get берёт текущее значение по ключу; если ключа нет — вернёт 0
     result[w] = current + 1  # увеличиваем счётчик на 1
 
 print(result)  # печатаем “частотный словарь”
@@ -192,7 +217,7 @@ print(nums)  # печать результата
 # ЗАДАЧА 16: Разворот списка через срез [::-1]
 # ============================================================
 
-numbers = [1,2,3,4,5,6,7,8,9,10]  # исходный список
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # исходный список
 reverse_numbers = numbers[::-1]  # срез с шагом -1 создаёт новый перевёрнутый список
 print(reverse_numbers)  # печатаем перевёрнутый список
 
@@ -201,8 +226,10 @@ print(reverse_numbers)  # печатаем перевёрнутый список
 # ЗАДАЧА 17: Срез "чётных" чисел по твоей логике (индексы 1,3,5...)
 # ============================================================
 
-numbers = [1,2,3,4,5,6,7,8,9,10]  # исходный список
-even_numbers = numbers[1:10:2]  # берём элементы с индексами 1,3,5,7,9 (это НЕ “чётные числа”, а “чётные индексы” по твоей логике)
+numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]  # исходный список
+even_numbers = numbers[
+    1:10:2
+]  # берём элементы с индексами 1,3,5,7,9 (это НЕ “чётные числа”, а “чётные индексы” по твоей логике)
 print(even_numbers)  # печать результата
 
 
@@ -224,7 +251,9 @@ print(nums_copy)  # копия отсортирована
 
 numbers = [5, 12, 7, 3, 9, 2, 10, 6]  # исходный список
 
-numbers_copy = numbers[0:10:2]  # берём индексы 0,2,4,6 (верхняя граница 10 просто “с запасом”)
+numbers_copy = numbers[
+    0:10:2
+]  # берём индексы 0,2,4,6 (верхняя граница 10 просто “с запасом”)
 numbers_copy.sort(reverse=True)  # сортируем этот новый список по убыванию
 
 print(numbers)  # печать оригинала
@@ -236,11 +265,20 @@ print(numbers_copy)  # печать результата
 # ============================================================
 
 if RUN_INPUT:
-    allowed_events = ["deploy", "build", "test", "backup"]  # список разрешённых типов (но ниже он не используется правильно)
+    allowed_events = [
+        "deploy",
+        "build",
+        "test",
+        "backup",
+    ]  # список разрешённых типов (но ниже он не используется правильно)
     event_type = input("Text please type of event: ")  # ввод типа события
-    event_time = int(input("Text please duration time: "))  # ввод длительности в секундах
+    event_time = int(
+        input("Text please duration time: ")
+    )  # ввод длительности в секундах
 
-    if event_type:  # проверка только “не пустая ли строка” (НЕ проверяет что event_type в allowed_events)
+    if (
+        event_type
+    ):  # проверка только “не пустая ли строка” (НЕ проверяет что event_type в allowed_events)
         allowed_events  # это просто выражение, ничего не делает (логическая ошибка)
     else:
         print("Unknown event")  # если event_type пустой — печатаем ошибку
@@ -280,7 +318,15 @@ if RUN_INPUT:
 # ЗАДАЧА 22: Очистка пользователей + удаление дублей + сортировка
 # ============================================================
 
-raw_users = ["  Andrii ", "", "BORIS", "anna", "  ", "Boris", "ANNA"]  # “грязные” значения
+raw_users = [
+    "  Andrii ",
+    "",
+    "BORIS",
+    "anna",
+    "  ",
+    "Boris",
+    "ANNA",
+]  # “грязные” значения
 clean_users = []  # сюда кладём очищенные имена
 
 for r in raw_users:  # перебираем исходные строки
@@ -297,7 +343,16 @@ print(clean_users)  # печать результата
 # ЗАДАЧА 23: Очистка действий + удаление дублей + сортировка + печать
 # ============================================================
 
-raw_actions = ["  Login", "logout ", "LOGIN", "", "  ", "Logout", "login", "Delete"]  # “грязные” действия
+raw_actions = [
+    "  Login",
+    "logout ",
+    "LOGIN",
+    "",
+    "  ",
+    "Logout",
+    "login",
+    "Delete",
+]  # “грязные” действия
 clean_actions = []  # чистые действия
 
 for r in raw_actions:  # перебираем исходные строки
@@ -316,7 +371,15 @@ for action in clean_actions:  # перебираем чистый отсорти
 # ЗАДАЧА 24: Счётчик действий (dict)
 # ============================================================
 
-actions = [" Login", "logout ", "LOGIN", "update", "Logout", "", "login"]  # исходный список
+actions = [
+    " Login",
+    "logout ",
+    "LOGIN",
+    "update",
+    "Logout",
+    "",
+    "login",
+]  # исходный список
 clean_actions = []  # сюда сложим очищенные строки
 result = {}  # словарь: действие -> количество
 
@@ -436,7 +499,9 @@ if RUN_INPUT:
 # ЗАДАЧА 29: Уровень разработчика по стажу (Junior/Middle/Senior)
 # ============================================================
 if RUN_INPUT:
-    work_experience = int(input("Enter your full work experience in years: "))  # ввод стажа в годах
+    work_experience = int(
+        input("Enter your full work experience in years: ")
+    )  # ввод стажа в годах
     developer_type = "Junior"  # значение по умолчанию
 
     if work_experience > 1 and work_experience < 6:  # 2..5 лет
@@ -507,19 +572,25 @@ print(result)  # выводим количество
 if RUN_INPUT:
     pool = 1000  # общее количество писем
     try:
-        quantity = int(input("Enter the number of mailings: "))  # ввод количества рассылок
-        chunk = pool // quantity  # целочисленное деление (сколько писем в одной рассылке)
+        quantity = int(
+            input("Enter the number of mailings: ")
+        )  # ввод количества рассылок
+        chunk = (
+            pool // quantity
+        )  # целочисленное деление (сколько писем в одной рассылке)
         print(chunk)  # печать результата
     except ZeroDivisionError:  # если quantity == 0
-        print('Divide by zero completed!')  # сообщение
+        print("Divide by zero completed!")  # сообщение
 
 
 # ============================================================
 # ЗАДАЧА 34: Функция greeting() без параметров
 # ============================================================
 
+
 def greeting():  # объявляем функцию без аргументов
     print("Hello world!")  # печать внутри функции
+
 
 greeting()  # вызов функции
 
@@ -528,8 +599,10 @@ greeting()  # вызов функции
 # ЗАДАЧА 35: Функция greet(name) -> строка "Hello name!"
 # ============================================================
 
+
 def greet(name: str) -> str:  # функция принимает строку и возвращает строку
     return f"Hello {name}!"  # возвращаем готовую строку
+
 
 greeting = ()  # создаёшь переменную greeting как tuple (потом перезаписываешь)
 greeting = greet("world")  # сохраняем результат вызова функции в переменную
@@ -540,8 +613,10 @@ print(greeting)  # печатаем результат
 # ЗАДАЧА 36: Приглашение на событие (invite_to_event)
 # ============================================================
 
+
 def invite_to_event(username: str) -> str:  # функция принимает имя пользователя
     return f"Dear {username}, we have the honour to invite you to our event"  # возвращает строку приглашения
+
 
 invite = ()  # создаёшь переменную invite (tuple), потом перезаписываешь строкой
 invite = invite_to_event("Vasya")  # получаем строку приглашения
@@ -552,7 +627,10 @@ print(invite)  # печать
 # ЗАДАЧА 37: Скидка (внутренняя функция + nonlocal)
 # ============================================================
 
-def discount_price(price: float, discount: float) -> float:  # цена и скидка (например 0.1 = 10%)
+
+def discount_price(
+    price: float, discount: float
+) -> float:  # цена и скидка (например 0.1 = 10%)
     def apply_discount():  # внутренняя функция
         nonlocal price  # разрешаем менять переменную price из внешней функции
         price = price * (1 - discount)  # пересчитываем цену со скидкой
@@ -565,19 +643,25 @@ def discount_price(price: float, discount: float) -> float:  # цена и ск�
 # ЗАДАЧА 38: ФИО с опциональным middle_name
 # ============================================================
 
-def get_fullname(first_name, last_name, middle_name=""):  # middle_name по умолчанию пустая строка
+
+def get_fullname(
+    first_name, last_name, middle_name=""
+):  # middle_name по умолчанию пустая строка
     if middle_name:  # если middle_name не пустой
-       return (f"{first_name} {middle_name} {last_name}")  # три части
+        return f"{first_name} {middle_name} {last_name}"  # три части
     else:
-       return (f"{first_name} {last_name}")  # только имя и фамилия
+        return f"{first_name} {last_name}"  # только имя и фамилия
 
 
 # ============================================================
 # ЗАДАЧА 39: Центровка строки пробелами до length
 # ============================================================
 
+
 def format_string(string, length):  # строка и целевая длина
-    spaces = (length - len(string)) // 2  # сколько пробелов добавить слева (половина разницы)
+    spaces = (
+        length - len(string)
+    ) // 2  # сколько пробелов добавить слева (половина разницы)
     another_string = " " * spaces  # создаём строку из пробелов
     if len(string) >= length:  # если строка уже не короче
         return string  # возвращаем как есть
@@ -589,10 +673,14 @@ def format_string(string, length):  # строка и целевая длина
 # ЗАДАЧА 40: *args и **kwargs (считаем количество аргументов)
 # ============================================================
 
-def first(size, *args):  # size — обычный аргумент, args — все позиционные “лишние” аргументы
+
+def first(
+    size, *args
+):  # size — обычный аргумент, args — все позиционные “лишние” аргументы
     n = len(args)  # считаем, сколько дополнительных аргументов
     result = size + n  # складываем size и количество args
     return result  # возвращаем
+
 
 print(first(5, "first", "second", "third"))  # args содержит 3 элемента -> 5+3
 print(first(1, "Alex", "Boris"))  # args содержит 2 элемента -> 1+2
@@ -603,7 +691,10 @@ def second(size, **kwargs):  # kwargs — все именованные аргу
     result = size + n  # складываем size и количество kwargs
     return result  # возвращаем
 
-print(second(3, comment_one="first", comment_two="second", comment_third="third"))  # 3 kwargs -> 3+3
+
+print(
+    second(3, comment_one="first", comment_two="second", comment_third="third")
+)  # 3 kwargs -> 3+3
 print(second(10, comment_one="Alex", comment_two="Boris"))  # 2 kwargs -> 10+2
 
 
@@ -613,6 +704,7 @@ print(second(10, comment_one="Alex", comment_two="Boris"))  # 2 kwargs -> 10+2
 
 n = 50  # пример n
 k = 7  # пример k
+
 
 def factorial(n):  # рекурсивный факториал
     if n < 2:  # база: 0! и 1! = 1
@@ -647,10 +739,14 @@ if RUN_INPUT:
     total_sum = 0  # сумма денег по всем товарам
 
     while True:
-        line = input("Please, enter information: ").strip()  # ввод строки и чистка пробелов по краям
+        line = input(
+            "Please, enter information: "
+        ).strip()  # ввод строки и чистка пробелов по краям
 
         if line == "help":  # команда help
-            print("Please, enter first info as the name of product, second info as the float number and third number as the int number")
+            print(
+                "Please, enter first info as the name of product, second info as the float number and third number as the int number"
+            )
             continue
 
         elif line == "done":  # команда завершения
@@ -701,6 +797,7 @@ if RUN_INPUT:
 # ============================================================
 
 import datetime  # импортируем модуль datetime целиком (удобно писать datetime.datetime, datetime.date и т.д.)
+
 now = datetime.datetime.now()  # текущая дата и время (datetime)
 print(now)  # печать текущего datetime
 
@@ -717,7 +814,9 @@ print(current_datetime.hour)  # час
 print(current_datetime.minute)  # минута
 print(current_datetime.second)  # секунда
 print(current_datetime.microsecond)  # микросекунды
-print(current_datetime.tzinfo)  # информация о временной зоне (обычно None, если не задана)
+print(
+    current_datetime.tzinfo
+)  # информация о временной зоне (обычно None, если не задана)
 
 ##########################################################
 from datetime import datetime  # снова импорт datetime
@@ -732,24 +831,32 @@ import datetime  # снова импорт модуля
 date_part = datetime.date(2023, 12, 14)  # создаём объект date (год, месяц, день)
 time_part = datetime.time(12, 30, 15)  # создаём объект time (часы, минуты, секунды)
 
-combined_datetime = datetime.datetime.combine(date_part, time_part)  # объединяем date+time в datetime
+combined_datetime = datetime.datetime.combine(
+    date_part, time_part
+)  # объединяем date+time в datetime
 
 print(combined_datetime)  # печать объединённого datetime
 
 ##########################################################
 import datetime  # импорт
 
-specific_date = datetime.datetime(year=2020, month=1, day=7)  # создаём datetime с датой (время по умолчанию 00:00:00)
+specific_date = datetime.datetime(
+    year=2020, month=1, day=7
+)  # создаём datetime с датой (время по умолчанию 00:00:00)
 print(specific_date)  # печать
 
 ##########################################################
-specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)  # datetime с датой и временем
+specific_datetime = datetime.datetime(
+    year=2020, month=1, day=7, hour=14, minute=30, second=15
+)  # datetime с датой и временем
 print(specific_datetime)  # печать
 
 ##########################################################
 import datetime  # импорт
 
-specific_datetime = datetime.datetime(year=2020, month=1, day=7, hour=14, minute=30, second=15)  # ещё раз тот же пример
+specific_datetime = datetime.datetime(
+    year=2020, month=1, day=7, hour=14, minute=30, second=15
+)  # ещё раз тот же пример
 print(specific_datetime)  # печать
 
 ##########################################################
@@ -769,8 +876,8 @@ datetime2 = datetime(2023, 3, 15, 12, 0)  # второй datetime
 
 print(datetime1 == datetime2)  # сравнение на равенство
 print(datetime1 != datetime2)  # сравнение на неравенство
-print(datetime1 < datetime2)   # “раньше”
-print(datetime1 > datetime2)   # “позже”
+print(datetime1 < datetime2)  # “раньше”
+print(datetime1 > datetime2)  # “позже”
 
 
 # ============================================================
@@ -786,7 +893,7 @@ delta = timedelta(
     milliseconds=29000,
     minutes=5,
     hours=8,
-    weeks=2
+    weeks=2,
 )  # создаём интервал времени из разных единиц
 print(delta)  # печать итогового интервала (всё будет сведено к дням/секундам)
 
@@ -824,7 +931,9 @@ print(seventh_day_2020 - four_weeks_interval)  # вычитаем интерва
 from datetime import datetime  # импорт
 
 date = datetime(year=2023, month=12, day=18)  # создаём datetime (время 00:00:00)
-ordinal_number = date.toordinal()  # порядковый номер дня (для удобного подсчёта разницы)
+ordinal_number = (
+    date.toordinal()
+)  # порядковый номер дня (для удобного подсчёта разницы)
 print(f"Порядковий номер дати {date} становить {ordinal_number}")  # печать
 
 ##########################################################
@@ -834,7 +943,9 @@ from datetime import datetime  # импорт
 napoleon_burns_moscow = datetime(year=1812, month=9, day=14)  # историческая дата
 current_date = datetime.now()  # текущий datetime
 
-days_since = current_date.toordinal() - napoleon_burns_moscow.toordinal()  # считаем разницу в днях через ordinal
+days_since = (
+    current_date.toordinal() - napoleon_burns_moscow.toordinal()
+)  # считаем разницу в днях через ordinal
 print(days_since)  # печать
 
 
@@ -845,7 +956,9 @@ print(days_since)  # печать
 from datetime import datetime  # импорт
 
 now = datetime.now()  # текущий datetime
-timestamp = datetime.timestamp(now)  # переводим datetime в timestamp (секунды с 1970-01-01)
+timestamp = datetime.timestamp(
+    now
+)  # переводим datetime в timestamp (секунды с 1970-01-01)
 print(timestamp)  # печать timestamp
 
 ##########################################################
@@ -868,7 +981,9 @@ now = datetime.now()  # текущий datetime
 formatted_date = now.strftime("%Y-%m-%d %H:%M:%S")  # форматируем дату+время в строку
 print(formatted_date)
 
-formatted_date_only = now.strftime("%A, %d %B %Y")  # форматируем только дату в “человекочитаемом” виде
+formatted_date_only = now.strftime(
+    "%A, %d %B %Y"
+)  # форматируем только дату в “человекочитаемом” виде
 print(formatted_date_only)
 
 formatted_time_only = now.strftime("%I:%M %p")  # форматируем только время
@@ -882,7 +997,9 @@ print(formatted_date_only)
 from datetime import datetime  # импорт
 
 date_string = "2023.03.14"  # строка с датой
-datetime_object = datetime.strptime(date_string, "%Y.%m.%d")  # парсим строку -> datetime по шаблону
+datetime_object = datetime.strptime(
+    date_string, "%Y.%m.%d"
+)  # парсим строку -> datetime по шаблону
 print(datetime_object)  # печать
 
 
@@ -917,8 +1034,12 @@ print(f"Сьогодні: {day_of_week}")  # печать
 from datetime import datetime  # импорт
 
 now = datetime.now()  # текущий datetime
-iso_calendar = now.isocalendar()  # получаем ISO-календарь: (ISO-год, ISO-неделя, ISO-день)
-print(f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}")  # печать
+iso_calendar = (
+    now.isocalendar()
+)  # получаем ISO-календарь: (ISO-год, ISO-неделя, ISO-день)
+print(
+    f"ISO рік: {iso_calendar[0]}, ISO тиждень: {iso_calendar[1]}, ISO день тижня: {iso_calendar[2]}"
+)  # печать
 
 
 # ============================================================
@@ -939,7 +1060,9 @@ from datetime import datetime, timezone, timedelta  # импорт
 
 utc_time = datetime.now(timezone.utc)  # текущее UTC-время
 
-eastern_time = utc_time.astimezone(timezone(timedelta(hours=-5)))  # переводим UTC во временную зону UTC-5
+eastern_time = utc_time.astimezone(
+    timezone(timedelta(hours=-5))
+)  # переводим UTC во временную зону UTC-5
 print(eastern_time)  # печать
 
 ##########################################################
@@ -947,7 +1070,9 @@ print(eastern_time)  # печать
 from datetime import datetime, timezone, timedelta  # импорт
 
 local_timezone = timezone(timedelta(hours=2))  # создаём tzinfo для UTC+2
-local_time = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone)  # datetime с tzinfo
+local_time = datetime(
+    year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=local_timezone
+)  # datetime с tzinfo
 
 utc_time = local_time.astimezone(timezone.utc)  # переводим локальное время в UTC
 print(utc_time)  # печать
@@ -957,9 +1082,13 @@ print(utc_time)  # печать
 from datetime import datetime, timezone, timedelta  # импорт
 
 timezone_offset = timezone(timedelta(hours=2))  # UTC+2
-timezone_datetime = datetime(year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=timezone_offset)  # datetime с tzinfo
+timezone_datetime = datetime(
+    year=2023, month=3, day=14, hour=12, minute=30, second=0, tzinfo=timezone_offset
+)  # datetime с tzinfo
 
-iso_format_with_timezone = timezone_datetime.isoformat()  # ISO-строка, включает смещение
+iso_format_with_timezone = (
+    timezone_datetime.isoformat()
+)  # ISO-строка, включает смещение
 print(iso_format_with_timezone)  # печать
 
 
@@ -987,7 +1116,9 @@ import time  # импорт
 current_time = time.time()  # timestamp
 print(f"Поточний час: {current_time}")
 
-readable_time = time.ctime(current_time)  # переводим timestamp в строку “человеческого” вида
+readable_time = time.ctime(
+    current_time
+)  # переводим timestamp в строку “человеческого” вида
 print(f"Читабельний час: {readable_time}")
 
 ##########################################################
@@ -1031,9 +1162,9 @@ print(c)
 
 games = [
     {"id": 101, "title": "Cyberpunk 2077"},  # игра 101
-    {"id": 102, "title": "The Witcher 3"},   # игра 102
-    {"id": 103, "title": "SWAT 4"},          # игра 103
-    {"id": 104, "title": "Metro 2033"},      # игра 104
+    {"id": 102, "title": "The Witcher 3"},  # игра 102
+    {"id": 103, "title": "SWAT 4"},  # игра 103
+    {"id": 104, "title": "Metro 2033"},  # игра 104
 ]
 
 owned_ids = {102, 103}  # set купленных игр (быстрые проверки in)
@@ -1074,11 +1205,11 @@ profile = {
     "username": "andrewn",
     "email": "andrew@gmail.com",
     "age": 24,
-    "country": "Ukraine"
+    "country": "Ukraine",
 }
 
 for key, value in profile.items():  # items() даёт пары (ключ, значение)
-     print(f"{key} : {value}")  # печать каждой пары
+    print(f"{key} : {value}")  # печать каждой пары
 
 
 # ============================================================
@@ -1092,57 +1223,91 @@ users = [
     {"name": "Steve Jobs", "birthday": "1955.3.21"},
     {"name": "Jinny Lee", "birthday": "1956.3.22"},
     {"name": "John Doe", "birthday": "1985.01.23"},
-    {"name": "Jane Smith", "birthday": "1990.01.27"}
+    {"name": "Jane Smith", "birthday": "1990.01.27"},
 ]
 
-def find_next_weekday(start_date, weekday):  # ищем ближайший следующий weekday (0=пн ... 6=вс)
+
+def find_next_weekday(
+    start_date, weekday
+):  # ищем ближайший следующий weekday (0=пн ... 6=вс)
     current_weekday = start_date.weekday()  # день недели у start_date
     days_ahead = weekday - current_weekday  # сколько дней до нужного weekday
-    if days_ahead <= 0:  # если сегодня уже этот день или позже — переносим на следующую неделю
+    if (
+        days_ahead <= 0
+    ):  # если сегодня уже этот день или позже — переносим на следующую неделю
         days_ahead = days_ahead + 7  # добавляем 7 дней
 
     return start_date + timedelta(days=days_ahead)  # возвращаем новую дату
+
 
 def string_to_date(date_string):  # перевод строки даты в date
     date_obj = datetime.strptime(date_string, "%Y.%m.%d")  # парсим строку по формату
     date_obj.date()  # эта строка ничего не меняет (лишняя), т.к. ниже ты возвращаешь date()
     return date_obj.date()  # возвращаем именно date (без времени)
 
-def prepare_user_list(user_data):  # превращаем список users со строками дат в список с date
+
+def prepare_user_list(
+    user_data,
+):  # превращаем список users со строками дат в список с date
     result = []  # сюда сложим пользователей в новом виде
     for user in user_data:  # перебираем исходные словари
         name = user["name"]  # берём имя
         birthday_date = string_to_date(user["birthday"])  # переводим строку даты в date
-        result.append({"name": name, "birthday": birthday_date})  # добавляем новый словарь в результат
+        result.append(
+            {"name": name, "birthday": birthday_date}
+        )  # добавляем новый словарь в результат
     return result  # возвращаем новый список
 
-prepared_users = prepare_user_list(users)  # делаем подготовленный список (birthday уже date)
+
+prepared_users = prepare_user_list(
+    users
+)  # делаем подготовленный список (birthday уже date)
 print(prepared_users)  # печатаем, чтобы проверить
+
 
 def date_to_string(date):  # перевод date в строку
     date = datetime.strftime(date, "%Y.%m.%d")  # форматируем по шаблону YYYY.MM.DD
     return date  # возвращаем строку
 
-def adjust_for_weekend(birthday):  # если ДР на выходных — переносим поздравление на понедельник
+
+def adjust_for_weekend(
+    birthday,
+):  # если ДР на выходных — переносим поздравление на понедельник
     day_of_date = birthday.weekday()  # номер дня недели у даты
     if day_of_date >= 5:  # 5=сб, 6=вс
-       find_next_weekday(birthday, 0)  # лишняя строка (ничего не делает, результат не используется)
-       return find_next_weekday(birthday, 0)  # возвращаем следующий понедельник
+        find_next_weekday(
+            birthday, 0
+        )  # лишняя строка (ничего не делает, результат не используется)
+        return find_next_weekday(birthday, 0)  # возвращаем следующий понедельник
     else:
         return birthday  # если будний — возвращаем дату как есть
 
-def get_upcoming_birthdays(users, days=7):  # возвращает список ближайших ДР на days дней вперёд
+
+def get_upcoming_birthdays(
+    users, days=7
+):  # возвращает список ближайших ДР на days дней вперёд
     upcoming_birthdays = []  # сюда складываем результат
     today = date.today()  # сегодняшняя дата
     for user in users:  # перебираем пользователей
-        birthday_this_year = user["birthday"].replace(year=today.year)  # переносим дату ДР на текущий год
+        birthday_this_year = user["birthday"].replace(
+            year=today.year
+        )  # переносим дату ДР на текущий год
         if birthday_this_year < today:  # если ДР уже был в этом году
-            birthday_this_year = user["birthday"].replace(year=today.year + 1)  # берём следующий год
+            birthday_this_year = user["birthday"].replace(
+                year=today.year + 1
+            )  # берём следующий год
         delta_days = (birthday_this_year - today).days  # считаем сколько дней осталось
         if delta_days in range(0, days + 1):  # если попадает в окно 0..days
-            congratulation_date = adjust_for_weekend(birthday_this_year)  # переносим с выходных на рабочий день
-            congratulation_date = congratulation_date.strftime("%Y.%m.%d")  # форматируем дату поздравления в строку
-            new_dict = {"name": user["name"], "congratulation_date": congratulation_date}  # формируем итоговый словарь
+            congratulation_date = adjust_for_weekend(
+                birthday_this_year
+            )  # переносим с выходных на рабочий день
+            congratulation_date = congratulation_date.strftime(
+                "%Y.%m.%d"
+            )  # форматируем дату поздравления в строку
+            new_dict = {
+                "name": user["name"],
+                "congratulation_date": congratulation_date,
+            }  # формируем итоговый словарь
             upcoming_birthdays.append(new_dict)  # добавляем в список результата
     return upcoming_birthdays  # возвращаем список
 
@@ -1155,13 +1320,20 @@ from datetime import datetime  # импорт
 
 date = "2020-10-09"  # строка даты (переменную лучше не называть date, но ты так назвал)
 
-def get_days_from_today(date):  # функция считает разницу в днях от указанной даты до сегодня
+
+def get_days_from_today(
+    date,
+):  # функция считает разницу в днях от указанной даты до сегодня
     try:
-        formatted_date = datetime.strptime(date, "%Y-%m-%d")  # парсим строку по формату YYYY-MM-DD
+        formatted_date = datetime.strptime(
+            date, "%Y-%m-%d"
+        )  # парсим строку по формату YYYY-MM-DD
     except ValueError:
         return  # если формат неверный — выходим без результата
     current_date = datetime.today()  # текущая дата-время
-    days_count = current_date.toordinal() - formatted_date.toordinal()  # разница в днях через ordinal
+    days_count = (
+        current_date.toordinal() - formatted_date.toordinal()
+    )  # разница в днях через ordinal
     return days_count  # возвращаем число дней
 
 
@@ -1171,7 +1343,10 @@ def get_days_from_today(date):  # функция считает разницу �
 
 import random  # импорт генератора случайных чисел
 
-def get_numbers_ticket(min, max, quantity):  # генерируем quantity уникальных чисел в диапазоне [min..max]
+
+def get_numbers_ticket(
+    min, max, quantity
+):  # генерируем quantity уникальных чисел в диапазоне [min..max]
     if min < 1:  # проверка нижней границы
         return []
     if max > 1000:  # ограничение верхней границы по условию
@@ -1180,7 +1355,9 @@ def get_numbers_ticket(min, max, quantity):  # генерируем quantity у�
         return []
     if quantity < 1:  # количество должно быть >= 1
         return []
-    if quantity > (max - min + 1):  # нельзя взять уникальных чисел больше, чем размер диапазона
+    if quantity > (
+        max - min + 1
+    ):  # нельзя взять уникальных чисел больше, чем размер диапазона
         return []
     numbers = set()  # set для уникальности
     while len(numbers) < quantity:  # пока не набрали нужное количество
@@ -1209,10 +1386,13 @@ raw_numbers = [
     "38050 111 22 11   ",
 ]  # список “грязных” номеров
 
+
 def normalize_phone(phone_number):  # нормализуем номер к виду +380XXXXXXXXX
     pattern = r"[^\d\+]"  # шаблон: всё, что НЕ цифра и НЕ плюс
     replacement = ""  # заменяем на пустую строку
-    clean = re.sub(pattern, replacement, phone_number)  # удаляем пробелы, скобки, дефисы, табы, переносы и т.д.
+    clean = re.sub(
+        pattern, replacement, phone_number
+    )  # удаляем пробелы, скобки, дефисы, табы, переносы и т.д.
     if clean.startswith("+380"):  # если уже начинается с +380 — возвращаем как есть
         return clean
     if clean.startswith("380"):  # если начинается с 380 — добавляем плюс
@@ -1220,16 +1400,21 @@ def normalize_phone(phone_number):  # нормализуем номер к ви�
     if clean.startswith("0"):  # если начинается с 0 — добавляем +38
         return "+38" + clean
     else:
-        return clean  # иначе возвращаем как получилось (на случай нестандартного формата)
+        return (
+            clean  # иначе возвращаем как получилось (на случай нестандартного формата)
+        )
+
 
 # ============================================================
 # ДЗ 3: Обнова для выхода патча
 # ============================================================
 
 import re
+
 # импортируем модуль re для поиска по шаблонам (регулярные выражения)
 
 from datetime import datetime, timedelta, timezone
+
 # datetime — работа с датой/временем
 # timedelta — добавление интервалов (минуты, часы и т.д.)
 # timezone — объект таймзоны (UTC+2 и т.д.)

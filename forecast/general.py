@@ -1,6 +1,7 @@
 from data import load_data, clean_data
 from processing import calculate_statistics
 
+
 def main():
     filename = "temperatures.txt"
     raw_data = load_data(filename)
@@ -14,6 +15,7 @@ def main():
         print(f"Median Temperature: {stats['median']:.2f}°C")
     else:
         print("No temperature data available.")
+
 
 if __name__ == "__main__":
     main()

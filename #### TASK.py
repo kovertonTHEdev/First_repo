@@ -2,28 +2,33 @@
 from datetime import datetime
 
 date = "2020-10-09"
+
+
 def get_days_from_today(date):
     try:
-        formatted_date = datetime.strptime(date, "%Y-%m-%d") 
+        formatted_date = datetime.strptime(date, "%Y-%m-%d")
     except ValueError:
-        return 
+        return
     current_date = datetime.today()
     days_count = current_date.toordinal() - formatted_date.toordinal()
     return days_count
 
+
 ## Друге завдання: Лотерея
 import random
+
+
 def get_numbers_ticket(min, max, quantity):
-    if min <1:
-        return[]
+    if min < 1:
+        return []
     if max > 1000:
-        return[]
+        return []
     if min >= max:
         return []
     if quantity < 1:
-        return[]
+        return []
     if quantity > (max - min + 1):
-        return[]
+        return []
     numbers = set()
     while len(numbers) < quantity:
         num = random.randint(min, max)
@@ -33,8 +38,9 @@ def get_numbers_ticket(min, max, quantity):
     return lottery_numbers
 
 
-## ДЗ - Третє завдання: номери 
+## ДЗ - Третє завдання: номери
 import re
+
 raw_numbers = [
     "067\\t123 4567",
     "(095) 234-5678\\n",
@@ -46,6 +52,8 @@ raw_numbers = [
     "38050-111-22-22",
     "38050 111 22 11   ",
 ]
+
+
 def normalize_phone(phone_number):
     pattern = r"[^\d\+]"
     replacement = ""

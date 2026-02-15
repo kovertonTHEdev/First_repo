@@ -2,18 +2,19 @@
 # ДЗ 1: Даты — get_days_from_today
 # ============================================================
 
-from datetime import datetime  
+from datetime import datetime
 
-date = "2020-10-09"  
+date = "2020-10-09"
 
-def get_days_from_today(date): 
+
+def get_days_from_today(date):
     try:
-        formatted_date = datetime.strptime(date, "%Y-%m-%d")  
+        formatted_date = datetime.strptime(date, "%Y-%m-%d")
     except ValueError:
-        return  
-    current_date = datetime.today()  
-    days_count = current_date.toordinal() - formatted_date.toordinal()  
-    return days_count  
+        return
+    current_date = datetime.today()
+    days_count = current_date.toordinal() - formatted_date.toordinal()
+    return days_count
 
 
 # ============================================================
@@ -22,31 +23,32 @@ def get_days_from_today(date):
 
 import random  # импорт генератора случайных чисел
 
-def get_numbers_ticket(min, max, quantity):  
-    if min < 1:  
+
+def get_numbers_ticket(min, max, quantity):
+    if min < 1:
         return []
-    if max > 1000:  
+    if max > 1000:
         return []
-    if min >= max:  
+    if min >= max:
         return []
-    if quantity < 1:  
+    if quantity < 1:
         return []
-    if quantity > (max - min + 1):  
+    if quantity > (max - min + 1):
         return []
-    numbers = set()  
-    while len(numbers) < quantity:  
-        num = random.randint(min, max)  
-        numbers.add(num)  
-    lottery_numbers = list(numbers)  
-    lottery_numbers.sort()  
-    return lottery_numbers  
+    numbers = set()
+    while len(numbers) < quantity:
+        num = random.randint(min, max)
+        numbers.add(num)
+    lottery_numbers = list(numbers)
+    lottery_numbers.sort()
+    return lottery_numbers
 
 
 # ============================================================
 # ДЗ 3: Номера — normalize_phone
 # ============================================================
 
-import re  
+import re
 
 raw_numbers = [
     "067\\t123 4567",
@@ -58,17 +60,18 @@ raw_numbers = [
     "(050)8889900",
     "38050-111-22-22",
     "38050 111 22 11   ",
-]  
+]
 
-def normalize_phone(phone_number):  
-    pattern = r"[^\d\+]"  
-    replacement = "" 
-    clean = re.sub(pattern, replacement, phone_number)  
-    if clean.startswith("+380"): 
+
+def normalize_phone(phone_number):
+    pattern = r"[^\d\+]"
+    replacement = ""
+    clean = re.sub(pattern, replacement, phone_number)
+    if clean.startswith("+380"):
         return clean
-    if clean.startswith("380"):  
+    if clean.startswith("380"):
         return "+" + clean
-    if clean.startswith("0"): 
+    if clean.startswith("0"):
         return "+38" + clean
     else:
-        return clean 
+        return clean

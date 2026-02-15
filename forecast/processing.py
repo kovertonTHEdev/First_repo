@@ -14,6 +14,7 @@ def calculate_statistics(temperatures: list[float]) -> dict:
         "median": median_temp,
     }
 
+
 def calculate_median(temperatures: list[float]) -> float:
     temperatures.sort()
     n = len(temperatures)
