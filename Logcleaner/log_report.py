@@ -20,6 +20,8 @@ if not path_obj.is_file():
     sys.exit(1)
 
 result = get_report(path_obj)
-with open("report_out.txt", "w", encoding="UTF=8") as file:
+with open("report_out.txt", "w", encoding="UTF-8") as file:
     file.write(result)
 print(result)
+
+# python log_report.py report.txt запуск тільки так
