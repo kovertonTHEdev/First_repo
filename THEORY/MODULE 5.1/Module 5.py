@@ -362,8 +362,6 @@ print(next(gen))  # Виведе 3
 
 
 from pathlib import Path
-
-
 def read_lines(file_path):
     BASE = Path(__file__).resolve().parent
     file_path = BASE / "my_file.txt"
