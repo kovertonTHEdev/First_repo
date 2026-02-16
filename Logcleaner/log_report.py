@@ -22,3 +22,4 @@ if not path_obj.is_file():
 result = get_report(path_obj)
 with open("report.txt", "w", encoding="UTF=8") as file:
     file.write(result)
+print(result)
