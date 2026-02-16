@@ -1,6 +1,8 @@
 import sys
 from pathlib import Path
 
+from reporter_func import get_report
+
 BASE = Path(__file__).resolve().parent
 REPORT_FILE = BASE / "report.txt"
 
@@ -16,5 +18,7 @@ if not path_obj.exists():
 if not path_obj.is_file():
     print("This object is not file") # перевірка чи це файл
     sys.exit(1)
+
+result = get_report(path_obj)
 with open("report.txt", "w", encoding="UTF=8") as file:
-    file.write(full_result)
+    file.write(result)
