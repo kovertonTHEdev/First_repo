@@ -482,8 +482,8 @@ size = file_path.stat().st_size
 print(f"Розмір файла: {size} байтів")
 
 
-from pathlib import Path
 import time
+from pathlib import Path
 
 BASE = Path(__file__).resolve().parent
 file_path = BASE / "picture" / "bot-icon.png"
