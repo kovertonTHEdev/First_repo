@@ -104,9 +104,7 @@ from typing import Callable  # замикання, яке буде зберіг�
 def counter() -> Callable[[], int]:
     count = 0
 
-    def increment() -> (
-        int
-    ):  # increment замкнула в собі змінну count і має до неї доступ навіть після того, як зовнішня функція counter завершує своє виконання
+    def increment() -> (int):  # increment замкнула в собі змінну count і має до неї доступ навіть після того, як зовнішня функція counter завершує своє виконання
         # використовуємо nonlocal, щоб змінити змінну в замиканні
         nonlocal count
         count += 1
