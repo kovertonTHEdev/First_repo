@@ -144,9 +144,7 @@ from typing import Callable
 
 
 def discount(discount_percentage: int) -> Callable[[float], float]:
-    def apply_discount(
-        price: float,
-    ) -> float:  # Перетворимо функцію apply_discount, використовуючи каррінг. Це дозволить нам створити "замовлені" функції для різних рівнів знижок, кожна з яких буде приймати тільки ціну товару
+    def apply_discount(price: float,) -> float:  # Перетворимо функцію apply_discount, використовуючи каррінг. Це дозволить нам створити "замовлені" функції для різних рівнів знижок, кожна з яких буде приймати тільки ціну товару
         return price * (1 - discount_percentage / 100)
 
     return apply_discount
@@ -228,3 +226,113 @@ def complicated(x: int, y: int) -> int:
 
 
 print(complicated(2, 3))
+
+
+from functools import wraps
+
+def logger(func):
+    @wraps(func)
+    def inner(x: int, y: int) -> int:
+        print(f"Викликається функція: {func.__name__}: {x}, {y}")
+        result = func(x, y)
+        print(f"Функція {func.__name__} завершила виконання: {result}")
+        return result
+
+    return inner
+
+@logger
+def complicated(x: int, y: int) -> int:
+    return x + y
+
+print(complicated(2, 3))
+print(complicated.__name__)
+
+
+from functools import wraps  # При створенні декораторів використовувати модуль functools, для збереження метаданих оригінальної функції.
+                             # Функція functools.wraps зберігає інформацію про оригінальну функцію.
+def logger(func):
+    @wraps(func)
+    def inner(x: int, y: int) -> int:
+        print(f"Викликається функція: {func.__name__}: {x}, {y}") # Викликається функція: complicated: 2, 3
+        result = func(x, y)
+        print(f"Функція {func.__name__} завершила виконання: {result}") # Функція complicated завершила виконання: 5
+        return result
+
+    return inner
+
+@logger
+def complicated(x: int, y: int) -> int:
+    return x + y
+
+print(complicated(2, 3)) # 5
+print(complicated.__name__) # complicated
+
+
+# ----------------------------
+# Тема 5: Функція map()
+# ----------------------------
+numbers = [1, 2, 3, 4, 5]
+
+for i in map(lambda x: x ** 2, numbers):
+    print(i)
+# 1
+# 4
+# 9
+# 16
+# 25
+
+# Якщо ми хочем отримати список, а не генератор то код можна записати так:
+numbers = [1, 2, 3, 4, 5]
+
+squared_nums = list(map(lambda x: x ** 2, numbers))
+print(squared_nums) # [1, 4, 9, 16, 25]
+
+
+nums1 = [1, 2, 3]
+nums2 = [4, 5, 6]
+sum_nums = map(lambda x, y: x + y, nums1, nums2)
+
+
+# ----------------------------
+# Тема 6: Функція filter()
+# ----------------------------
+even_nums = filter(lambda x: x % 2 == 0, range(1, 11))
+print(list(even_nums)) # [2, 4, 6, 8, 10]
+
+
+some_str = 'Видавництво А-БА-БА-ГА-ЛА-МА-ГА'
+
+new_str = ''.join(list(filter(lambda x: x.islower(), some_str)))
+print(new_str) # идавництво
+
+
+# ----------------------------
+# Тема 7: Функція any()
+# ----------------------------
+nums = [0, False, 5, 0]
+result = any(nums)  # Перевіримо, чи наявний хоч один істинний елемент у списку
+print(result) # Код поверне True, оскільки 5 є істинним значенням в списку nums
+
+
+nums = [1, 3, 5, 7, 9]
+result = any(x % 2 == 0 for x in nums)  # перевіримо чи є в списку парні числа
+print(result) # Код поверне False, оскільки немає парних чисел в списку nums
+
+
+# ----------------------------
+# Тема 8: Функція all()
+# ----------------------------
+nums = [1, 2, 3, 4] 
+result = all(nums)  # перевірка, чи всі елементи у списку істинні
+print(result)
+
+
+nums = [1, 2, 3, 4]
+is_all_even = all(x % 2 == 0 for x in nums)  # Чи всі елементи списку є парними
+print(is_all_even) # Код виведе False, оскільки не всі числа парні в списку nums
+
+
+words = ["Hello", "World", "Python"]
+is_all_title_case = all(word.istitle() for word in words) # Чи всі слова у списку мають велику початкову букву
+print(is_all_title_case)
+
