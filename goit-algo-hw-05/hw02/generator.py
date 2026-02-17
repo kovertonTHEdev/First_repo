@@ -13,7 +13,7 @@ def generator_numbers(text: str):
 def sum_profit(text: str, func: Callable):
     total = 0.0
     for i in func(text):
-        total = total + i
+        total += i
     return total
 
 
