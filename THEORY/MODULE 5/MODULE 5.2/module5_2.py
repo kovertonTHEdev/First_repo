@@ -23,9 +23,8 @@ result_multiply = apply_operation(5, 3, multiply)
 print(result_add, result_multiply)  # 8 15
 
 
-from typing import (
-    Callable,
-)  # Функції як об'єкт першого класу можуть повертають інші функції
+from typing import Callable
+# Функції як об'єкт першого класу можуть повертають інші функції
 
 
 def power(exponent: int) -> Callable[[int], int]:
@@ -239,4 +238,3 @@ def complicated(x: int, y: int) -> int:
 
 
 print(complicated(2, 3))
-
