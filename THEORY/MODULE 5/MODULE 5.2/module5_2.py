@@ -240,5 +240,3 @@ def complicated(x: int, y: int) -> int:
 
 print(complicated(2, 3))
 
-
-print("Hello world")
